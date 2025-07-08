@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: twistedhardware/decap_test
+  base_url: https://github.com/login/oauth/authorize
 media_folder: "static/images/uploads"
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
