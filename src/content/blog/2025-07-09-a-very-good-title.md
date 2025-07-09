@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: A Very Good Title
 date: 2025-07-01T14:34:00
 thumbnail: /static/images/uploads/Screenshot from 2025-05-02 11-54-46.png
