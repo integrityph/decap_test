@@ -1,4 +1,6 @@
 ---
+
+const BASE_URL = "/decap_test";//import.meta.env.BASE_URL;
 // src/pages/blogs/[slug].astro
 import { getCollection } from 'astro:content';
 
@@ -14,6 +16,7 @@ export async function getStaticPaths() {
 // Get the specific blog for this page
 const { blog } = Astro.props;
 const { Content } = await blog.render(); // This renders the Markdown body to HTML
+console.log(import.meta.env.BASE_URL);
 ---
 <html lang="en">
   <head>
@@ -22,8 +25,10 @@ const { Content } = await blog.render(); // This renders the Markdown body to HT
   </head>
   <body>
     <main>
+			<a href={BASE_URL}>Home</a>
+			<a href=`${BASE_URL}/blog`>Blog</a>
       <h1>{blog.data.title}</h1>
-			<img src={blog.data.thumbnail??""}>
+			<img src={blog.data.thumbnail} alt="blog coin">
       <hr />
       <article>
         <Content />
