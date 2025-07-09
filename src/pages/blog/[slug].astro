@@ -23,6 +23,7 @@ const { Content } = await blog.render(); // This renders the Markdown body to HT
   <body>
     <main>
       <h1>{blog.data.title}</h1>
+			<img src={blog.data.thumbnail??""}>
       <hr />
       <article>
         <Content />

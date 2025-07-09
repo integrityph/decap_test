@@ -5,9 +5,6 @@ import { defineCollection, z } from 'astro:content';
 const blogCollection = defineCollection({
   // The 'schema' defines the frontmatter of your Markdown files
   schema: z.object({
-    // layout: z.string() -> Corresponds to your 'hidden' layout widget
-    layout: z.string(),
-    
     // title: z.string() -> A direct mapping from the 'string' widget
     title: z.string(),
     
