@@ -4,7 +4,7 @@ backend:
   branch: main
   base_url: https://oauth-crm.ngrok.io/
   auth_endpoint: /auth
-media_folder: "static/images/uploads"
+media_folder: "public/static/images/uploads"
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI

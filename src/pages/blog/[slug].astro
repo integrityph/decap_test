@@ -28,7 +28,7 @@ console.log(import.meta.env.BASE_URL);
 			<a href={BASE_URL}>Home</a>
 			<a href=`${BASE_URL}/blog`>Blog</a>
       <h1>{blog.data.title}</h1>
-			<img src={blog.data.thumbnail} alt="blog coin">
+			<img src=`${BASE_URL}/${blog.data.thumbnail}` alt="blog coin">
       <hr />
       <article>
         <Content />

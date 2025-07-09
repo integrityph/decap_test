@@ -15,7 +15,7 @@ const BASE_URL = import.meta.env.BASE_URL;
 		<a href={BASE_URL}>Home</a>
 		<a href=`${BASE_URL}/blog`>Blog</a>
 		<h1>Astro</h1>
-		<div><a href="blog/">Blog List</a></div>
+		<div><a href=`${BASE_URL}/blog`>Blog List</a></div>
 		<Counter client:load />
 	</body>
 </html>
