@@ -1,0 +1,42 @@
+---
+// src/components/BuyNow.astro
+import { getEntry } from 'astro:content';
+
+// This component expects to receive the 'slug' of the CTA to render
+const { slug } = Astro.props;
+
+const cta = await getEntry('components', slug);
+
+// Handle case where the CTA isn't found
+if (!cta) {
+  // In production, you might want to return null or show a default
+  throw new Error(`Could not find component with slug: ${slug}`);
+}
+
+const { heading, button_text, shopify_url } = cta.data;
+---
+
+<div class="buy-now-cta">
+  <h3>{heading}</h3>
+  <a href={shopify_url} class="button">{button_text}</a>
+</div>
+
+<style>
+  /* Add some styling for your CTA */
+  .buy-now-cta {
+    border: 2px solid #ff5d01;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+  }
+  .button {
+    display: inline-block;
+    background-color: #ff5d01;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>

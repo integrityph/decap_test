@@ -3,6 +3,7 @@
 
 // src/pages/blogs/[slug].astro
 import { getCollection } from 'astro:content';
+import BuyNow from '../../components/BuyNow.astro';
 
 // This tells Astro to generate a page for every blog
 export async function getStaticPaths() {
@@ -33,6 +34,9 @@ const BASE_URL = import.meta.env.BASE_URL;
       <article>
         <Content />
       </article>
+			{blog.data.featured_cta && (
+        <BuyNow slug={blog.data.featured_cta} />
+      )}
     </main>
   </body>
 </html>

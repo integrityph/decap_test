@@ -6,6 +6,14 @@ backend:
   auth_endpoint: /auth
 media_folder: "public/static/images/uploads"
 public_folder: "static/images/uploads"
+page_fields: &page_fields
+  - { name: 'title', label: 'Title', widget: 'string' }
+  - { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false }
+  - name: "main_menu"
+    label: "Show on Main Menu"
+    widget: "boolean"
+  - { name: "last_updated", label: "Last Updated", widget: "datetime", required: false }
+  - { name: 'body', label: 'Main Content', widget: 'markdown' }
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI
@@ -18,24 +26,67 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - name: "featured_cta"
+        label: "Featured Buy Now Button (Optional)"
+        widget: "relation"
+        collection: "components" # The collection of reusable components
+        search_fields: ["title"]
+        value_field: "{{slug}}"
+        display_fields: ["title"]
+        required: false # Make it optional
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
   - name: "pages"
     label: "Website Pages"
     files:
-      # We list each page we want to edit as a separate file
+      - name: "home"
+        label: "Home"
+        file: "src/content/pages/home.md"
+        fields: *page_fields
       - name: "features"
         label: "Features Page"
         file: "src/content/pages/features.md"
-        fields:
-          # Define the fields that can be edited for this specific page
-          - { name: "title", label: "Main Title", widget: "string" }
-          - { name: "subtitle", label: "Subtitle", widget: "string" }
-          - { name: "body", label: "Main Content", widget: "markdown" }
+        fields: *page_fields
       - name: "security"
         label: "Security Page"
         file: "src/content/pages/security.md"
-        fields:
-          # Define the fields that can be edited for this specific page
-          - { name: "title", label: "Main Title", widget: "string" }
-          - { name: "subtitle", label: "Subtitle", widget: "string" }
-          - { name: "body", label: "Main Content", widget: "markdown" }
+        fields: *page_fields
+      - name: "for-business"
+        label: "For Business"
+        file: "src/content/pages/for-business.md"
+        fields: *page_fields
+      - name: "transparency"
+        label: "Transparency"
+        file: "src/content/pages/transparency.md"
+        fields: *page_fields
+      - name: "support"
+        label: "Support / FAQ"
+        file: "src/content/pages/support.md"
+        fields: *page_fields
+      - name: "Apps"
+        label: "apps"
+        file: "src/content/pages/apps.md"
+        fields: *page_fields
+      - name: "press"
+        label: "Press"
+        file: "src/content/pages/press.md"
+        fields: *page_fields
+      - name: "privacy"
+        label: "Privacy Policy"
+        file: "src/content/pages/privacy.md"
+        fields: *page_fields
+      - name: "terms"
+        label: "Terms of Service"
+        file: "src/content/pages/terms.md"
+        fields: *page_fields
+  - name: "components"
+    label: "Reusable Components"
+    description: "Content blocks like CTAs that can be embedded into other pages."
+    folder: "src/content/components"
+    create: true
+    fields:
+      - { name: "title", label: "Component Title (for internal reference)", widget: "string" }
+      - { name: "heading", label: "Heading Text", widget: "string", default: "Ready to Secure Your Assets?" }
+      - { name: "button_text", label: "Button Text", widget: "string", default: "Buy Tejory Now" }
+      - { name: "shopify_url", label: "Shopify Product URL", widget: "string" }

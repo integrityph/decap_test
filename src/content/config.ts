@@ -27,10 +27,34 @@ const blogCollection = defineCollection({
     // rating: z.number() -> A direct mapping from the 'number' widget
     // You can even add validation to match your scale!
     rating: z.number().min(1).max(5),
+
+		featured_cta: z.string().optional(),
+  }),
+});
+
+// The new collection for your unique website pages
+const pagesCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string().optional(), // Make fields optional if they don't appear on every page
+    hero_image: z.string().optional(),
+		main_menu: z.boolean().optional(),
+  }).passthrough(),
+});
+
+// The new collection for your unique website pages
+const componentsCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    heading: z.string(),
+    button_text: z.string(),
+		shopify_url: z.string(),
   }),
 });
 
 // Export a `collections` object to register your new 'blog' collection
 export const collections = {
   blog: blogCollection,
+	pages: pagesCollection,
+	components: componentsCollection,
 };

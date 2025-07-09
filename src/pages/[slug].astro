@@ -1,0 +1,29 @@
+---
+// import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import Layout from "../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map(page => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+// Get the specific blog for this page
+const { page } = Astro.props;
+const { Content } = await page.render(); // This renders the Markdown body to HTML
+
+---
+
+
+<Layout>
+  <main class="px-8">
+    <h1 class="text-5xl py-4">{page.data.title}</h1>
+    <p>{page.data.subtitle}</p>
+    <article>
+      <Content />
+    </article>
+  </main>
+</Layout>

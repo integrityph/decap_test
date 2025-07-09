@@ -1,21 +1,25 @@
 ---
-import Counter from '../components/Counter.svelte';
-const BASE_URL = import.meta.env.BASE_URL;
+import { getEntry } from 'astro:content';
+import Layout from "../layouts/Layout.astro";
+
+// Fetch the content specifically from the 'features' entry in the 'pages' collection
+const page = await getEntry('pages', 'home');
+if (!page) {
+  // Since this code runs at build time, throwing an error is the best
+  // way to handle missing content. It stops the build and warns you.
+  throw new Error("Could not find the 'home' page in the 'pages' content collection.");
+}
+const { Content } = await page.render(); // This renders the Markdown body
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/decap_test/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<a href={BASE_URL}>Home</a>
-		<a href=`${BASE_URL}/blog`>Blog</a>
-		<h1>Astro</h1>
-		<div><a href=`${BASE_URL}/blog`>Blog List</a></div>
-		<Counter client:load />
-	</body>
-</html>
+
+<Layout>
+  <main class="px-8">
+		
+    <h1 class="text-5xl py-4">{page.data.title}</h1>
+    <p>{page.data.subtitle}</p>
+    <article>
+      <Content />
+    </article>
+  </main>
+</Layout>
