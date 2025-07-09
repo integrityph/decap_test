@@ -31,3 +31,11 @@ collections:
           - { name: "title", label: "Main Title", widget: "string" }
           - { name: "subtitle", label: "Subtitle", widget: "string" }
           - { name: "body", label: "Main Content", widget: "markdown" }
+      - name: "security"
+        label: "Security Page"
+        file: "src/content/pages/security.md"
+        fields:
+          # Define the fields that can be edited for this specific page
+          - { name: "title", label: "Main Title", widget: "string" }
+          - { name: "subtitle", label: "Subtitle", widget: "string" }
+          - { name: "body", label: "Main Content", widget: "markdown" }
