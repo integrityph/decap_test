@@ -1,7 +1,8 @@
 backend:
   name: github
   repo: twistedhardware/decap_test
-  base_url: https://github.com/login/oauth/authorize
+  branch: main
+  base_url: https://oauth-crm.ngrok.io/
 media_folder: "static/images/uploads"
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
