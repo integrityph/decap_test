@@ -1,0 +1,32 @@
+---
+// src/pages/blogs/[slug].astro
+import { getCollection } from 'astro:content';
+
+// This tells Astro to generate a page for every blog
+export async function getStaticPaths() {
+  const blogs = await getCollection('blog');
+  return blogs.map(blog => ({
+    params: { slug: blog.slug },
+    props: { blog },
+  }));
+}
+
+// Get the specific blog for this page
+const { blog } = Astro.props;
+const { Content } = await blog.render(); // This renders the Markdown body to HTML
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{blog.data.title}</title>
+  </head>
+  <body>
+    <main>
+      <h1>{blog.data.title}</h1>
+      <hr />
+      <article>
+        <Content />
+      </article>
+    </main>
+  </body>
+</html>
