@@ -23,7 +23,7 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
         {/* 3. Loop through the sorted posts to create a list */}
         {sortedPosts.map(post => (
           <li>
-            <a href={`blog/${post.slug}/`}>
+            <a href={`${post.slug}/`}>
               {post.data.title}
             </a>
             - 
