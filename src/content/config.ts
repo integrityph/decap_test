@@ -43,6 +43,23 @@ const pagesCollection = defineCollection({
 });
 
 // The new collection for your unique website pages
+const productsCollection = defineCollection({
+  schema: z.object({
+    name: z.string(),
+    slogan: z.string().optional(),
+		price: z.number().optional(),
+		discounted_price: z.number().optional(),
+		rating: z.number().optional(),
+		number_of_ratings: z.number().optional(),
+    image1: z.string(),
+		image2: z.string().optional(),
+		image3: z.string().optional(),
+		image4: z.string().optional(),
+		image5: z.string().optional(),
+  }),
+});
+
+// The new collection for your unique website pages
 const componentsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
@@ -57,4 +74,5 @@ export const collections = {
   blog: blogCollection,
 	pages: pagesCollection,
 	components: componentsCollection,
+	products: productsCollection,
 };

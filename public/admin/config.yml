@@ -9,9 +9,7 @@ public_folder: "static/images/uploads"
 page_fields: &page_fields
   - { name: 'title', label: 'Title', widget: 'string' }
   - { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false }
-  - name: "main_menu"
-    label: "Show on Main Menu"
-    widget: "boolean"
+  - { name: "main_menu", label: "Show on Main Menu", widget: "boolean" }
   - { name: "last_updated", label: "Last Updated", widget: "datetime", required: false }
   - { name: 'body', label: 'Main Content', widget: 'markdown' }
 collections:
@@ -37,6 +35,37 @@ collections:
       - label: "Body"
         name: "body"
         widget: "markdown"
+  - name: "products"
+    label: "Products"
+    folder: "src/content/products"
+    create: true
+    fields:
+      - { name: "title", label: "Component Title (for internal reference)", widget: "string" }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Slogan", name: "slogan", widget: "string", required: false }
+      - { label: "Price", name: "price", widget: "number", required: false, step: 0.01, value_type: float }
+      - { label: "DiscountedPrice", name: "discounted_price", widget: "number", required: false, step: 0.01, value_type: float }
+      - { label: "Rating", name: "rating", widget: "number", required: false, step: 0.1, value_type: float, min: 0, max: 5 }
+      - { label: "Number of Ratings", name: "number_of_ratings", widget: "number", required: false, value_type: int }
+      - { label: "Price", name: "price", widget: "number", required: false, step: 0.01, value_type: float }
+      - { label: "Available", name: "available", widget: "boolean" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - label: "Wallet"
+            value: "wallet"
+          - label: "App"
+            value: "app"
+          - label: "Accessory"
+            value: "accessory"
+          - label: "Other"
+            value: "other"
+      - { label: "Image1", name: "image1", widget: "image", required: false }
+      - { label: "Image2", name: "image2", widget: "image", required: false }
+      - { label: "Image3", name: "image3", widget: "image", required: false }
+      - { label: "Image4", name: "image4", widget: "image", required: false }
+      - { label: "Image5", name: "image5", widget: "image", required: false }
   - name: "pages"
     label: "Website Pages"
     files:

@@ -1,7 +1,9 @@
 ---
 import Counter from '../components/Counter.svelte';
+import Hero from '../components/Hero.astro';
 import { getEntry } from 'astro:content';
 import Layout from "../layouts/Layout.astro";
+import BuyNow from '../components/BuyNow.astro';
 
 // Fetch the content specifically from the 'features' entry in the 'pages' collection
 const page = await getEntry('pages', 'home');
@@ -13,15 +15,13 @@ if (!page) {
 const { Content } = await page.render(); // This renders the Markdown body
 ---
 
-
 <Layout>
-  <main class="px-8">
-		
-    <h1 class="text-5xl py-4">{page.data.title}</h1>
+	<Hero />
+  <main class="px-8 mt-8">
     <p>{page.data.subtitle}</p>
     <article>
       <Content />
     </article>
-		<Counter client:load />
+		<BuyNow slug="tejory-core">
   </main>
 </Layout>
