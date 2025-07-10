@@ -1,0 +1,80 @@
+---
+import BuyNow from "../../components/BuyNow.astro";
+import Hero from "../../components/Hero.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+	<Hero />
+	<main class="px-8 mt-8">
+		<section class="py-16 bg-zinc-900 text-white mb-8">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<h2 class="text-4xl font-extrabold text-center mb-12">
+					Key Features of Tejory Core
+				</h2>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<div
+						class="bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
+					>
+						<div class="text-blue-400 mb-4">
+							<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"
+							></svg>
+						</div>
+						<h3 class="text-2xl font-semibold mb-3">Unrivaled Security</h3>
+						<p class="text-zinc-300">
+							Fortified with advanced cryptographic protocols and a secure
+							element chip, Tejory Core protects your assets against
+							sophisticated threats.
+						</p>
+					</div>
+
+					<div
+						class="bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
+					>
+						<div class="text-blue-400 mb-4">
+							<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"
+							></svg>
+						</div>
+						<h3 class="text-2xl font-semibold mb-3">Intuitive Ease of Use</h3>
+						<p class="text-zinc-300">
+							Designed for simplicity, managing your crypto is as easy as a tap.
+							No complex setups, just seamless transactions.
+						</p>
+					</div>
+
+					<div
+						class="bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
+					>
+						<div class="text-blue-400 mb-4">
+							<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"
+							></svg>
+						</div>
+						<h3 class="text-2xl font-semibold mb-3">Slim & Discreet Design</h3>
+						<p class="text-zinc-300">
+							Fits perfectly in your wallet, offering discreet and convenient
+							access to your digital assets wherever you go.
+						</p>
+					</div>
+
+					<div
+						class="bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
+					>
+						<div class="text-blue-400 mb-4">
+							<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"
+							></svg>
+						</div>
+						<h3 class="text-2xl font-semibold mb-3">
+							Broad Asset Compatibility
+						</h3>
+						<p class="text-zinc-300">
+							Securely store a wide range of cryptocurrencies and NFTs, with
+							continuous updates for new assets.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<BuyNow slug="tejory-core" />
+	</main>
+</Layout>

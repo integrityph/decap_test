@@ -8,7 +8,7 @@ rating: 4.7
 number_of_ratings: 23
 available: true
 category: wallet
-image1: /static/images/uploads/tejory-core.png
+image1: /static/images/uploads/image-removebg-preview.png
 image2: ''
 image3: ''
 image4: ''
