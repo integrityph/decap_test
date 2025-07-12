@@ -2,14 +2,14 @@
 title: tejory-edge
 name: Tejory Edge
 slogan: Your Access to What's Next
-price: 79.95
+price: null
 discounted_price: null
 rating: 5
 number_of_ratings: 0
 available: false
 category: wallet
 status: under-development
-image1: /static/images/uploads/image-removebg-preview.png
+image1: /static/images/uploads/PNG-Sample-1A-Card-Front.png
 image2: ''
 image3: ''
 image4: ''

@@ -36,6 +36,7 @@ status && status in statusConfig
 const { Content } = await product.render();
 
 const BASE_URL = import.meta.env.BASE_URL;
+const productURL = BASE_URL + "/products/" + slug;
 ---
 
 <div
@@ -62,7 +63,7 @@ const BASE_URL = import.meta.env.BASE_URL;
 		)
 	}
 
-	<a href="#">
+	<a href={productURL}>
 		<img
 			class="p-8 rounded-t-lg"
 			src=`${BASE_URL}${product.data.image1}`
@@ -70,10 +71,8 @@ const BASE_URL = import.meta.env.BASE_URL;
 		/>
 	</a>
 	<div class="flex flex-col flex-grow px-5 pb-5">
-		<a href="#">
-			<h3
-				class="text-xl font-semibold tracking-tight"
-			>
+		<a href={productURL}>
+			<h3 class="text-xl font-semibold tracking-tight">
 				{product.data.name}
 			</h3>
 		</a>
@@ -119,6 +118,7 @@ const BASE_URL = import.meta.env.BASE_URL;
 		<div class="flex items-center justify-between my-5">
 			{
 				product.data.discounted_price ? (
+					// If there is a discount price, show the original and discounted price
 					<span>
 						<span class="text-3xl font-light text-zinc-900 dark:text-zinc-400 line-through">
 							${product.data.price!.toFixed(2)}
@@ -128,15 +128,16 @@ const BASE_URL = import.meta.env.BASE_URL;
 						</span>
 					</span>
 				) : (
+					// Else, check if a regular price exists
 					<span class="text-3xl font-bold text-zinc-900 dark:text-white">
-						${product.data.price!.toFixed(2)}
+						{product.data.price ? `$${product.data.price.toFixed(2)}` : ""}
 					</span>
 				)
 			}
 		</div>
 		<div class="flex items-center w-full">
 			<a
-				href="#"
+				href={productURL}
 				class="mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 				>Learn More</a
 			>

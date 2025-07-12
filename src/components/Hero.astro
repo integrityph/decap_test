@@ -1,15 +1,53 @@
 ---
+const BASE_URL = import.meta.env.BASE_URL;
+const heroBgPath = `${BASE_URL}/static/images/hero-bg.png`;
 ---
-<section class="bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] bg-zinc-900/80 bg-blend-multiply">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
-        <a href="#" class="inline-flex justify-between items-center py-1 px-1 pe-4 mb-7 text-sm text-amber-700 bg-amber-100 rounded-full dark:bg-amber-900 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-800">
-            <span class="text-xs bg-amber-600 rounded-full text-white px-4 py-1.5 me-3">New</span> <span class="text-sm font-medium">40% launch discount, get your wallet today for $29.95</span> 
-            <svg class="w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-        </a>
-        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Secure Your Assets Today</h1>
-        <p class="mt-8 mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Experience effortless digital asset protection with <span class="text-amber-400 font-bold">Tejory Core</span> - the world's easiest hardware wallet, featuring unparalleled next-generation security</p>
-        
-    </div>
+
+<section   style={`
+    background-image: url('${heroBgPath}');
+    background-color: rgb(24 24 27 / 0.5); /* This is the color for zinc-900/80 */
+    background-size: cover;
+    background-position: center;
+  `} class=`bg-blend-multiply`>
+	<div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
+		<a
+			href="#"
+			class="inline-flex justify-between items-center py-1 px-1 pe-4 mb-7 text-sm text-amber-700 bg-amber-100 rounded-full dark:bg-amber-900 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-800"
+		>
+			<span
+				class="text-xs bg-amber-600 rounded-full text-white px-4 py-1.5 me-3"
+				>New</span
+			>
+			<span class="text-sm font-medium"
+				>40% launch discount, get your wallet today for $29.95</span
+			>
+			<svg
+				class="w-2.5 h-2.5 ms-2 rtl:rotate-180"
+				aria-hidden="true"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 6 10"
+			>
+				<path
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="m1 9 4-4-4-4"></path>
+			</svg>
+		</a>
+		<h1
+			class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+		>
+			Secure Your Assets Today
+		</h1>
+		<p
+			class="mt-8 mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200"
+		>
+			Experience effortless digital asset protection with <span
+				class="text-amber-400 font-bold">Tejory Core</span
+			> - the world's easiest hardware wallet, featuring unparalleled next-generation
+			security
+		</p>
+	</div>
 </section>
