@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import Layout from "../layouts/Layout.astro";
 
 export async function getStaticPaths() {
-	const ignoreList = ["home", "features"];
+	const ignoreList = ["home", "features", "products"];
   const pages = await getCollection('pages');
   return pages
 	.filter(page => !(ignoreList.includes(page.slug)))

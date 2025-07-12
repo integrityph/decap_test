@@ -1,14 +1,14 @@
 ---
-title: tejory-core
-name: Tejory Core
-slogan: The World's Easiest Hardware Wallet
-price: 49.95
-discounted_price: 29.95
-rating: 4.7
-number_of_ratings: 23
-available: true
+title: tejory-edge
+name: Tejory Edge
+slogan: Your Access to What's Next
+price: 79.95
+discounted_price: null
+rating: 5
+number_of_ratings: 0
+available: false
 category: wallet
-status: active
+status: under-development
 image1: /static/images/uploads/image-removebg-preview.png
 image2: ''
 image3: ''
@@ -18,6 +18,8 @@ image5: ''
 #### Supported Tokens
 
 - Bitcoin
+- Solana
+- Ripple
 - Ethereum
 - ERC-20 (USDT, USDC, Shiba Ino, ... +50 more)
 - BTC Lightning Network

@@ -11,10 +11,21 @@ body {
 }
 
 a:hover {
-	@apply no-underline 
+	@apply no-underline
 }
 
 h1 {
   @apply text-4xl font-extrabold text-amber-400 mt-8 mb-4;
-  letter-spacing: -0.025em;
+}
+h2 {
+  @apply text-3xl font-extrabold text-amber-400 mt-4 mb-3;
+}
+h3 {
+  @apply text-2xl font-extrabold text-amber-400 mt-2 mb-2;
+}
+h4 {
+  @apply text-xl font-extrabold text-amber-400 mt-1 mb-1;
+}
+h5 {
+  @apply text-lg font-extrabold text-amber-400 mt-1 mb-1;
 }

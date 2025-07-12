@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 const pages = await getCollection("pages");
 const menuPages = pages
 	.filter((page) => page.data.main_menu === true)
+	.sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity))
 	.map((page) => ({
 		slug: page.slug,
 		name: page.data.title,

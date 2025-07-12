@@ -4,6 +4,11 @@ backend:
   branch: main
   base_url: https://oauth-crm.ngrok.io/
   auth_endpoint: /auth
+  structure: multiple_folders
+  i18n: true
+i18n:
+  locales: [en, ar]
+  default_locale: en
 media_folder: "public/static/images/uploads"
 public_folder: "static/images/uploads"
 page_fields: &page_fields
@@ -11,6 +16,7 @@ page_fields: &page_fields
   - { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false }
   - { name: "main_menu", label: "Show on Main Menu", widget: "boolean" }
   - { name: "last_updated", label: "Last Updated", widget: "datetime", required: false }
+  - { name: "order", label: "Order in Menu", widget: "number", required: false }
   - { name: 'body', label: 'Main Content', widget: 'markdown' }
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
@@ -61,17 +67,34 @@ collections:
             value: "accessory"
           - label: "Other"
             value: "other"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - label: "Active"
+            value: "active"
+          - label: "Under Development"
+            value: "under-development"
+          - label: "Obsolete"
+            value: "obsolete"
+          - label: "Pre-Order"
+            value: "pre-order"
       - { label: "Image1", name: "image1", widget: "image", required: false }
       - { label: "Image2", name: "image2", widget: "image", required: false }
       - { label: "Image3", name: "image3", widget: "image", required: false }
       - { label: "Image4", name: "image4", widget: "image", required: false }
       - { label: "Image5", name: "image5", widget: "image", required: false }
+      - { label: 'Main Content', name: 'body', widget: 'markdown' }
   - name: "pages"
     label: "Website Pages"
     files:
       - name: "home"
         label: "Home"
         file: "src/content/pages/home.md"
+        fields: *page_fields
+      - name: "products"
+        label: "Products"
+        file: "src/content/pages/products.md"
         fields: *page_fields
       - name: "features"
         label: "Features Page"

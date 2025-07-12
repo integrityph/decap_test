@@ -39,6 +39,7 @@ const pagesCollection = defineCollection({
     subtitle: z.string().optional(), // Make fields optional if they don't appear on every page
     hero_image: z.string().optional(),
 		main_menu: z.boolean().optional(),
+		order: z.number().optional(),
   }).passthrough(),
 });
 
@@ -47,10 +48,11 @@ const productsCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     slogan: z.string().optional(),
-		price: z.number().optional(),
-		discounted_price: z.number().optional(),
-		rating: z.number().optional(),
-		number_of_ratings: z.number().optional(),
+		price: z.number().nullable().optional(),
+		discounted_price: z.number().nullable().optional(),
+		rating: z.number().nullable().optional(),
+		number_of_ratings: z.number().nullable().optional(),
+		status: z.string(),
     image1: z.string(),
 		image2: z.string().optional(),
 		image3: z.string().optional(),
