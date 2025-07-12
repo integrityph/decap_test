@@ -55,6 +55,7 @@ collections:
       - { label: "Number of Ratings", name: "number_of_ratings", widget: "number", required: false, value_type: int }
       - { label: "Price", name: "price", widget: "number", required: false, step: 0.01, value_type: float }
       - { label: "Available", name: "available", widget: "boolean" }
+      - { label: "Order", name: "order", widget: "number" }
       - label: "Category"
         name: "category"
         widget: "select"

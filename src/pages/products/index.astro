@@ -7,7 +7,9 @@ import Layout from "../../layouts/Layout.astro";
 import ProductCard from '../../components/ProductCard.astro';
 
 
-const products = await getCollection('products');
+const products = (await getCollection('products'))
+const productsList = products.sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
+	
 ---
 
 <Layout>
@@ -20,7 +22,7 @@ const products = await getCollection('products');
 				</h2>
 
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{products.map(product => (
+					{productsList.map(product => (
 						<ProductCard slug={product.slug} />
 					))}
 				</div>
