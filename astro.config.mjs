@@ -10,7 +10,19 @@ export default defineConfig({
   integrations: [svelte()],
   base: '/decap_test',
 
+  i18n: {
+      routing: {
+          prefixDefaultLocale: false,
+          redirectToDefaultLocale: true,
+          fallbackType: "redirect",
+      },
+      locales: ["en", "ar"],
+      defaultLocale: "en",
+	},
+
   vite: {
-    plugins: [tailwindcss()],
-  },
+      plugins: [
+          tailwindcss(),
+      ],
+	},
 });

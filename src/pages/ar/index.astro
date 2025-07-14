@@ -1,8 +1,8 @@
 ---
-import Hero from '../components/Hero.astro';
+import Hero from '../../components/Hero.astro';
 import { getEntry } from 'astro:content';
-import Layout from "../layouts/Layout.astro";
-import BuyNow from '../components/BuyNow.astro';
+import Layout from "../../layouts/Layout.astro";
+import BuyNow from '../../components/BuyNow.astro';
 
 const lang = Astro.currentLocale;
 
@@ -15,7 +15,7 @@ if (!page) {
 }
 const { Content } = await page.render(); // This renders the Markdown body
 ---
-<Layout lang={lang} slug="" >
+<Layout lang={lang} slug=`${lang}`>
 	<Hero />
   <main class="px-8 mt-8">
     <p>{page.data.subtitle}</p>

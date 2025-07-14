@@ -9,15 +9,18 @@ backend:
 i18n:
   locales: [en, ar]
   default_locale: en
+  structure: multiple_folders
+  # omit_default_locale_from_filename: true
 media_folder: "public/static/images/uploads"
 public_folder: "static/images/uploads"
 page_fields: &page_fields
-  - { name: 'title', label: 'Title', widget: 'string' }
-  - { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false }
-  - { name: "main_menu", label: "Show on Main Menu", widget: "boolean" }
-  - { name: "last_updated", label: "Last Updated", widget: "datetime", required: false }
-  - { name: "order", label: "Order in Menu", widget: "number", required: false }
-  - { name: 'body', label: 'Main Content', widget: 'markdown' }
+  - { name: 'title', label: 'Title for internal use only', widget: 'string', i18n: duplicate }
+  - { name: 'name', label: 'Name', widget: 'string', i18n: true }
+  - { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false, i18n: duplicate }
+  - { name: "main_menu", label: "Show on Main Menu", widget: "boolean", i18n: duplicate }
+  - { name: "last_updated", label: "Last Updated", widget: "datetime", required: false, i18n: true }
+  - { name: "order", label: "Order in Menu", widget: "number", required: false, i18n: duplicate }
+  - { name: 'body', label: 'Main Content', widget: 'markdown', i18n: true }
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI
@@ -45,20 +48,21 @@ collections:
     label: "Products"
     folder: "src/content/products"
     create: true
+    i18n: true
     fields:
-      - { name: "title", label: "Component Title (for internal reference)", widget: "string" }
-      - { label: "Name", name: "name", widget: "string" }
-      - { label: "Slogan", name: "slogan", widget: "string", required: false }
-      - { label: "Price", name: "price", widget: "number", required: false, step: 0.01, value_type: float }
-      - { label: "DiscountedPrice", name: "discounted_price", widget: "number", required: false, step: 0.01, value_type: float }
-      - { label: "Rating", name: "rating", widget: "number", required: false, step: 0.1, value_type: float, min: 0, max: 5 }
-      - { label: "Number of Ratings", name: "number_of_ratings", widget: "number", required: false, value_type: int }
-      - { label: "Price", name: "price", widget: "number", required: false, step: 0.01, value_type: float }
-      - { label: "Available", name: "available", widget: "boolean" }
-      - { label: "Order", name: "order", widget: "number" }
+      - { name: "title", label: "Component Title (for internal reference)", widget: "string", i18n: duplicate }
+      - { label: "Name", name: "name", widget: "string", i18n: true }
+      - { label: "Slogan", name: "slogan", widget: "string", required: false, i18n: true }
+      - { label: "Price", name: "price", widget: "number", required: false, step: 0.01, value_type: float, i18n: duplicate }
+      - { label: "DiscountedPrice", name: "discounted_price", widget: "number", required: false, step: 0.01, value_type: float, i18n: duplicate }
+      - { label: "Rating", name: "rating", widget: "number", required: false, step: 0.1, value_type: float, min: 0, max: 5, i18n: duplicate }
+      - { label: "Number of Ratings", name: "number_of_ratings", widget: "number", required: false, value_type: int, i18n: duplicate }
+      - { label: "Available", name: "available", widget: "boolean", i18n: duplicate }
+      - { label: "Order", name: "order", widget: "number", i18n: duplicate }
       - label: "Category"
         name: "category"
         widget: "select"
+        i18n: duplicate
         options:
           - label: "Wallet"
             value: "wallet"
@@ -71,6 +75,7 @@ collections:
       - label: "Status"
         name: "status"
         widget: "select"
+        i18n: duplicate
         options:
           - label: "Active"
             value: "active"
@@ -80,59 +85,63 @@ collections:
             value: "obsolete"
           - label: "Pre-Order"
             value: "pre-order"
-      - { label: "Image1", name: "image1", widget: "image", required: false }
-      - { label: "Image2", name: "image2", widget: "image", required: false }
-      - { label: "Image3", name: "image3", widget: "image", required: false }
-      - { label: "Image4", name: "image4", widget: "image", required: false }
-      - { label: "Image5", name: "image5", widget: "image", required: false }
-      - { label: 'Main Content', name: 'body', widget: 'markdown' }
+      - { label: "Image1", name: "image1", widget: "image", required: false, i18n: duplicate }
+      - { label: "Image2", name: "image2", widget: "image", required: false, i18n: duplicate }
+      - { label: "Image3", name: "image3", widget: "image", required: false, i18n: duplicate }
+      - { label: "Image4", name: "image4", widget: "image", required: false, i18n: duplicate }
+      - { label: "Image5", name: "image5", widget: "image", required: false, i18n: duplicate }
+      - { label: 'Main Content', name: 'body', widget: 'markdown', i18n: true }
   - name: "pages"
     label: "Website Pages"
-    files:
-      - name: "home"
-        label: "Home"
-        file: "src/content/pages/home.md"
-        fields: *page_fields
-      - name: "products"
-        label: "Products"
-        file: "src/content/pages/products.md"
-        fields: *page_fields
-      - name: "features"
-        label: "Features Page"
-        file: "src/content/pages/features.md"
-        fields: *page_fields
-      - name: "security"
-        label: "Security Page"
-        file: "src/content/pages/security.md"
-        fields: *page_fields
-      - name: "for-business"
-        label: "For Business"
-        file: "src/content/pages/for-business.md"
-        fields: *page_fields
-      - name: "transparency"
-        label: "Transparency"
-        file: "src/content/pages/transparency.md"
-        fields: *page_fields
-      - name: "support"
-        label: "Support / FAQ"
-        file: "src/content/pages/support.md"
-        fields: *page_fields
-      - name: "Apps"
-        label: "apps"
-        file: "src/content/pages/apps.md"
-        fields: *page_fields
-      - name: "press"
-        label: "Press"
-        file: "src/content/pages/press.md"
-        fields: *page_fields
-      - name: "privacy"
-        label: "Privacy Policy"
-        file: "src/content/pages/privacy.md"
-        fields: *page_fields
-      - name: "terms"
-        label: "Terms of Service"
-        file: "src/content/pages/terms.md"
-        fields: *page_fields
+    folder: "src/content/pages" # Manages content in src/content/pages/en/, src/content/pages/ar/, etc.
+    create: true
+    i18n: true
+    fields: *page_fields
+    # files:
+    #   - name: "home"
+    #     label: "Home"
+    #     file: "src/content/pages/{{locale}}/home.md"
+    #     fields: *page_fields
+    #   - name: "products"
+    #     label: "Products"
+    #     file: "src/content/pages/{{locale}}/products.md"
+    #     fields: *page_fields
+    #   - name: "features"
+    #     label: "Features Page"
+    #     file: "src/content/pages/{{locale}}/features.md"
+    #     fields: *page_fields
+    #   - name: "security"
+    #     label: "Security Page"
+    #     file: "src/content/pages/{{locale}}/security.md"
+    #     fields: *page_fields
+    #   - name: "for-business"
+    #     label: "For Business"
+    #     file: "src/content/pages/{{locale}}/for-business.md"
+    #     fields: *page_fields
+    #   - name: "transparency"
+    #     label: "Transparency"
+    #     file: "src/content/pages/{{locale}}/transparency.md"
+    #     fields: *page_fields
+    #   - name: "support"
+    #     label: "Support / FAQ"
+    #     file: "src/content/pages/{{locale}}/support.md"
+    #     fields: *page_fields
+    #   - name: "Apps"
+    #     label: "apps"
+    #     file: "src/content/pages/{{locale}}/apps.md"
+    #     fields: *page_fields
+    #   - name: "press"
+    #     label: "Press"
+    #     file: "src/content/pages/{{locale}}/press.md"
+    #     fields: *page_fields
+    #   - name: "privacy"
+    #     label: "Privacy Policy"
+    #     file: "src/content/pages/privacy.md"
+    #     fields: *page_fields
+    #   - name: "terms"
+    #     label: "Terms of Service"
+    #     file: "src/content/pages/terms.md"
+    #     fields: *page_fields
   - name: "components"
     label: "Reusable Components"
     description: "Content blocks like CTAs that can be embedded into other pages."

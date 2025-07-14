@@ -2,13 +2,16 @@
 import BuyNow from "../../components/BuyNow.astro";
 import Hero from "../../components/Hero.astro";
 import Layout from "../../layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 import { getCollection } from 'astro:content';
 
 // This tells Astro to generate a page for every blog
 export async function getStaticPaths() {
+	// const lang = Astro.currentLocale;
   const products = await getCollection('products');
-  return products.map(product => ({
+  return products
+	.map(product => ({
     params: { slug: product.slug },
     props: { product },
   }));
@@ -16,17 +19,19 @@ export async function getStaticPaths() {
 
 // Get the specific blog for this page
 const { product } = Astro.props;
-const { Content } = await product.render(); // This renders the Markdown body to HTML
+// const { Content } = await product.render(); // This renders the Markdown body to HTML
 const BASE_URL = import.meta.env.BASE_URL;
+const lang = Astro.currentLocale;
+const t = useTranslations(lang);
 ---
 
-<Layout>
+<Layout title={product.data.name} lang={lang} slug={product.slug} >
 	<Hero />
 	<main class="px-8 mt-8">
 		<section class="py-16 bg-zinc-900 text-white mb-8">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<h2 class="text-4xl font-extrabold text-center mb-12">
-					Key Features of {product.data.name}
+					{t("keyFeaturesOf")} {product.data.name}
 				</h2>
 
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -91,6 +96,5 @@ const BASE_URL = import.meta.env.BASE_URL;
 				</div>
 			</div>
 		</section>
-		<BuyNow slug="tejory-core" />
 	</main>
 </Layout>

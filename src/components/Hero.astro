@@ -1,6 +1,11 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
 const BASE_URL = import.meta.env.BASE_URL;
 const heroBgPath = `${BASE_URL}/static/images/hero-bg.png`;
+
+const lang = Astro.currentLocale;
+const t = useTranslations(lang);
 ---
 
 <section   style={`
@@ -39,7 +44,7 @@ const heroBgPath = `${BASE_URL}/static/images/hero-bg.png`;
 		<h1
 			class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
 		>
-			Secure Your Assets Today
+			{t("secureYourAssetsToday")}
 		</h1>
 		<p
 			class="mt-8 mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200"

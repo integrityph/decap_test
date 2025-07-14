@@ -2,8 +2,14 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face { font-family: Delicious; src: url('/decap_test/static/fonts/ArabicUIDisplayBold.otf'); } 
+
 @theme {
 	--color-discord: #5865F2;
+}
+
+html[lang="ar"] {
+  font-family: 'Delicious', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
 
 body {

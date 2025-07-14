@@ -1,0 +1,212 @@
+---
+title: Features
+name: Features
+subtitle: Tejory Hardware Wallet Features
+main_menu: false
+last_updated: 2025-07-09T20:19:00
+order: 0
+---
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody
+- EAL6+ Certified Hardware Wallet
+- Bitcoin, Ehtereum, USDT, Lighning Network BTC, Shiba Ino
+- Swaps
+- Self Custody

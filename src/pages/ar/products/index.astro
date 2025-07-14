@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+
+import Hero from "../../../components/Hero.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ProductCard from '../../../components/ProductCard.astro';
+
+const products = (await getCollection('products'))
+const lang = Astro.currentLocale;
+const productsList = products
+	.filter(product => product.slug.startsWith(`${lang}/`))
+	.sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
+---
+<Layout title="Products" lang={lang} slug=`${lang}/products` >
+	<Hero />
+	<main class="px-8 mt-8">
+		<section class="py-16 bg-zinc-900 text-white mb-8">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<h2 class="text-4xl font-extrabold text-center mb-12">
+					Products
+				</h2>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					{productsList.map(product => (
+						<ProductCard slug={product.slug} />
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

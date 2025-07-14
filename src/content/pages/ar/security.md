@@ -1,5 +1,6 @@
 ---
 title: Security
+name: الحماية
 subtitle: ''
 main_menu: true
 last_updated: 2025-07-09T21:31:00

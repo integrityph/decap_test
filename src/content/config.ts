@@ -53,7 +53,7 @@ const productsCollection = defineCollection({
 		rating: z.number().nullable().optional(),
 		number_of_ratings: z.number().nullable().optional(),
 		status: z.string(),
-		order: z.number(),
+		order: z.number().nullable().optional(),
     image1: z.string(),
 		image2: z.string().optional(),
 		image3: z.string().optional(),

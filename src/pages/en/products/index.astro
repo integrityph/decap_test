@@ -1,18 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 
-import BuyNow from "../../components/BuyNow.astro";
-import Hero from "../../components/Hero.astro";
-import Layout from "../../layouts/Layout.astro";
-import ProductCard from '../../components/ProductCard.astro';
-
+import Hero from "../../../components/Hero.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ProductCard from '../../../components/ProductCard.astro';
 
 const products = (await getCollection('products'))
-const productsList = products.sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
-	
----
+const lang = Astro.currentLocale;
+const productsList = products
+	.filter(product => product.slug.startsWith(`${lang}/`))
+	.sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
 
-<Layout>
+---
+<Layout title="Products" lang={lang} slug=`${lang}/products` >
 	<Hero />
 	<main class="px-8 mt-8">
 		<section class="py-16 bg-zinc-900 text-white mb-8">
