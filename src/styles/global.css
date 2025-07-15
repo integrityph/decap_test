@@ -35,3 +35,12 @@ h4 {
 h5 {
   @apply text-lg font-extrabold text-amber-400 mt-1 mb-1;
 }
+p {
+	@apply py-4
+}
+.feature-box {
+	@apply flex-1 basis-80 max-w-sm bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center
+}
+.feature-list {
+	@apply flex flex-wrap justify-center gap-8 my-8
+}
