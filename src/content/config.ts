@@ -59,6 +59,7 @@ const productsCollection = defineCollection({
 		image3: z.string().optional(),
 		image4: z.string().optional(),
 		image5: z.string().optional(),
+		features: z.array(z.string()).optional(),
   }),
 });
 
@@ -72,10 +73,21 @@ const componentsCollection = defineCollection({
   }),
 });
 
+// Define what a "feature" looks like
+const featuresCollection = defineCollection({
+  schema: z.object({
+    name: z.string(),
+    icon: z.string().nullable().optional(),
+		custom_icon: z.string().nullable().optional(),
+  }),
+});
+
+
 // Export a `collections` object to register your new 'blog' collection
 export const collections = {
   blog: blogCollection,
 	pages: pagesCollection,
 	components: componentsCollection,
 	products: productsCollection,
+	features: featuresCollection,
 };

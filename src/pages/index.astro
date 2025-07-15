@@ -1,27 +1,15 @@
 ---
-import Hero from '../components/Hero.astro';
-import { getEntry } from 'astro:content';
-import Layout from "../layouts/Layout.astro";
-import BuyNow from '../components/BuyNow.astro';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
 
-const lang = Astro.currentLocale;
-
-// Fetch the content specifically from the 'features' entry in the 'pages' collection
-const page = await getEntry('pages', `${lang}/home`);
-if (!page) {
-  // Since this code runs at build time, throwing an error is the best
-  // way to handle missing content. It stops the build and warns you.
-  throw new Error("Could not find the 'home' page in the 'pages' content collection.");
-}
-const { Content } = await page.render(); // This renders the Markdown body
+const { lang="en" } = Astro.props;
 ---
-<Layout lang={lang} slug="" >
+<Layout lang={lang} >
 	<Hero />
-  <main class="px-8 mt-8">
-    <p>{page.data.subtitle}</p>
-    <article>
-      <Content />
-    </article>
-		<BuyNow slug=`${lang}/tejory-core` />
-  </main>
+	<main class="px-8 mt-8">
+		<h1>Home page</h1>
+		<p>Home page content</p>
+		<article>
+		</article>
+	</main>
 </Layout>

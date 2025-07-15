@@ -1,41 +1,32 @@
 ---
-// src/pages/[...slug].astro
-import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import { defaultLang } from "@/i18n/ui";
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/Hero.astro";
 
 // This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
 	const pageEntries = await getCollection("pages");
 
-	let finalList = pageEntries.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
-
-	pageEntries.map((entry) => {
-  const segments = entry.slug.split('/');
-
-  if (segments.includes('en')) {
-    const newSlug = segments.filter(segment => segment !== 'en').join('/');
-
-    finalList.push({
-      params: { slug: newSlug },
-      props: { entry },
-    });
-  }
-});
+	let finalList = pageEntries
+		.filter((entry) => entry.slug.indexOf("/") != -1)
+		.map((entry) => ({
+			params: { slug: entry.slug },
+			props: { entry },
+		}));
 
 	return finalList;
 }
 
 // Get the specific page data for the current page
 const { entry } = Astro.props;
+
 // Get the rendered HTML content from the markdown
 const { Content } = await entry.render();
 const lang = Astro.currentLocale;
 ---
-<Layout title={entry.data.name} lang={lang} slug={entry.slug} >
+
+<Layout title={entry.data.name} lang={lang} slug={entry.slug}>
 	<Hero />
 	<main class="px-8 mt-8">
 		<h1>{entry.data.name}</h1>

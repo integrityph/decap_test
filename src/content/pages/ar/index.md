@@ -1,6 +1,6 @@
 ---
-title: Home
-name: Home
+title: Index
+name: Index
 subtitle: ''
 main_menu: false
 last_updated: 2025-07-09T21:29:00

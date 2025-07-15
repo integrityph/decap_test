@@ -5,9 +5,11 @@ import svelte from '@astrojs/svelte';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import icon from "astro-icon";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte()],
+  integrations: [svelte(), icon()],
   base: '/decap_test',
 
   i18n: {
@@ -18,11 +20,11 @@ export default defineConfig({
       },
       locales: ["en", "ar"],
       defaultLocale: "en",
-	},
+    },
 
   vite: {
       plugins: [
           tailwindcss(),
       ],
-	},
+    },
 });

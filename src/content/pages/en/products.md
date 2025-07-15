@@ -2,7 +2,7 @@
 title: Products
 name: Products
 subtitle: Products
-main_menu: true
+main_menu: false
 last_updated: 2025-07-09T20:19:00
 order: 1
 ---

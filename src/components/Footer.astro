@@ -1,4 +1,9 @@
 ---
+import { getT } from '@/i18n/t.astro'
+const lang = Astro.currentLocale;
+const t = getT(lang);
+
+
 const year = new Date().getFullYear();
 const BASE_URL = import.meta.env.BASE_URL;
 ---
@@ -20,18 +25,18 @@ const BASE_URL = import.meta.env.BASE_URL;
 					<h5
 						class="pb-4 text-sm font-semibold text-gray-200 uppercase"
 					>
-						Resources
+						{t("resources")}
 					</h5>
 					<ul class="text-gray-500 font-medium">
 						<li class="mb-4">
-							<a href=`${BASE_URL}/apps` class="hover:underline">Apps</a>
+							<a href=`${BASE_URL}/${lang}/apps` class="hover:underline">{t("apps")}</a>
 						</li>
 						<li class="mb-4">
-							<a href=`${BASE_URL}/roadmap` class="hover:underline">Road Map</a>
+							<a href=`${BASE_URL}/${lang}/roadmap` class="hover:underline">{t("roadMap")}</a>
 						</li>
 						<li>
-							<a href=`${BASE_URL}/contact` class="hover:underline"
-								>Contact Us</a
+							<a href=`${BASE_URL}/${lang}/contact` class="hover:underline"
+								>{t("contactUs")}</a
 							>
 						</li>
 					</ul>
@@ -40,18 +45,18 @@ const BASE_URL = import.meta.env.BASE_URL;
 					<h5
 						class="pb-4 text-sm font-semibold text-gray-200 uppercase"
 					>
-						For Business
+						{t("forBusiness")}
 					</h5>
 					<ul class="text-gray-500 font-medium">
 						<li class="mb-4">
 							<a
-								href=`${BASE_URL}/merchant`
-								class="hover:underline">Merchant Services</a
+								href=`${BASE_URL}/${lang}/merchant`
+								class="hover:underline">{t("merchantServices")}</a
 							>
 						</li>
 						<li>
-							<a href="`${BASE_URL}/white-label`" class="hover:underline"
-								>White Label</a
+							<a href=`${BASE_URL}/${lang}/co-branding` class="hover:underline"
+								>{t("coBranding")}</a
 							>
 						</li>
 					</ul>
@@ -60,17 +65,17 @@ const BASE_URL = import.meta.env.BASE_URL;
 					<h5
 						class="pb-4 text-sm font-semibold text-gray-200 uppercase"
 					>
-						Legal
+						{t("legal")}
 					</h5>
 					<ul class="text-gray-500 font-medium">
 						<li class="mb-4">
-							<a href="#" class="hover:underline">Privacy Policy</a>
+							<a href="${BASE_URL}/${lang}/privacy-policy" class="hover:underline">{t("privacyPolicy")}</a>
 						</li>
 						<li class="mb-4">
-							<a href="#" class="hover:underline">Terms &amp; Conditions</a>
+							<a href="${BASE_URL}/${lang}/terms-of-service" class="hover:underline">{t("termsOfService")}</a>
 						</li>
 						<li>
-							<a href="#" class="hover:underline">Disclaimer</a>
+							<a href="${BASE_URL}/${lang}/disclaimer" class="hover:underline">{t("disclaimer")}</a>
 						</li>
 					</ul>
 				</div>
@@ -79,9 +84,9 @@ const BASE_URL = import.meta.env.BASE_URL;
 		<div class="sm:flex sm:items-center sm:justify-between pt-8">
 			<span class="text-sm text-gray-500 sm:text-center"
 				>© {year}
-				<a href="https://khgroupinc.net/" class="hover:underline"
+				<a href="https://khgroupinc.net/" class="text-white hover:underline"
 					>KH Trading Group Inc</a
-				>. All Rights Reserved.
+				> All Rights Reserved
 			</span>
 			<div class="flex mt-4 sm:justify-center sm:mt-0">
 				<a

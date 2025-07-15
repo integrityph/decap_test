@@ -1,100 +1,91 @@
 ---
-import BuyNow from "../../components/BuyNow.astro";
-import Hero from "../../components/Hero.astro";
-import Layout from "../../layouts/Layout.astro";
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Hero from "@/components/Hero.astro";
+import { defaultLang } from "@/i18n/ui";
+import Layout from "@/layouts/Layout.astro";
+import { useTranslations } from "@/i18n/utils";
+import { Icon } from 'astro-icon/components';
+import { getCollection, getEntry } from "astro:content";
 
-import { getCollection } from 'astro:content';
-
-// This tells Astro to generate a page for every blog
+// This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
-	// const lang = Astro.currentLocale;
-  const products = await getCollection('products');
-  return products
-	.map(product => ({
-    params: { slug: product.slug },
-    props: { product },
-  }));
+	const pageEntries = await getCollection("products");
+
+	let finalList = pageEntries
+		.filter((entry) => entry.slug.indexOf("/") != -1)
+		.map((entry) => ({
+			params: { slug: entry.slug },
+			props: { entry },
+		}));
+
+	return finalList;
 }
 
 // Get the specific blog for this page
-const { product } = Astro.props;
+const { entry } = Astro.props;
+
+const lang = Astro.currentLocale || defaultLang;
+const featureList = (await Promise.all(
+  entry.data.features?.map(async (featureSlug) => {
+    const fullSlug = `${lang}/${featureSlug}`;
+    
+    const featureEntry = await getEntry("features", fullSlug);
+		if (!featureEntry) {
+			return;
+		}
+		console.log("featureEntry");
+		console.log(featureEntry);
+    const { Content } = await featureEntry.render();
+    return {
+      name: featureEntry.data.name,
+      Content: Content,
+      icon: featureEntry.data.custom_icon || featureEntry.data.icon
+    };
+  }) ?? []
+)).filter(entry => entry != null && entry != undefined);
+
+console.log("featureList");
+console.log(featureList);
+console.log("entry.data.features");
+console.log(entry.data.features);
+
 // const { Content } = await product.render(); // This renders the Markdown body to HTML
 const BASE_URL = import.meta.env.BASE_URL;
-const lang = Astro.currentLocale;
+const { Content } = await entry.render();
 const t = useTranslations(lang);
 ---
 
-<Layout title={product.data.name} lang={lang} slug={product.slug} >
+<Layout title={entry.data.name} lang={lang} slug={entry.slug}>
 	<Hero />
 	<main class="px-8 mt-8">
-		<section class="py-16 bg-zinc-900 text-white mb-8">
+		<!-- <section class="py-16 bg-zinc-900 text-white mb-8"> -->
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<h2 class="text-4xl font-extrabold text-center mb-12">
-					{t("keyFeaturesOf")} {product.data.name}
+				<h2 class="text-4xl font-extrabold text-center pb-12">
+					{t("keyFeaturesOf")}
+					{entry.data.name}
 				</h2>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<div
-						class="bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
-					>
-						<div class="text-blue-400 mb-4">
-							<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"
-							></svg>
-						</div>
-						<h3 class="text-2xl font-semibold mb-3">Unrivaled Security</h3>
-						<p class="text-zinc-300">
-							Fortified with advanced cryptographic protocols and a secure
-							element chip, Tejory Core protects your assets against
-							sophisticated threats.
-						</p>
-					</div>
-
-					<div
-						class="bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
-					>
-						<div class="text-blue-400 mb-4">
-							<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"
-							></svg>
-						</div>
-						<h3 class="text-2xl font-semibold mb-3">Intuitive Ease of Use</h3>
-						<p class="text-zinc-300">
-							Designed for simplicity, managing your crypto is as easy as a tap.
-							No complex setups, just seamless transactions.
-						</p>
-					</div>
-
-					<div
-						class="bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
-					>
-						<div class="text-blue-400 mb-4">
-							<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"
-							></svg>
-						</div>
-						<h3 class="text-2xl font-semibold mb-3">Slim & Discreet Design</h3>
-						<p class="text-zinc-300">
-							Fits perfectly in your wallet, offering discreet and convenient
-							access to your digital assets wherever you go.
-						</p>
-					</div>
-
-					<div
-						class="bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
-					>
-						<div class="text-blue-400 mb-4">
-							<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"
-							></svg>
-						</div>
-						<h3 class="text-2xl font-semibold mb-3">
-							Broad Asset Compatibility
-						</h3>
-						<p class="text-zinc-300">
-							Securely store a wide range of cryptocurrencies and NFTs, with
-							continuous updates for new assets.
-						</p>
-					</div>
+				<div class="flex flex-wrap justify-center gap-8">
+				{
+					featureList?.map(feature => (
+							<div
+								class="flex-1 basis-80 max-w-sm bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
+							>
+								<div class="text-amber-400 mb-4">
+									<Icon name={`fa6-solid:${feature.icon}`} class="w-12 h-12" />									
+								</div>
+								<h3 class="text-2xl font-semibold mb-3">{feature!.name}</h3>
+								<p class="text-zinc-300">
+									<feature.Content />
+								</p>
+							</div>
+					))
+				}
 				</div>
 			</div>
-		</section>
+			<section class="mt-8">
+				<Content />
+			</section>
+			
+		<!-- </section> -->
 	</main>
 </Layout>

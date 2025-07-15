@@ -90,58 +90,50 @@ collections:
       - { label: "Image3", name: "image3", widget: "image", required: false, i18n: duplicate }
       - { label: "Image4", name: "image4", widget: "image", required: false, i18n: duplicate }
       - { label: "Image5", name: "image5", widget: "image", required: false, i18n: duplicate }
+      - label: "Features"
+        name: "features"
+        widget: "relation"
+        collection: "Features"      # Must exactly match the name of your features collection
+        multiple: true
+        value_field: "{{slug}}"       # This is crucial. It tells the CMS to save the feature's slug.
+        search_fields: ["name"]
+        display_fields: ["name"]
+        i18n: "duplicate"
+        required: false
       - { label: 'Main Content', name: 'body', widget: 'markdown', i18n: true }
+  - name: "Features"
+    label: "features"
+    folder: "src/content/features"
+    create: true
+    i18n: true
+    required: false
+    fields:
+      - { name: "title", label: "Component Title (for internal reference)", widget: "string", i18n: duplicate }
+      - { name: "name", label: "Name", widget: "string", i18n: true }
+      - label: "Icon"
+        name: "icon"
+        widget: "select"
+        i18n: duplicate
+        options:
+          - { label: "Shield", value: "shield-halved" }
+          - { label: "Lock", value: "lock" }
+          - { label: "Fingerprint", value: "fingerprint" }
+          - { label: "Key", value: "key-skeleton" }
+          - { label: "NFC", value: "nfc" }
+          - { label: "Thumbs up", value: "thumbs-up" }
+      - { label: "Main Content", name: "body", widget: "markdown", i18n: true }
+      - label: "Or, Enter Custom Icon Name"
+        name: "custom_icon"
+        widget: "string"
+        i18n: duplicate
+        required: false
+        hint: "Use this field ONLY if the icon you want is not in the list above."
   - name: "pages"
     label: "Website Pages"
     folder: "src/content/pages" # Manages content in src/content/pages/en/, src/content/pages/ar/, etc.
     create: true
     i18n: true
     fields: *page_fields
-    # files:
-    #   - name: "home"
-    #     label: "Home"
-    #     file: "src/content/pages/{{locale}}/home.md"
-    #     fields: *page_fields
-    #   - name: "products"
-    #     label: "Products"
-    #     file: "src/content/pages/{{locale}}/products.md"
-    #     fields: *page_fields
-    #   - name: "features"
-    #     label: "Features Page"
-    #     file: "src/content/pages/{{locale}}/features.md"
-    #     fields: *page_fields
-    #   - name: "security"
-    #     label: "Security Page"
-    #     file: "src/content/pages/{{locale}}/security.md"
-    #     fields: *page_fields
-    #   - name: "for-business"
-    #     label: "For Business"
-    #     file: "src/content/pages/{{locale}}/for-business.md"
-    #     fields: *page_fields
-    #   - name: "transparency"
-    #     label: "Transparency"
-    #     file: "src/content/pages/{{locale}}/transparency.md"
-    #     fields: *page_fields
-    #   - name: "support"
-    #     label: "Support / FAQ"
-    #     file: "src/content/pages/{{locale}}/support.md"
-    #     fields: *page_fields
-    #   - name: "Apps"
-    #     label: "apps"
-    #     file: "src/content/pages/{{locale}}/apps.md"
-    #     fields: *page_fields
-    #   - name: "press"
-    #     label: "Press"
-    #     file: "src/content/pages/{{locale}}/press.md"
-    #     fields: *page_fields
-    #   - name: "privacy"
-    #     label: "Privacy Policy"
-    #     file: "src/content/pages/privacy.md"
-    #     fields: *page_fields
-    #   - name: "terms"
-    #     label: "Terms of Service"
-    #     file: "src/content/pages/terms.md"
-    #     fields: *page_fields
   - name: "components"
     label: "Reusable Components"
     description: "Content blocks like CTAs that can be embedded into other pages."

@@ -15,6 +15,10 @@ image2: ''
 image3: ''
 image4: ''
 image5: ''
+features:
+  - unrivaled-security
+  - intuitive-ease-of-use
+  - slim-discreet-design
 ---
 #### Supported Tokens
 
