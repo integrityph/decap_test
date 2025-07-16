@@ -23,13 +23,14 @@
 		<p>We are proud to have been successfully audited by our clients:</p>
 		<div
 			class="tick w-full"
-			data-value="000000000"
+			data-value="000000"
 			data-did-init="startNumericCountdown"
+			data-credits="false"
 		>
 			<div
 				data-repeat="true"
 				data-layout="horizontal fit"
-				data-transform="round -> pad(000000000) -> split -> delay(random, 100, 150)"
+				data-transform="round -> pad(000000) -> split -> delay(random, 100, 150)"
 			>
 				<span
 					data-view="flip"
@@ -40,16 +41,16 @@
 </div>
 
 <script is:inline>
-	let count = 123123123;
+	let count = 123456;
 	function startNumericCountdown(tick) {
 		tick.value = count;
 		setInterval(() => {
-			count += Math.round(Math.random() * 100);
+			count += Math.round(Math.random() * 10);
 			tick.value = count;
 		}, 2000);
 	}
 </script>
-<script src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
+<script is:inline src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
 
 <link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet" />
 <style>
