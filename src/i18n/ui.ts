@@ -7,7 +7,7 @@ export const defaultLang = 'en';
 
 export const ui = {
   en: {
-    'keyFeaturesOf': 'Key Features of',
+    'keyFeaturesOf': 'Key Features of ',
 		'secureYourAssetsToday': 'Secure Your Assets Today',
 		'ExperienceEffortlessDigitalAssetProtectionWith': 'Experience effortless digital asset protection with',
 		'tejoryCore': 'Tejory Core',
@@ -26,9 +26,10 @@ export const ui = {
 		'termsOfService': 'Terms of Service',
 		'disclaimer': 'Disclaimer',
 		'products': 'Products',
+		'allRightsReserved': 'All Rights Reserved',
   },
   ar: {
-    'keyFeaturesOf': 'المميزات الرئيسية',
+    'keyFeaturesOf': 'المميزات الرئيسية ل',
 		'secureYourAssetsToday': 'أمّن أصولك الرقمية',
 		'ExperienceEffortlessDigitalAssetProtectionWith': 'استمتع بحماية الأصول الرقمية بسهولة مع',
 		'tejoryCore': 'تجوري كور',
@@ -47,5 +48,6 @@ export const ui = {
 		'termsOfService': 'شروط الخدمة',
 		'disclaimer': 'إخلاء المسؤولية',
 		'products': 'المنتجات',
+		'allRightsReserved': 'جميع الحقوق محفوظة',
 	}
 } as const;

@@ -40,6 +40,7 @@ const pagesCollection = defineCollection({
     hero_image: z.string().optional(),
 		main_menu: z.boolean().optional(),
 		order: z.number().optional(),
+		components: z.array(z.string()).nullable().optional(),
   }).passthrough(),
 });
 
@@ -67,9 +68,7 @@ const productsCollection = defineCollection({
 const componentsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
-    heading: z.string(),
-    button_text: z.string(),
-		shopify_url: z.string(),
+		name: z.string(),
   }),
 });
 

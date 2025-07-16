@@ -1,0 +1,118 @@
+---
+
+---
+
+<div class="feature-list">
+	<div class="counter-box">
+		<div class="text-amber-400 mb-4">
+			<svg
+				width="1em"
+				height="1em"
+				class="w-12 h-12"
+				data-icon="fa6-solid:list-check"
+			>
+				<symbol id="ai:fa6-solid:list-check" viewBox="0 0 512 512"
+					><path
+						fill="currentColor"
+						d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113c-9.3-9.4-9.3-24.6 0-34s24.6-9.4 33.9 0L63 101.1l55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L63 261.2l55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32h224c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32m0 160c0-17.7 14.3-32 32-32h224c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32m-64 160c0-17.7 14.3-32 32-32h288c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32M48 368a48 48 0 1 1 0 96a48 48 0 1 1 0-96"
+					></path></symbol
+				><use href="#ai:fa6-solid:list-check"></use>
+			</svg>
+		</div>
+		<h3>Live Audit Counter</h3>
+		<p>We are proud to have been successfully audited by our clients:</p>
+		<div
+			class="tick w-full"
+			data-value="000000000"
+			data-did-init="startNumericCountdown"
+		>
+			<div
+				data-repeat="true"
+				data-layout="horizontal fit"
+				data-transform="round -> pad(000000000) -> split -> delay(random, 100, 150)"
+			>
+				<span
+					data-view="flip"
+					data-transform="arrive(1, 0.01) -> round -> limit(0,9)"></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script is:inline>
+	let count = 123123123;
+	function startNumericCountdown(tick) {
+		tick.value = count;
+		setInterval(() => {
+			count += Math.round(Math.random() * 100);
+			tick.value = count;
+		}, 2000);
+	}
+</script>
+<script src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
+
+<link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet" />
+<style>
+	.tick {
+		font-size: 0.7rem;
+		white-space: nowrap;
+		font-family: arial, sans-serif;
+	}
+
+	.tick-flip,
+	.tick-text-inline {
+		font-size: 2.5em;
+	}
+
+	.tick-label {
+		margin-top: 1em;
+		font-size: 1em;
+	}
+
+	.tick-char {
+		width: 1.5em;
+	}
+
+	.tick-text-inline {
+		display: inline-block;
+		text-align: center;
+		min-width: 1em;
+	}
+
+	.tick-text-inline + .tick-text-inline {
+		margin-left: -0.325em;
+	}
+
+	.tick-group {
+		margin: 0 0.5em;
+		text-align: center;
+	}
+
+	.tick-text-inline {
+		color: rgb(90, 93, 99) !important;
+	}
+
+	.tick-label {
+		color: rgb(90, 93, 99) !important;
+	}
+
+	.tick-flip-panel {
+		color: rgb(255, 255, 255) !important;
+	}
+
+	.tick-flip {
+		font-family: !important;
+	}
+
+	.tick-flip-panel-text-wrapper {
+		line-height: 1.45 !important;
+	}
+
+	.tick-flip-panel {
+		background-color: rgb(59, 61, 59) !important;
+	}
+
+	.tick-flip {
+		border-radius: 0.12em !important;
+	}
+</style>

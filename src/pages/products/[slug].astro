@@ -40,7 +40,7 @@ const BASE_URL = import.meta.env.BASE_URL;
 <Layout title={entry.data.name} lang={lang} slug={entry.slug}>
 	<Hero />
 	<main class="px-8 mt-8">
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+		<div class="flex flex-wrap justify-center gap-8">
 			{productList.map((product) => <ProductCard slug={product.slug} />)}
 		</div>
 	</main>

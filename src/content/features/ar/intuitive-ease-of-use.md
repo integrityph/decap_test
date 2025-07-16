@@ -1,7 +1,8 @@
 ---
 title: Intuitive Ease of Use
 name: سهولة الاستخدام
+icon: thumbs-up
+custom_icon: list-check
 Icon: key-skeleton
-custom_icon: thumbs-up
 ---
 صُممت لتبسيط إدارة عملاتك المشفرة بكل سهولة. لا إعدادات معقدة، فقط معاملات سلسة

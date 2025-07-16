@@ -19,6 +19,9 @@ features:
   - unrivaled-security
   - intuitive-ease-of-use
   - slim-discreet-design
+  - proof-of-reserves
+  - lightning-netwrok
+  - swaps
 ---
 #### Supported Tokens
 

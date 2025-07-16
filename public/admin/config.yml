@@ -20,6 +20,15 @@ page_fields: &page_fields
   - { name: "main_menu", label: "Show on Main Menu", widget: "boolean", i18n: duplicate }
   - { name: "last_updated", label: "Last Updated", widget: "datetime", required: false, i18n: true }
   - { name: "order", label: "Order in Menu", widget: "number", required: false, i18n: duplicate }
+  - name: 'components'
+    label: 'Included Components'
+    widget: 'relation'
+    collection: "components"
+    value_field: "{{slug}}"
+    search_fields: ["name"]
+    multiple: true
+    required: false
+    i18n: duplicate
   - { name: 'body', label: 'Main Content', widget: 'markdown', i18n: true }
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
@@ -33,17 +42,6 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
-      - name: "featured_cta"
-        label: "Featured Buy Now Button (Optional)"
-        widget: "relation"
-        collection: "components" # The collection of reusable components
-        search_fields: ["title"]
-        value_field: "{{slug}}"
-        display_fields: ["title"]
-        required: false # Make it optional
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
   - name: "products"
     label: "Products"
     folder: "src/content/products"
@@ -114,6 +112,7 @@ collections:
         name: "icon"
         widget: "select"
         i18n: duplicate
+        required: false
         options:
           - { label: "Shield", value: "shield-halved" }
           - { label: "Lock", value: "lock" }
@@ -121,6 +120,7 @@ collections:
           - { label: "Key", value: "key-skeleton" }
           - { label: "NFC", value: "nfc" }
           - { label: "Thumbs up", value: "thumbs-up" }
+          - { label: "Lightning Bolt", value: "bolt-lightning" }
       - { label: "Main Content", name: "body", widget: "markdown", i18n: true }
       - label: "Or, Enter Custom Icon Name"
         name: "custom_icon"
@@ -141,6 +141,4 @@ collections:
     create: true
     fields:
       - { name: "title", label: "Component Title (for internal reference)", widget: "string" }
-      - { name: "heading", label: "Heading Text", widget: "string", default: "Ready to Secure Your Assets?" }
-      - { name: "button_text", label: "Button Text", widget: "string", default: "Buy Tejory Now" }
-      - { name: "shopify_url", label: "Shopify Product URL", widget: "string" }
+      - { name: "name", label: "Name", widget: "string" }

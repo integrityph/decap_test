@@ -19,10 +19,13 @@ features:
   - unrivaled-security
   - intuitive-ease-of-use
   - slim-discreet-design
+  - proof-of-reserves
+  - lightning-netwrok
+  - swaps
 ---
-#### Supported Tokens
+#### العملات المدعومة
 
-- Bitcoin
-- Ethereum
-- ERC-20 (USDT, USDC, Shiba Ino, ... +50 more)
-- BTC Lightning Network
+- بتكوين
+- إثيريوم
+- أكثر من 50 عملة من نوع ERC-20 تشمل USDT و USDC و Shiba Ino
+- شبكة Lightning لبتكوين
