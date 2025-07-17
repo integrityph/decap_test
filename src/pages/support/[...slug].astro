@@ -1,8 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
-import { useTranslations } from '@/i18n/utils';
+import { useTranslations } from "@/i18n/utils";
 import { defaultLang } from "@/i18n/ui";
+import { getEntry } from "astro:content";
+import { getEntries } from "astro:content";
+import SupportArticleCard from "@/components/SupportArticleCard.astro";
 
 const lang = Astro.currentLocale || defaultLang;
 const t = useTranslations(lang);
@@ -10,36 +13,120 @@ const t = useTranslations(lang);
 // This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
 	const pageEntries = await getCollection("support_articles");
+	const lang = Astro.currentLocale || defaultLang;
 
 	let finalList = pageEntries
 		.filter((entry) => entry.slug.indexOf("/") != -1)
 		.map((entry) => ({
-			params: { slug: entry.slug },
+			params: { slug: entry.data.category + "/" + entry.slug },
 			props: { entry },
 		}));
+
+	const addedCategories = [""];
+	pageEntries.map((entry) => {
+		if (!addedCategories.includes(entry.data.category)) {
+			finalList.push({
+				params: { slug: lang + "/" + entry.data.category },
+				props: { entry },
+			});
+		}
+	});
 
 	return finalList;
 }
 
 // Get the specific page data for the current page
 const { entry } = Astro.props;
-
+const { slug } = Astro.params;
 const formattedDate = new Date(entry.data.date);
+
+const currentCategory = slug.split("/").length==2 ? slug.split("/")[1] : "";
+
+let articleList = await getCollection("support_articles");
+if (currentCategory != "") {
+	articleList = articleList.filter(article => article.slug.indexOf("/") != -1 &&  article.slug.split("/").includes(lang) && article.data.category == currentCategory);
+}
+
+const articleCategories = [
+	{
+		slug: "getting-started",
+		name: "Getting Started",
+		abstract: "Introduction to Tejory wallet and app",
+	},
+	{
+		slug: "transactions",
+		name: "Transactions",
+		abstract: "Send and receive crypto on different network",
+	},
+	{
+		slug: "swaps",
+		name: "Swaps",
+		abstract:
+			"Exchange you coins for other coins using decentralized exchanges",
+	},
+	{
+		slug: "lightning",
+		name: "Lightning",
+		abstract: "LIghting speed transactions for Bitcoin",
+	},
+	{
+		slug: "security",
+		name: "Security",
+		abstract: "Secure your digital assets with best practices",
+	},
+	{
+		slug: "tejory-terminal",
+		name: "Tejory Terminal",
+		abstract: "Start accepting crypto in your stores securely",
+	},
+	{
+		slug: "tejory-business",
+		name: "Tejory Business",
+		abstract: "Monitor and control your crypto sales and terminals",
+	},
+	{
+		slug: "other",
+		name: "Other",
+		abstract: "Miscellaneous and advanced topics",
+	},
+];
+
+const categoryObj = articleCategories.find(category => category.slug == currentCategory)
 
 // Get the rendered HTML content from the markdown
 const { Content } = await entry.render();
 const BASE_URL = import.meta.env.BASE_URL;
+console.log(`slug: ${slug}`)
 ---
 
 <Layout title={entry.data.title} lang={lang} slug={entry.slug}>
 	<main class="px-8 mt-8 max-w-7xl mx-auto">
-		<h1>{entry.data.title}</h1>
-		<div class="text-zinc-500 mt-[-5px]">{t("lastModified")}: {formattedDate.toLocaleDateString(lang)}</div>
-		<div class="my-8">
-			<img src=`${BASE_URL}${entry.data.thumbnail}` class="max-h-128 mx-auto" />
-		</div>
-		<article>
-			<Content />
-		</article>
+		{
+			currentCategory == "" ? (
+				<div>
+					<h1>{entry.data.title}</h1>
+					<div class="text-zinc-500 mt-[-5px]">
+						{t("lastModified")}: {formattedDate.toLocaleDateString(lang)}
+					</div>
+					<div class="my-8">
+						<img
+							src=`${BASE_URL}${entry.data.thumbnail}`
+							class="max-h-128 mx-auto"
+						/>
+					</div>
+					<article>
+						<Content />
+					</article>
+				</div>
+			) : (
+				<div>
+					<h1>{categoryObj?.name}</h1>
+					{
+						articleList.map(article => <SupportArticleCard slug={article.slug} />)
+					}
+				</div>
+				
+			)
+		}
 	</main>
 </Layout>

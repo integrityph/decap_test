@@ -1,5 +1,9 @@
 ---
 import { getEntry } from "astro:content";
+import { getT } from '@/i18n/t.astro'
+import { defaultLang } from '@/i18n/ui';
+const lang = Astro.currentLocale || defaultLang;
+const t = getT(lang);
 
 const { slug } = Astro.props;
 
@@ -12,7 +16,7 @@ if (!article) {
 }
 
 const BASE_URL = import.meta.env.BASE_URL;
-const articleLink = `${BASE_URL}/support/${article.slug}`;
+const articleLink = `${BASE_URL}/support/${article.data.category}/${article.slug}`;
 ---
 <div class="max-w-sm bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
     <a href={articleLink}>
@@ -24,7 +28,7 @@ const articleLink = `${BASE_URL}/support/${article.slug}`;
         </a>
         <p class="mb-3 font-normal text-zinc-700 dark:text-zinc-400">{article.data.abstract}</p>
         <a href={articleLink} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Read more
+            {t("readMore")}
              <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg>

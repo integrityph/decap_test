@@ -36,9 +36,6 @@ features:
                     Top Tokens
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Token Count
-                </th>
-                <th scope="col" class="px-6 py-3">
                     Supported Token Count
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -53,9 +50,6 @@ features:
                 </th>
                 <td class="px-6 py-4">
                     BTC
-                </td>
-                <td class="px-6 py-4">
-                    1
                 </td>
                 <td class="px-6 py-4">
                     1
@@ -78,9 +72,6 @@ features:
                 <td class="px-6 py-4">
                     50
                 </td>
-                <td class="px-6 py-4">
-                    > 1.4M
-                </td>
                 <td class="px-6 py-4 space-y-2">
 <div class="flex gap-4"><svg class="w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/></svg> Transactions</div>
 
@@ -93,9 +84,6 @@ features:
                 </th>
                 <td class="px-6 py-4">
                     BTC
-                </td>
-                <td class="px-6 py-4">
-                    1
                 </td>
                 <td class="px-6 py-4">
                     1

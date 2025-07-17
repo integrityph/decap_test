@@ -31,6 +31,8 @@ export const ui = {
 		'weAreProudToHaveBeenSuccessfullyAuditedByOurClients':'We are proud to have been successfully audited by our clients:',
 		'lastModified':'Last modified',
 		'featuredArticles':'Featured Articles',
+		'supportCategories':'Support Categories',
+		'readMore':'Read More',
   },
   ar: {
     'keyFeaturesOf': 'المميزات الرئيسية ل',
@@ -57,5 +59,7 @@ export const ui = {
 		'weAreProudToHaveBeenSuccessfullyAuditedByOurClients':'نحن فخورون بنجاحنا في التدقيق من قبل عملائنا:',
 		'lastModified':'تاريخ آخر تعديل',
 		'featuredArticles':'المقالات المهمة',
+		'supportCategories':'فئات الدعم',
+		'readMore':'إقرأ المزيد',
 	}
 } as const;

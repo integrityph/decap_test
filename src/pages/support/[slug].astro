@@ -14,9 +14,8 @@ const t = useTranslations(lang);
 // This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
 	const pageEntries = await getCollection("support_articles");
-
 	let finalList = pageEntries
-		.filter((entry) => entry.slug.indexOf("/") == -1 && entry.data.featured)
+		.filter((entry) => entry.slug.indexOf("/") == -1)
 		.map((entry) => ({
 			params: { slug: entry.slug },
 			props: { entry },
@@ -28,37 +27,80 @@ export async function getStaticPaths() {
 // Get the specific blog for this page
 const { entry } = Astro.props;
 
-const products = await getCollection("support_articles");
+const articles = await getCollection("support_articles");
 
-const articleList = products.filter(
-	(product) =>
-		product.slug.indexOf("/") != -1 && product.slug.split("/").includes(lang),
+const articleList = articles.filter(
+	(article) =>
+		article.slug.indexOf("/") != -1 &&
+		article.slug.split("/").includes(lang) &&
+		article.data.featured,
 );
 
 const articleCategories = [
-	{slug:"getting-started", name: "Getting Started", abstract: "Introduction to Tejory wallet and app"},
-	{slug:"transactions", name: "Transactions", abstract:"Send and receive crypto on different network"},
-	{slug:"swaps", name: "Swaps", abstract:"Exchange you coins for other coins using decentralized exchanges"},
-	{slug:"lightning", name: "Lightning", abstract:"LIghting speed transactions for Bitcoin"},
-	{slug:"security", name:"Security", abstract:"Secure your digital assets with best practices"},
-	{slug:"tejory-terminal", name: "Tejory Terminal", abstract:"Start accepting crypto in your stores securely"},
-	{slug:"tejory-business", name:"Tejory Business", abstract:"Monitor and control your crypto sales and terminals"},
-	{slug:"other", name:"Other", abstract:"Miscellaneous and advanced topics"},
-]
-
-const BASE_URL = import.meta.env.BASE_URL;
+	{
+		slug: "getting-started",
+		name: "Getting Started",
+		abstract: "Introduction to Tejory wallet and app",
+	},
+	{
+		slug: "transactions",
+		name: "Transactions",
+		abstract: "Send and receive crypto on different network",
+	},
+	{
+		slug: "swaps",
+		name: "Swaps",
+		abstract:
+			"Exchange you coins for other coins using decentralized exchanges",
+	},
+	{
+		slug: "lightning",
+		name: "Lightning",
+		abstract: "LIghting speed transactions for Bitcoin",
+	},
+	{
+		slug: "security",
+		name: "Security",
+		abstract: "Secure your digital assets with best practices",
+	},
+	{
+		slug: "tejory-terminal",
+		name: "Tejory Terminal",
+		abstract: "Start accepting crypto in your stores securely",
+	},
+	{
+		slug: "tejory-business",
+		name: "Tejory Business",
+		abstract: "Monitor and control your crypto sales and terminals",
+	},
+	{
+		slug: "other",
+		name: "Other",
+		abstract: "Miscellaneous and advanced topics",
+	},
+];
 ---
 
 <Layout title={entry.data.title} lang={lang} slug={entry.slug}>
 	<Hero />
 	<main class="px-8 mt-8 max-w-7xl mx-auto">
-		<h1>{t("featuredArticles")}</h1>
-		<div class="flex flex-wrap justify-center gap-8">
-			{articleList.map((product) => <SupportArticleCard slug={product.slug} />)}
-		</div>
-		<h1>Support Categories</h1>
-		<div class="flex flex-wrap justify-center gap-8 mt-16">
-			{articleCategories.map(category => <SupportCategoryCard category={category} /> )}
+		<div>
+			<h1>{t("featuredArticles")}</h1>
+			<div class="flex flex-wrap justify-center gap-8">
+				{
+					articleList.map((product) => (
+						<SupportArticleCard slug={product.slug} />
+					))
+				}
+			</div>
+			<h1>{t("supportCategories")}</h1>
+			<div class="flex flex-wrap justify-center gap-8 mt-16">
+				{
+					articleCategories.map((category) => (
+						<SupportCategoryCard category={category} />
+					))
+				}
+			</div>
 		</div>
 	</main>
 </Layout>

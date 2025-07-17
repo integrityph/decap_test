@@ -1,6 +1,7 @@
 ---
 import { getT } from '@/i18n/t.astro'
-const lang = Astro.currentLocale;
+import { defaultLang } from '@/i18n/ui';
+const lang = Astro.currentLocale || defaultLang;
 const t = getT(lang);
 
 
