@@ -36,49 +36,51 @@ const articleList = articles.filter(
 		article.data.featured,
 );
 
-const articleCategories = [
-	{
-		slug: "getting-started",
-		name: "Getting Started",
-		abstract: "Introduction to Tejory wallet and app",
-	},
-	{
-		slug: "transactions",
-		name: "Transactions",
-		abstract: "Send and receive crypto on different network",
-	},
-	{
-		slug: "swaps",
-		name: "Swaps",
-		abstract:
-			"Exchange you coins for other coins using decentralized exchanges",
-	},
-	{
-		slug: "lightning",
-		name: "Lightning",
-		abstract: "LIghting speed transactions for Bitcoin",
-	},
-	{
-		slug: "security",
-		name: "Security",
-		abstract: "Secure your digital assets with best practices",
-	},
-	{
-		slug: "tejory-terminal",
-		name: "Tejory Terminal",
-		abstract: "Start accepting crypto in your stores securely",
-	},
-	{
-		slug: "tejory-business",
-		name: "Tejory Business",
-		abstract: "Monitor and control your crypto sales and terminals",
-	},
-	{
-		slug: "other",
-		name: "Other",
-		abstract: "Miscellaneous and advanced topics",
-	},
-];
+const articleCategories = (await getCollection("support_categories")).filter((category) => category.slug.split("/").includes(lang));
+
+// const articleCategories = [
+// 	{
+// 		slug: "getting-started",
+// 		name: "Getting Started",
+// 		abstract: "Introduction to Tejory wallet and app",
+// 	},
+// 	{
+// 		slug: "transactions",
+// 		name: "Transactions",
+// 		abstract: "Send and receive crypto on different network",
+// 	},
+// 	{
+// 		slug: "swaps",
+// 		name: "Swaps",
+// 		abstract:
+// 			"Exchange you coins for other coins using decentralized exchanges",
+// 	},
+// 	{
+// 		slug: "lightning",
+// 		name: "Lightning",
+// 		abstract: "LIghting speed transactions for Bitcoin",
+// 	},
+// 	{
+// 		slug: "security",
+// 		name: "Security",
+// 		abstract: "Secure your digital assets with best practices",
+// 	},
+// 	{
+// 		slug: "tejory-terminal",
+// 		name: "Tejory Terminal",
+// 		abstract: "Start accepting crypto in your stores securely",
+// 	},
+// 	{
+// 		slug: "tejory-business",
+// 		name: "Tejory Business",
+// 		abstract: "Monitor and control your crypto sales and terminals",
+// 	},
+// 	{
+// 		slug: "other",
+// 		name: "Other",
+// 		abstract: "Miscellaneous and advanced topics",
+// 	},
+// ];
 ---
 
 <Layout title={entry.data.title} lang={lang} slug={entry.slug}>

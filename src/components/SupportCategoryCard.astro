@@ -5,13 +5,13 @@ const { category } = Astro.props;
 const lang = Astro.currentLocale || defaultLang;
 
 const BASE_URL = import.meta.env.BASE_URL;
-const link = `${BASE_URL}/support/${lang}/${category.slug}`;
+const link = `${BASE_URL}/support/${category.slug}`;
 ---
 <div class="w-sm p-6 bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
     <a href={link}>
-        <div class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-amber-400">{category.name}</div>
+        <div class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-amber-400">{category.data.label}</div>
     </a>
-    <p class="mb-3 font-normal text-zinc-700 dark:text-zinc-400">{category.abstract}.</p>
+    <p class="mb-3 font-normal text-zinc-700 dark:text-zinc-400">{category.data.abstract}.</p>
     <a href={link} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         Explore this topic
         <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

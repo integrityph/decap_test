@@ -54,7 +54,7 @@ collections:
   - name: "support_articles" # Used in routes, e.g., /admin/collections/blog
     label: "Support Articles" # Used in the UI
     folder: "src/content/support_articles"
-    create: true # Allow users to create new documents in this collection
+    create: true
     i18n: true
     fields: # The fields for each document, usually in front matter
       - { label: "Title", name: "title", widget: "string", i18n: true }
@@ -68,40 +68,54 @@ collections:
         collection: "support_articles"
         multiple: true
         value_field: "{{slug}}"
-        search_fields: ["name"]
-        display_fields: ["name"]
+        search_fields: ["label"]
+        display_fields: ["label"]
         i18n: "duplicate"
         required: false
       - label: "Category"
         name: "category"
         required: true
-        widget: "select"
-        i18n: duplicate
-        options:
-          - label: "Getting Started"
-            value: "getting-started"
-          - label: "Transactions"
-            value: "transactions"
-          - label: "Swaps"
-            value: "swaps"
-          - label: "Lighting Network"
-            value: "lighting-network"
-          - label: "Security"
-            value: "security"
-          - label: "Tejory Terminal"
-            value: "tejory-terminal"
-          - label: "Tejory Business"
-            value: "tejory-business"
-          - label: "Other"
-            value: "other"
+        widget: "relation"
+        collection: "support_categories"
+        multiple: true
+        value_field: "{{slug}}"
+        search_fields: ["label"]
+        display_fields: ["label"]
+        i18n: "duplicate"
+        # options:
+        #   - label: "Getting Started"
+        #     value: "getting-started"
+        #   - label: "Transactions"
+        #     value: "transactions"
+        #   - label: "Swaps"
+        #     value: "swaps"
+        #   - label: "Lighting Network"
+        #     value: "lighting-network"
+        #   - label: "Security"
+        #     value: "security"
+        #   - label: "Tejory Terminal"
+        #     value: "tejory-terminal"
+        #   - label: "Tejory Business"
+        #     value: "tejory-business"
+        #   - label: "Other"
+        #     value: "other"
       - { label: "Body", name: "body", widget: "markdown", i18n: true }
+  - name: "support_categories"
+    label: "Support Categories"
+    i18n: true
+    folder: "src/content/support_categories"
+    create: true
+    fields:
+      - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+      - {name: "label", label: "Label", widget: "string", i18n: true}
+      - {name: "abstract", label: "Abstract", widget: "string", i18n: true}
   - name: "products"
     label: "Products"
     folder: "src/content/products"
     create: true
     i18n: true
     fields:
-      - { name: "title", label: "Component Title (for internal reference)", widget: "string", i18n: duplicate }
+      - { label: "Component Title (for internal reference)", name: "title", widget: "string", i18n: duplicate }
       - { label: "Name", name: "name", widget: "string", i18n: true }
       - { label: "Slogan", name: "slogan", widget: "string", required: false, i18n: true }
       - { label: "Price", name: "price", widget: "number", required: false, step: 0.01, value_type: float, i18n: duplicate }

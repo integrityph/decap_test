@@ -4,7 +4,6 @@ import Layout from "@/layouts/Layout.astro";
 import { useTranslations } from "@/i18n/utils";
 import { defaultLang } from "@/i18n/ui";
 import { getEntry } from "astro:content";
-import { getEntries } from "astro:content";
 import SupportArticleCard from "@/components/SupportArticleCard.astro";
 
 const lang = Astro.currentLocale || defaultLang;
@@ -13,7 +12,7 @@ const t = useTranslations(lang);
 // This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
 	const pageEntries = await getCollection("support_articles");
-	const lang = Astro.currentLocale || defaultLang;
+	const someEntry = await getEntry("support_articles", "en/create-a-new-wallet");
 
 	let finalList = pageEntries
 		.filter((entry) => entry.slug.indexOf("/") != -1)
@@ -22,15 +21,17 @@ export async function getStaticPaths() {
 			props: { entry },
 		}));
 
-	const addedCategories = [""];
-	pageEntries.map((entry) => {
-		if (!addedCategories.includes(entry.data.category)) {
+	const addedCategories = [""]
+	pageEntries.filter((entry) => entry.slug.indexOf("/") != -1).map((entry)=>{
+		console.log(`entry.slug: ${entry.slug}`);
+		if (!addedCategories.includes(entry.slug)) {
 			finalList.push({
-				params: { slug: lang + "/" + entry.data.category },
+				params: { slug: entry.slug.split("/")[0] + "/" + entry.data.category },
 				props: { entry },
 			});
+			addedCategories.push(entry.slug);
 		}
-	});
+	})
 
 	return finalList;
 }
@@ -47,51 +48,51 @@ if (currentCategory != "") {
 	articleList = articleList.filter(article => article.slug.indexOf("/") != -1 &&  article.slug.split("/").includes(lang) && article.data.category == currentCategory);
 }
 
-const articleCategories = [
-	{
-		slug: "getting-started",
-		name: "Getting Started",
-		abstract: "Introduction to Tejory wallet and app",
-	},
-	{
-		slug: "transactions",
-		name: "Transactions",
-		abstract: "Send and receive crypto on different network",
-	},
-	{
-		slug: "swaps",
-		name: "Swaps",
-		abstract:
-			"Exchange you coins for other coins using decentralized exchanges",
-	},
-	{
-		slug: "lightning",
-		name: "Lightning",
-		abstract: "LIghting speed transactions for Bitcoin",
-	},
-	{
-		slug: "security",
-		name: "Security",
-		abstract: "Secure your digital assets with best practices",
-	},
-	{
-		slug: "tejory-terminal",
-		name: "Tejory Terminal",
-		abstract: "Start accepting crypto in your stores securely",
-	},
-	{
-		slug: "tejory-business",
-		name: "Tejory Business",
-		abstract: "Monitor and control your crypto sales and terminals",
-	},
-	{
-		slug: "other",
-		name: "Other",
-		abstract: "Miscellaneous and advanced topics",
-	},
-];
+// const articleCategories = [
+// 	{
+// 		slug: "getting-started",
+// 		name: "Getting Started",
+// 		abstract: "Introduction to Tejory wallet and app",
+// 	},
+// 	{
+// 		slug: "transactions",
+// 		name: "Transactions",
+// 		abstract: "Send and receive crypto on different network",
+// 	},
+// 	{
+// 		slug: "swaps",
+// 		name: "Swaps",
+// 		abstract:
+// 			"Exchange you coins for other coins using decentralized exchanges",
+// 	},
+// 	{
+// 		slug: "lightning",
+// 		name: "Lightning",
+// 		abstract: "LIghting speed transactions for Bitcoin",
+// 	},
+// 	{
+// 		slug: "security",
+// 		name: "Security",
+// 		abstract: "Secure your digital assets with best practices",
+// 	},
+// 	{
+// 		slug: "tejory-terminal",
+// 		name: "Tejory Terminal",
+// 		abstract: "Start accepting crypto in your stores securely",
+// 	},
+// 	{
+// 		slug: "tejory-business",
+// 		name: "Tejory Business",
+// 		abstract: "Monitor and control your crypto sales and terminals",
+// 	},
+// 	{
+// 		slug: "other",
+// 		name: "Other",
+// 		abstract: "Miscellaneous and advanced topics",
+// 	},
+// ];
 
-const categoryObj = articleCategories.find(category => category.slug == currentCategory)
+const categoryObj = await getEntry("support_categories", `${lang}/${currentCategory}`)
 
 // Get the rendered HTML content from the markdown
 const { Content } = await entry.render();
@@ -120,7 +121,7 @@ console.log(`slug: ${slug}`)
 				</div>
 			) : (
 				<div>
-					<h1>{categoryObj?.name}</h1>
+					<h1>{categoryObj?.data.label}</h1>
 					{
 						articleList.map(article => <SupportArticleCard slug={article.slug} />)
 					}
