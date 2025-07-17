@@ -27,6 +27,10 @@ export const ui = {
 		'disclaimer': 'Disclaimer',
 		'products': 'Products',
 		'allRightsReserved': 'All Rights Reserved',
+		'liveAuditCounter':'Live Audit Counter',
+		'weAreProudToHaveBeenSuccessfullyAuditedByOurClients':'We are proud to have been successfully audited by our clients:',
+		'lastModified':'Last modified',
+		'featuredArticles':'Featured Articles',
   },
   ar: {
     'keyFeaturesOf': 'المميزات الرئيسية ل',
@@ -49,5 +53,9 @@ export const ui = {
 		'disclaimer': 'إخلاء المسؤولية',
 		'products': 'المنتجات',
 		'allRightsReserved': 'جميع الحقوق محفوظة',
+		'liveAuditCounter':'عداد التدقيق المباشر',
+		'weAreProudToHaveBeenSuccessfullyAuditedByOurClients':'نحن فخورون بنجاحنا في التدقيق من قبل عملائنا:',
+		'lastModified':'تاريخ آخر تعديل',
+		'featuredArticles':'المقالات المهمة',
 	}
 } as const;

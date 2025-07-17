@@ -16,6 +16,10 @@ body {
 	@apply bg-black text-white
 }
 
+article a {
+	@apply text-amber-400
+}
+
 a:hover {
 	@apply no-underline
 }
@@ -24,16 +28,16 @@ h1 {
   @apply text-4xl font-extrabold text-amber-400 mt-8 mb-4;
 }
 h2 {
-  @apply text-3xl font-extrabold text-amber-400 mt-4 mb-3;
+  @apply text-3xl font-extrabold text-amber-400 mt-8 mb-4;
 }
 h3 {
-  @apply text-2xl font-extrabold text-amber-400 mt-2 mb-2;
+  @apply text-2xl font-extrabold text-amber-400 mt-8 mb-4;
 }
 h4 {
-  @apply text-xl font-extrabold text-amber-400 mt-1 mb-1;
+  @apply text-xl font-extrabold text-amber-400 mt-8 mb-4;
 }
 h5 {
-  @apply text-lg font-extrabold text-amber-400 mt-1 mb-1;
+  @apply text-lg font-extrabold text-amber-400 mt-4 mb-4;
 }
 p {
 	@apply py-4 text-lg
@@ -46,4 +50,10 @@ p {
 }
 .feature-list {
 	@apply flex flex-wrap justify-center gap-8 my-8
+}
+article ol {
+	@apply list-decimal space-y-1 list-inside ms-4 text-lg
+}
+article ul {
+	@apply list-decimal space-y-1 list-inside ms-4 text-lg
 }

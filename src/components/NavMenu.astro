@@ -16,10 +16,11 @@ const pathWithoutBase = baseUrl
 
 const pathSegments = pathWithoutBase.replace(/^\/|\/$/g, '').split('/').filter(p => p);
 const baseSegments = pathSegments.filter(segment => !Object.keys(languages).includes(segment));
+const deepPathURLS = ["products", "support"]
 const languageLinks = Object.entries(languages).map(([code, name]) => {
   let newPathSegments = [];
-  
-  const isCollectionPage = baseSegments.length > 0 && baseSegments[0] === 'products';
+
+  const isCollectionPage = baseSegments.length > 0 && deepPathURLS.includes(baseSegments[0]);
 
   if (isCollectionPage) {
     newPathSegments = [baseSegments[0], code, ...baseSegments.slice(1)];
@@ -34,7 +35,7 @@ const languageLinks = Object.entries(languages).map(([code, name]) => {
 
 // This tells Astro to generate each menu item
 const pages = await getCollection("pages");
-const menuPages = pages
+let menuPages = pages
 	.filter(
 		(page) => page.data.main_menu === true && page.slug.startsWith(`${lang}/`),
 	)
@@ -45,11 +46,18 @@ const menuPages = pages
 		order: page.data.order,
 	}));
 
-menuPages.unshift({
-		slug: `products/${lang}`,
-		name: t("products"),
-		order: 1,
-	})
+menuPages = menuPages.map(link => {
+	switch (link.slug) {
+		case `${lang}/products`:
+			link.slug = `products/${lang}`;
+			return link;
+		case `${lang}/support`:
+			link.slug = `support/${lang}`;
+			return link;
+		default:
+			return link;
+	}
+});
 
 const BASE_URL = import.meta.env.BASE_URL;
 const homeURL = (lang == defaultLang) ? `${BASE_URL}` : `${BASE_URL}/${lang}`

@@ -5,8 +5,11 @@ subtitle: ''
 main_menu: true
 last_updated: 2025-07-09T21:32:00
 order: 4
-components:
+top_components:
+  - hero
   - por-counter
+bottom_components:
+  - buy-now-tejory-core
 ---
 # Radical Transparency: Our Commitment to Openness and Proof
 

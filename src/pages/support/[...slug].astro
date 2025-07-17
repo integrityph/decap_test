@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import { useTranslations } from '@/i18n/utils';
+import { defaultLang } from "@/i18n/ui";
+
+const lang = Astro.currentLocale || defaultLang;
+const t = useTranslations(lang);
+
+// This function tells Astro to build a page for every entry in your content collection
+export async function getStaticPaths() {
+	const pageEntries = await getCollection("support_articles");
+
+	let finalList = pageEntries
+		.filter((entry) => entry.slug.indexOf("/") != -1)
+		.map((entry) => ({
+			params: { slug: entry.slug },
+			props: { entry },
+		}));
+
+	return finalList;
+}
+
+// Get the specific page data for the current page
+const { entry } = Astro.props;
+
+const formattedDate = new Date(entry.data.date);
+
+// Get the rendered HTML content from the markdown
+const { Content } = await entry.render();
+const BASE_URL = import.meta.env.BASE_URL;
+---
+
+<Layout title={entry.data.title} lang={lang} slug={entry.slug}>
+	<main class="px-8 mt-8 max-w-7xl mx-auto">
+		<h1>{entry.data.title}</h1>
+		<div class="text-zinc-500 mt-[-5px]">{t("lastModified")}: {formattedDate.toLocaleDateString(lang)}</div>
+		<div class="my-8">
+			<img src=`${BASE_URL}${entry.data.thumbnail}` class="max-h-128 mx-auto" />
+		</div>
+		<article>
+			<Content />
+		</article>
+	</main>
+</Layout>

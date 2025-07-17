@@ -3,8 +3,9 @@ import Hero from "@/components/Hero.astro";
 import { defaultLang } from "@/i18n/ui";
 import Layout from "@/layouts/Layout.astro";
 import { useTranslations } from "@/i18n/utils";
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 import { getCollection, getEntry } from "astro:content";
+import BuyNow from "@/components/BuyNow.astro";
 
 // This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
@@ -24,22 +25,24 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 
 const lang = Astro.currentLocale || defaultLang;
-const featureList = (await Promise.all(
-  entry.data.features?.map(async (featureSlug) => {
-    const fullSlug = `${lang}/${featureSlug}`;
-    
-    const featureEntry = await getEntry("features", fullSlug);
-		if (!featureEntry) {
-			return;
-		}
-    const { Content } = await featureEntry.render();
-    return {
-      name: featureEntry.data.name,
-      Content: Content,
-      icon: featureEntry.data.custom_icon || featureEntry.data.icon
-    };
-  }) ?? []
-)).filter(entry => entry != null && entry != undefined);
+const featureList = (
+	await Promise.all(
+		entry.data.features?.map(async (featureSlug) => {
+			const fullSlug = `${lang}/${featureSlug}`;
+
+			const featureEntry = await getEntry("features", fullSlug);
+			if (!featureEntry) {
+				return;
+			}
+			const { Content } = await featureEntry.render();
+			return {
+				name: featureEntry.data.name,
+				Content: Content,
+				icon: featureEntry.data.custom_icon || featureEntry.data.icon,
+			};
+		}) ?? [],
+	)
+).filter((entry) => entry != null && entry != undefined);
 
 // const { Content } = await product.render(); // This renders the Markdown body to HTML
 const BASE_URL = import.meta.env.BASE_URL;
@@ -49,33 +52,37 @@ const t = useTranslations(lang);
 
 <Layout title={entry.data.name} lang={lang} slug={entry.slug}>
 	<Hero />
-	<main class="px-8 mt-8">
-		<!-- <section class="py-16 bg-zinc-900 text-white mb-8"> -->
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<h2 class="text-4xl font-extrabold text-center pb-12">
-					{t("keyFeaturesOf")}{entry.data.name}
-				</h2>
+	<main class="md:px-8 mt-8">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<h2 class="text-4xl font-extrabold text-center pb-12">
+				{t("keyFeaturesOf")}{entry.data.name}
+			</h2>
 
-				<div class="flex flex-wrap justify-center gap-8">
+			<div class="flex flex-wrap justify-center gap-8">
 				{
-					featureList?.map(feature => (
-							<div
-								class="flex-1 basis-80 max-w-sm bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center"
-							>
-								<div class="text-amber-400 mb-4">
-									<Icon name={`fa6-solid:${feature.icon}`} class="w-12 h-12" />
-								</div>
-								<h3 class="text-2xl font-semibold mb-3">{feature!.name}</h3>
-								<feature.Content />
+					featureList?.map((feature) => (
+						<div class="flex-1 basis-80 max-w-sm bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
+							<div class="text-amber-400 mb-4">
+								<Icon name={`fa6-solid:${feature.icon}`} class="w-12 h-12" />
 							</div>
+							<h3 class="text-2xl font-semibold mb-3">{feature!.name}</h3>
+							<feature.Content />
+						</div>
 					))
 				}
-				</div>
 			</div>
-			<section class="mt-8">
-				<Content />
-			</section>
-			
-		<!-- </section> -->
+		</div>
+		<section class="mt-8 [&_h2]:text-center md:[&_h2]:text-left max-w-7xl mx-auto">
+			<Content />
+		</section>
+		{
+			(entry.data.status == "active") ?
+			<div class="flex justify-center mt-16">
+				<BuyNow slug=`${entry.slug}` />
+			</div>
+			: ""
+		}
+		
 	</main>
+	
 </Layout>

@@ -3,31 +3,16 @@ import { defineCollection, z } from 'astro:content';
 
 // Define a new collection named 'blog'
 const blogCollection = defineCollection({
-  // The 'schema' defines the frontmatter of your Markdown files
   schema: z.object({
-    // title: z.string() -> A direct mapping from the 'string' widget
     title: z.string(),
-    
-    // date: z.date() -> Astro recognizes datetime widgets and converts them to JavaScript Date objects
     date: z.preprocess((arg) => {
-      // 1. Check if the argument is a string
       if (typeof arg === 'string') {
-        // 2. Append 'Z' to make it a valid UTC timestamp and parse it
         return new Date(arg + 'Z');
       }
-      // 3. If it's already a Date object or something else, pass it through
       return arg;
-    }, z.date()), // 4. Finally, validate that the result is a valid date
-
-    
-    // thumbnail: z.string() -> The 'image' widget stores the path to the image as a string
-    // You can also use z.optional() if an image isn't always required
+    }, z.date()),
     thumbnail: z.string().optional(),
-    
-    // rating: z.number() -> A direct mapping from the 'number' widget
-    // You can even add validation to match your scale!
     rating: z.number().min(1).max(5),
-
 		featured_cta: z.string().optional(),
   }),
 });
@@ -40,7 +25,8 @@ const pagesCollection = defineCollection({
     hero_image: z.string().optional(),
 		main_menu: z.boolean().optional(),
 		order: z.number().optional(),
-		components: z.array(z.string()).nullable().optional(),
+		top_components: z.array(z.string()).optional(),
+		bottom_components: z.array(z.string()).optional(),
   }).passthrough(),
 });
 
@@ -81,6 +67,22 @@ const featuresCollection = defineCollection({
   }),
 });
 
+const supportArticlesCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    date: z.preprocess((arg) => {
+      if (typeof arg === 'string') {
+        return new Date(arg + 'Z');
+      }
+      return arg;
+    }, z.date()),
+    thumbnail: z.string().optional(),
+		related_articles: z.array(z.string().optional()),
+		featured: z.boolean(),
+		abstract: z.string(),
+		category: z.string(),
+  }),
+});
 
 // Export a `collections` object to register your new 'blog' collection
 export const collections = {
@@ -89,4 +91,5 @@ export const collections = {
 	components: componentsCollection,
 	products: productsCollection,
 	features: featuresCollection,
+	support_articles: supportArticlesCollection,
 };

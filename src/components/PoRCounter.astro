@@ -1,5 +1,9 @@
 ---
+import { useTranslations } from "@/i18n/utils";
+import { defaultLang } from '@/i18n/ui';
 
+const lang = Astro.currentLocale || defaultLang;
+const t = useTranslations(lang);
 ---
 
 <div class="feature-list">
@@ -19,13 +23,14 @@
 				><use href="#ai:fa6-solid:list-check"></use>
 			</svg>
 		</div>
-		<h3>Live Audit Counter</h3>
-		<p>We are proud to have been successfully audited by our clients:</p>
+		<h3>{t("liveAuditCounter")}</h3>
+		<p>{t("weAreProudToHaveBeenSuccessfullyAuditedByOurClients")}</p>
 		<div
-			class="tick w-full"
+			dir="ltr"
+			class="tick w-full h-28"
 			data-value="000000"
 			data-did-init="startNumericCountdown"
-			data-credits="false"
+			data-credits="true"
 		>
 			<div
 				data-repeat="true"

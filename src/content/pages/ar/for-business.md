@@ -5,6 +5,10 @@ subtitle: ''
 main_menu: true
 last_updated: 2025-07-09T21:31:00
 order: 3
+top_components:
+  - hero
+bottom_components:
+  - buy-now-tejory-core
 ---
 ### خدمات التجار الفورية. لا حاجة للموافقة
 

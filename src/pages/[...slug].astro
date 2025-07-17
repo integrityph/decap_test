@@ -1,9 +1,7 @@
 ---
-import { defaultLang } from "@/i18n/ui";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
-import Hero from "@/components/Hero.astro";
-import PoRCounter from '@/components/PoRCounter.astro';
+import Components from "@/components/Components.astro";
 
 // This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
@@ -28,22 +26,11 @@ const lang = Astro.currentLocale;
 ---
 
 <Layout title={entry.data.name} lang={lang} slug={entry.slug}>
-	<Hero />
-	{
-		entry.data.components?.map(component => {
-			switch (component) {
-			case "por-counter":
-				return <PoRCounter />
-			case "hero":
-				return <Hero />
-			default:
-				throw new Error(`Unknown component ${component}`)
-			}
-		})
-	}
-	<main class="px-8 mt-8">
+	<Components components={entry.data.top_components} />
+	<main class="px-8 mt-8 max-w-7xl mx-auto">
 		<article>
 			<Content />
 		</article>
 	</main>
+	<Components components={entry.data.bottom_components} />
 </Layout>

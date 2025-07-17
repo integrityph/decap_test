@@ -20,8 +20,17 @@ page_fields: &page_fields
   - { name: "main_menu", label: "Show on Main Menu", widget: "boolean", i18n: duplicate }
   - { name: "last_updated", label: "Last Updated", widget: "datetime", required: false, i18n: true }
   - { name: "order", label: "Order in Menu", widget: "number", required: false, i18n: duplicate }
-  - name: 'components'
-    label: 'Included Components'
+  - name: 'top_components'
+    label: 'Top Components'
+    widget: 'relation'
+    collection: "components"
+    value_field: "{{slug}}"
+    search_fields: ["name"]
+    multiple: true
+    required: false
+    i18n: duplicate
+  - name: 'bottom_components'
+    label: 'Bottom Components'
     widget: 'relation'
     collection: "components"
     value_field: "{{slug}}"
@@ -42,6 +51,50 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+  - name: "support_articles" # Used in routes, e.g., /admin/collections/blog
+    label: "Support Articles" # Used in the UI
+    folder: "src/content/support_articles"
+    create: true # Allow users to create new documents in this collection
+    i18n: true
+    fields: # The fields for each document, usually in front matter
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - { label: "Last Updated Date", name: "date", widget: "datetime", i18n: duplicate }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", i18n: duplicate }
+      - { label: "Featured", name: "featured", widget: "boolean", i18n: duplicate }
+      - { label: "Abstract", name: "abstract", widget: "string", i18n: true }
+      - label: "Related Articles"
+        name: "related_articles"
+        widget: "relation"
+        collection: "support_articles"
+        multiple: true
+        value_field: "{{slug}}"
+        search_fields: ["name"]
+        display_fields: ["name"]
+        i18n: "duplicate"
+        required: false
+      - label: "Category"
+        name: "category"
+        required: true
+        widget: "select"
+        i18n: duplicate
+        options:
+          - label: "Getting Started"
+            value: "getting-started"
+          - label: "Transactions"
+            value: "transactions"
+          - label: "Swaps"
+            value: "swaps"
+          - label: "Lighting Network"
+            value: "lighting-network"
+          - label: "Security"
+            value: "security"
+          - label: "Tejory Terminal"
+            value: "tejory-terminal"
+          - label: "Tejory Business"
+            value: "tejory-business"
+          - label: "Other"
+            value: "other"
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
   - name: "products"
     label: "Products"
     folder: "src/content/products"
@@ -91,16 +144,16 @@ collections:
       - label: "Features"
         name: "features"
         widget: "relation"
-        collection: "Features"      # Must exactly match the name of your features collection
+        collection: "features"
         multiple: true
-        value_field: "{{slug}}"       # This is crucial. It tells the CMS to save the feature's slug.
+        value_field: "{{slug}}"
         search_fields: ["name"]
         display_fields: ["name"]
         i18n: "duplicate"
         required: false
       - { label: 'Main Content', name: 'body', widget: 'markdown', i18n: true }
-  - name: "Features"
-    label: "features"
+  - name: "features"
+    label: "Features"
     folder: "src/content/features"
     create: true
     i18n: true
@@ -130,7 +183,7 @@ collections:
         hint: "Use this field ONLY if the icon you want is not in the list above."
   - name: "pages"
     label: "Website Pages"
-    folder: "src/content/pages" # Manages content in src/content/pages/en/, src/content/pages/ar/, etc.
+    folder: "src/content/pages"
     create: true
     i18n: true
     fields: *page_fields
