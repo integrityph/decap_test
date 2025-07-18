@@ -1,0 +1,79 @@
+---
+import { languages, defaultLang } from "@/i18n/ui.ts";
+
+const { lang = defaultLang } = Astro.props;
+const langKey = lang as keyof typeof languages;
+
+const currentPath = Astro.url.pathname;
+const baseUrl = import.meta.env.BASE_URL;
+
+const pathWithoutBase = baseUrl
+	? currentPath.replace(new RegExp(`^${baseUrl}`), "")
+	: currentPath;
+
+const originalSegments = pathWithoutBase
+	.replace(/^\/|\/$/g, "")
+	.split("/")
+	.filter((p) => p);
+const BASE_URL = import.meta.env.BASE_URL;
+const languageLinks = Object.entries(languages).map(([code, name]) => {
+	let newPathSegments = [...originalSegments];
+	const langIndex = newPathSegments.findIndex((segment) =>
+		languages.hasOwnProperty(segment),
+	);
+
+	if (langIndex !== -1) {
+		newPathSegments[langIndex] = code;
+	} else {
+		newPathSegments.unshift(code);
+	}
+	const href = BASE_URL + "/" + newPathSegments.join("/") + "/";
+
+	return { code, name, href };
+});
+---
+
+<div class="relative">
+	<button
+		id="languageSelector"
+		data-dropdown-toggle="dropdown"
+		class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+		type="button"
+	>
+		{languages[langKey]}
+		<svg
+			class="w-2.5 h-2.5 ms-3"
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 10 6"
+		>
+			<path
+				stroke="currentColor"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="m1 1 4 4 4-4"></path>
+		</svg>
+	</button>
+
+	<div
+		id="languageMenu"
+		class="absolute top-full right-0 mt-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700"
+	>
+		<ul
+			class="py-2 text-sm text-gray-700 dark:text-gray-200"
+			aria-labelledby="dropdownDefaultButton"
+		>
+			{
+				languageLinks.map((link) => (
+					<li>
+						<a href={link.href} class="block px-4 py-2 hover:bg-gray-800">
+							{link.name}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</div>

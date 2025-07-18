@@ -1,7 +1,6 @@
 ---
-import { getT } from '@/i18n/t.astro'
-import { defaultLang } from '@/i18n/ui';
-const lang = Astro.currentLocale || defaultLang;
+import { getT } from '@/i18n/t'
+const lang = Astro.currentLocale;
 const t = getT(lang);
 
 
@@ -109,7 +108,7 @@ const BASE_URL = import.meta.env.BASE_URL;
 					<span class="sr-only">Facebook page</span>
 				</a>
 				<a
-					href="#"
+					href="https://discord.gg/mYSJNydcHM"
 					class="text-gray-500 hover:text-discord ms-5"
 				>
 					<svg

@@ -77,7 +77,7 @@ collections:
         required: true
         widget: "relation"
         collection: "support_categories"
-        multiple: true
+        multiple: false
         value_field: "{{slug}}"
         search_fields: ["label"]
         display_fields: ["label"]

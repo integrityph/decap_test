@@ -25,4 +25,4 @@ You are never required to trust us blindly. Through our open API, any user can r
 
 ## Join our Community Audit Program
 
-To further decentralize trust, we invite our community members to become independent auditors. By running the same open-source Proof of Reserve software we use, you can continuously and independently verify our system's solvency. If you're interested in participating, please join our <span class="text-amber-400">[**discord group**](#)</span> or email us directly at **por@tejory.io** to get started.
+To further decentralize trust, we invite our community members to become independent auditors. By running the same open-source Proof of Reserve software we use, you can continuously and independently verify our system's solvency. If you're interested in participating, please join our <span class="text-amber-400">[**discord group**](https://discord.gg/6Rardj7bcj)</span> or email us directly at **por@tejory.io** to get started.

@@ -1,18 +1,17 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
-import { useTranslations } from "@/i18n/utils";
-import { defaultLang } from "@/i18n/ui";
 import { getEntry } from "astro:content";
 import SupportArticleCard from "@/components/SupportArticleCard.astro";
-
+import { getT } from '@/i18n/t'
+import { defaultLang } from "@/i18n/ui";
+import LiveChat from "@/components/LiveChat.astro";
 const lang = Astro.currentLocale || defaultLang;
-const t = useTranslations(lang);
+const t = getT(lang);
 
 // This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
 	const pageEntries = await getCollection("support_articles");
-	const someEntry = await getEntry("support_articles", "en/create-a-new-wallet");
 
 	let finalList = pageEntries
 		.filter((entry) => entry.slug.indexOf("/") != -1)
@@ -21,9 +20,8 @@ export async function getStaticPaths() {
 			props: { entry },
 		}));
 
-	const addedCategories = [""]
+	const addedCategories = [""];
 	pageEntries.filter((entry) => entry.slug.indexOf("/") != -1).map((entry)=>{
-		console.log(`entry.slug: ${entry.slug}`);
 		if (!addedCategories.includes(entry.slug)) {
 			finalList.push({
 				params: { slug: entry.slug.split("/")[0] + "/" + entry.data.category },
@@ -122,12 +120,15 @@ console.log(`slug: ${slug}`)
 			) : (
 				<div>
 					<h1>{categoryObj?.data.label}</h1>
+					<section class="flex flex-wrap justify-center gap-8 mt-8">
 					{
 						articleList.map(article => <SupportArticleCard slug={article.slug} />)
 					}
+					</section>
 				</div>
 				
 			)
 		}
 	</main>
+	<LiveChat />
 </Layout>

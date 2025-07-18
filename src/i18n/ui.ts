@@ -33,6 +33,7 @@ export const ui = {
 		'featuredArticles':'Featured Articles',
 		'supportCategories':'Support Categories',
 		'readMore':'Read More',
+		'openMainMenu':'Open main menu',
   },
   ar: {
     'keyFeaturesOf': 'المميزات الرئيسية ل',
@@ -61,5 +62,6 @@ export const ui = {
 		'featuredArticles':'المقالات المهمة',
 		'supportCategories':'فئات الدعم',
 		'readMore':'إقرأ المزيد',
+		'openMainMenu':'إفتح القائة الرئيسية',
 	}
 } as const;

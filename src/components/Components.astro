@@ -2,6 +2,7 @@
 import PoRCounter from "@/components/PoRCounter.astro";
 import Hero from "@/components/Hero.astro";
 import BuyNow from "./BuyNow.astro";
+import LiveChat from "./LiveChat.astro";
 
 interface Props {
   components?: string[];
@@ -19,6 +20,8 @@ const { components } = Astro.props;
 			return <Hero />
 		case "buy-now-tejory-core":
 			return <div class="flex justify-center"><BuyNow slug="tejory-core" /></div>
+		case "live-chat":
+			return <LiveChat />
 		default:
 			throw new Error(`Unknown component ${component}`)
 		}
