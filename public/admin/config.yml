@@ -19,7 +19,7 @@ page_fields: &page_fields
   - { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false, i18n: duplicate }
   - { name: "main_menu", label: "Show on Main Menu", widget: "boolean", i18n: duplicate }
   - { name: "last_updated", label: "Last Updated", widget: "datetime", required: false, i18n: true }
-  - { name: "order", label: "Order in Menu", widget: "number", required: false, i18n: duplicate }
+  - { name: "order", label: "Order in Menu", widget: "number", default: 0, required: false, i18n: duplicate }
   - name: 'top_components'
     label: 'Top Components'
     widget: 'relation'

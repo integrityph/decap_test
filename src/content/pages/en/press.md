@@ -3,7 +3,7 @@ title: Press
 name: Press
 subtitle: ''
 main_menu: true
-last_updated: ''
+last_updated: 2025-07-19T17:39:00
 order: 6
 top_components:
   - hero
@@ -21,11 +21,11 @@ Download the press kit for our products. This kit includes:
 - Product features and details
 - High resolution images of the product
 
-## Press Kit Products List:
+## Press Kits:
 
-- Tejory Core
-- Tejory Business
-- Tejory Terminal
-- Tejory Edge
+- [Tejory Core](#)
+- [Tejory Business](#)
+- [Tejory Terminal](#)
+- [Tejory Edge](#)
 
 ## We Have Been Features on:

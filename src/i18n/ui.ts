@@ -39,6 +39,7 @@ export const ui = {
 		'LetsTalk':'Let\'s Talk',
 		'discordCommunity':'Discord Community',
 		'emailSupport':'Email Support',
+		'downloadTheApp':'Download the app',
   },
   ar: {
     'keyFeaturesOf': 'المميزات الرئيسية ل',
@@ -73,5 +74,6 @@ export const ui = {
 		'LetsTalk':'ابدأ المحادثة',
 		'discordCommunity':'مجموعة ديسكورد',
 		'emailSupport':'البريد الإلكتروني',
+		'downloadTheApp':'حمل التطبيق',
 	}
 } as const;
