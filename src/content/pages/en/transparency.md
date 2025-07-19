@@ -10,6 +10,7 @@ top_components:
   - por-counter
 bottom_components:
   - buy-now-tejory-core
+  - repo-app
 ---
 # Radical Transparency: Our Commitment to Openness and Proof
 

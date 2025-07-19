@@ -5,5 +5,27 @@ subtitle: ''
 main_menu: true
 last_updated: ''
 order: 6
+top_components:
+  - hero
 ---
-this page will house your "as seen on" section, media contact info, and the downloadable media kit.
+# Press Contact Information
+
+For journalists interested in getting in touch, please contact our media team by email:
+media@tejory.io
+
+## Press Kit
+
+Download the press kit for our products. This kit includes:
+
+- Executive summary of KH Trading Group Inc
+- Product features and details
+- High resolution images of the product
+
+## Press Kit Products List:
+
+- Tejory Core
+- Tejory Business
+- Tejory Terminal
+- Tejory Edge
+
+## We Have Been Features on:

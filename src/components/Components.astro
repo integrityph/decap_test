@@ -3,6 +3,7 @@ import PoRCounter from "@/components/PoRCounter.astro";
 import Hero from "@/components/Hero.astro";
 import BuyNow from "./BuyNow.astro";
 import LiveChat from "./LiveChat.astro";
+import GithubRepoCard from "./GithubRepoCard.astro";
 
 interface Props {
   components?: string[];
@@ -22,6 +23,11 @@ const { components } = Astro.props;
 			return <div class="flex justify-center"><BuyNow slug="tejory-core" /></div>
 		case "live-chat":
 			return <LiveChat />
+		case "repo-app":
+			return <div class="flex gap-x-2 justify-center">
+				<GithubRepoCard repo="integrityph/tejory-app" />
+			</div>
+			return 
 		default:
 			throw new Error(`Unknown component ${component}`)
 		}
