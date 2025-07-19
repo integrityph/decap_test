@@ -34,6 +34,11 @@ export const ui = {
 		'supportCategories':'Support Categories',
 		'readMore':'Read More',
 		'openMainMenu':'Open main menu',
+		'cannotFindAnAnswerToYourQuestion':'Cannot Find an Answer to Your Question?',
+		'liveChat':'Live Chat',
+		'LetsTalk':'Let\'s Talk',
+		'discordCommunity':'Discord Community',
+		'emailSupport':'Email Support',
   },
   ar: {
     'keyFeaturesOf': 'المميزات الرئيسية ل',
@@ -63,5 +68,10 @@ export const ui = {
 		'supportCategories':'فئات الدعم',
 		'readMore':'إقرأ المزيد',
 		'openMainMenu':'إفتح القائة الرئيسية',
+		'cannotFindAnAnswerToYourQuestion':'لم تتمكن من العثور على إجابة لسؤالك؟',
+		'liveChat':'المحادثة المباشرة',
+		'LetsTalk':'ابدأ المحادثة',
+		'discordCommunity':'مجموعة ديسكورد',
+		'emailSupport':'البريد الإلكتروني',
 	}
 } as const;

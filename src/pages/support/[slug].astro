@@ -96,16 +96,16 @@ const articleCategories = (await getCollection("support_categories")).filter((ca
 					))
 				}
 			</div>
-			<h1 class="pt-16 text-center">Cannot Find an Answer to Tour Question?</h1>
+			<h1 class="pt-16 text-center">{t("cannotFindAnAnswerToYourQuestion")}</h1>
 			<div class="flex flex-wrap justify-center gap-8 mt-16">
 				<div class="w-sm p-6 bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
 					<a href="javascript:void(Tawk_API.toggle())">
-							<div class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-amber-400 text-center">Live Chat</div>
+							<div class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-amber-400 text-center">{t("liveChat")}</div>
 					</a>
 					<p class="text-center pb-2 h-10"></p>
 					<div class="text-center">
 						<a href="javascript:void(Tawk_API.toggle())" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-amber-700 rounded-lg hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">
-							Let's Talk
+							{t("LetsTalk")}
 							<svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
 									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
 							</svg>
@@ -114,12 +114,12 @@ const articleCategories = (await getCollection("support_categories")).filter((ca
 				</div>
 				<div class="w-sm p-6 bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
 					<a href="https://discord.gg/BccT6jAy2V">
-							<div class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-amber-400 text-center">Discord Community</div>
+							<div class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-amber-400 text-center">{t("discordCommunity")}</div>
 					</a>
 					<p class="text-center pb-2 h-10"></p>
 					<div class="text-center">
 						<a href="https://discord.gg/BccT6jAy2V" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-amber-700 rounded-lg hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">
-							Let's Talk
+							{t("LetsTalk")}
 							<svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
 									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
 							</svg>
@@ -128,12 +128,12 @@ const articleCategories = (await getCollection("support_categories")).filter((ca
 				</div>
 				<div class="w-sm p-6 bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
 					<a href="mailto:support@tejory.io">
-							<div class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-amber-400 text-center">Email Support</div>
+							<div class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-amber-400 text-center">{t("emailSupport")}</div>
 					</a>
 					<p class="text-center pb-2 h-10">support@tejory.io</p>
 					<div class="text-center">
 						<a href="mailto:support@tejory.io" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-amber-700 rounded-lg hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">
-							Let's Talk
+							{t("LetsTalk")}
 							<svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
 									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
 							</svg>
