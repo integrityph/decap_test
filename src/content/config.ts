@@ -24,7 +24,7 @@ const pagesCollection = defineCollection({
     subtitle: z.string().optional(), // Make fields optional if they don't appear on every page
     hero_image: z.string().optional(),
 		main_menu: z.boolean().optional(),
-		order: z.number().optional(),
+		order: z.number().nullable().optional(),
 		top_components: z.array(z.string()).optional(),
 		bottom_components: z.array(z.string()).optional(),
   }).passthrough(),
