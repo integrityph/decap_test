@@ -1,5 +1,5 @@
 ---
-title: Lightning Netwrok
+title: Lightning Network
 name: Lowest Fees of Lightning
 icon: bolt-lightning
 custom_icon: ''

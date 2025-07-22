@@ -1,5 +1,5 @@
 ---
-title: Lightning Netwrok
+title: Lightning Network
 name: أقل رسوم لـ Lighting
 icon: bolt-lightning
 custom_icon: ''

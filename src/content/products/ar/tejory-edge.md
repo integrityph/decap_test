@@ -17,7 +17,7 @@ image4: ''
 image5: ''
 features:
   - proof-of-reserves
-  - lightning-netwrok
+  - lightning-network
   - intuitive-ease-of-use
   - slim-discreet-design
   - unrivaled-security

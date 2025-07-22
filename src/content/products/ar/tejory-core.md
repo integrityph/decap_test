@@ -8,6 +8,7 @@ rating: 4.7
 number_of_ratings: 23
 available: true
 order: 1
+checkout_link: https://payhip.com/b/Z6Yvq
 category: wallet
 status: active
 image1: /static/images/uploads/image-removebg-preview.png

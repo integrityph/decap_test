@@ -2,14 +2,44 @@
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/Hero.astro';
 import { useTranslations } from '@/i18n/utils';
+import { getCollection } from 'astro:content';
+import FeatureBox from '@/components/FeatureBox.astro';
 const { lang="en" } = Astro.props;
 const t = useTranslations(lang);
 
+const featureList = ["lightning-network", "slim-discreet-design", "swaps"];
+
+const features = await getCollection("features");
+// features.map((entry) => {
+// 	console.log(`entry.slug: ${entry.slug}`)
+// });
+const displayFeatures = await Promise.all(
+  features
+    .filter((entry) => featureList.includes(entry.slug.split("/")[1]) && entry.slug.split("/").includes(lang))
+    .map(async (entry) => {
+      const { Content } = await entry.render();
+      return {
+        name: entry.data.name,
+        icon: entry.data.custom_icon || entry.data.icon,
+        Content: Content,
+      };
+    })
+);
+
+// displayFeatures.map((entry) => {
+// 	console.log(`displayFeatures entry.name: ${entry.name}`)
+// });
 ---
 <Layout lang={lang} >
 	<Hero />
 	<main class="px-8 mt-8 max-w-7xl mx-auto">
-		<h1>Home page</h1>
+		<div class="flex flex-wrap justify-center gap-8">
+		{
+			displayFeatures.map((feature) => (
+				<FeatureBox feature={feature} />
+			))
+		}
+		</div>
 		<p>Home page content</p>
 		<article>
 		</article>
