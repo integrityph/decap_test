@@ -1,6 +1,6 @@
 ---
 title: Lightning Netwrok
-name: شبكة Lightning بسهولة
+name: أقل رسوم لـ Lighting
 icon: bolt-lightning
 custom_icon: ''
 ---

@@ -1,6 +1,6 @@
 ---
 title: Lightning Netwrok
-name: Effortless Lightning Payments
+name: Lowest Fees of Lightning
 icon: bolt-lightning
 custom_icon: ''
 ---

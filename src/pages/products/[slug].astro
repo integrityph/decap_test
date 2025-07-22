@@ -28,10 +28,11 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 
 const products = await getCollection("products");
+const displayStatusList = ["active", "pre-order"]
 
 const productList = products.filter(
 	(product) =>
-		product.slug.indexOf("/") != -1 && product.slug.split("/").includes(lang),
+		product.slug.indexOf("/") != -1 && product.slug.split("/").includes(lang) && displayStatusList.includes(product.data.status),
 ).sort((a,b)=> (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
 
 const BASE_URL = import.meta.env.BASE_URL;

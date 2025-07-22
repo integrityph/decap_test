@@ -6,13 +6,16 @@ import { useTranslations } from "@/i18n/utils";
 import { Icon } from "astro-icon/components";
 import { getCollection, getEntry } from "astro:content";
 import BuyNow from "@/components/BuyNow.astro";
+import FeatureBox from "@/components/FeatureBox.astro";
 
 // This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
 	const pageEntries = await getCollection("products");
 
+	const displayStatusList = ["active", "pre-order"];
+
 	let finalList = pageEntries
-		.filter((entry) => entry.slug.indexOf("/") != -1)
+		.filter((entry) => entry.slug.indexOf("/") != -1 && displayStatusList.includes(entry.data.status))
 		.map((entry) => ({
 			params: { slug: entry.slug },
 			props: { entry },
@@ -61,13 +64,14 @@ const t = useTranslations(lang);
 			<div class="flex flex-wrap justify-center gap-8">
 				{
 					featureList?.map((feature) => (
-						<div class="flex-1 basis-80 max-w-sm bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
-							<div class="text-amber-400 mb-4">
-								<Icon name={`fa6-solid:${feature.icon}`} class="w-12 h-12" />
-							</div>
-							<h3 class="text-2xl font-semibold mb-3">{feature!.name}</h3>
-							<feature.Content />
-						</div>
+						<FeatureBox feature={feature} />
+						// <div class="flex-1 basis-80 max-w-sm bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
+						// 	<div class="text-amber-400 mb-4">
+						// 		<Icon name={`fa6-solid:${feature.icon}`} class="w-12 h-12" />
+						// 	</div>
+						// 	<h3 class="text-2xl font-semibold mb-3">{feature!.name}</h3>
+						// 	<feature.Content />
+						// </div>
 					))
 				}
 			</div>
