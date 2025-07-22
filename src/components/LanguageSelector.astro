@@ -59,16 +59,16 @@ const languageLinks = Object.entries(languages).map(([code, name]) => {
 
 	<div
 		id="languageMenu"
-		class="absolute top-full right-0 mt-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700"
+		class="absolute top-full right-0 mt-2 z-10 hidden bg-white divide-y divide-zinc-100 rounded-lg shadow-sm w-44 dark:bg-zinc-700"
 	>
 		<ul
-			class="py-2 text-sm text-gray-700 dark:text-gray-200"
+			class="py-2 text-sm text-zinc-700 dark:text-zinc-200"
 			aria-labelledby="dropdownDefaultButton"
 		>
 			{
 				languageLinks.map((link) => (
 					<li>
-						<a href={link.href} class="block px-4 py-2 hover:bg-gray-800">
+						<a href={link.href} class="block px-4 py-2 hover:bg-zinc-800">
 							{link.name}
 						</a>
 					</li>
