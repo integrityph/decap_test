@@ -25,8 +25,8 @@ For the purposes of this Privacy Policy:
 - **Account** means a unique account created for You to access our Service or parts of our Service.
 - **Affiliate** means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
 - **Application** refers to Tejory, the software program provided by the Company.
-- **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Integritynet, Integrity Net Building, Joseling Road, Batangas, 4200 Batangas.
-- **Country** refers to: Philippines
+- **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to KH Trading Group Inc., 5911 56TH Ave, Maspeth, New York 11378-2324.
+- **Country** refers to: United States of America
 - **Device** means any device that can access the Service such as a computer, a cellphone or a digital tablet.
 - **Personal Data** is any information that relates to an identified or identifiable individual.
 - **Service** refers to the Application.
@@ -147,4 +147,4 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 
 If you have any questions about this Privacy Policy, You can contact us:
 
-- By email: support@integritynet.ph
+- By email: support@khgroupinc.net
