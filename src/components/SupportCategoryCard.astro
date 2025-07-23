@@ -4,7 +4,7 @@ import { defaultLang } from "@/i18n/ui";
 const { category } = Astro.props;
 const lang = Astro.currentLocale || defaultLang;
 
-const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = '';
 const link = `${BASE_URL}/support/${category.slug}`;
 ---
 <div class="w-sm p-6 bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">

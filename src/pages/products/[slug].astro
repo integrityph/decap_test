@@ -35,7 +35,7 @@ const productList = products.filter(
 		product.slug.indexOf("/") != -1 && product.slug.split("/").includes(lang) && displayStatusList.includes(product.data.status),
 ).sort((a,b)=> (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
 
-const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = '';
 ---
 
 <Layout title={entry.data.name} lang={lang} slug={entry.slug}>
