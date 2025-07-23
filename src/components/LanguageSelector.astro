@@ -5,7 +5,7 @@ const { lang = defaultLang } = Astro.props;
 const langKey = lang as keyof typeof languages;
 
 const currentPath = Astro.url.pathname;
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = '';//import.meta.env.BASE_URL;
 
 const pathWithoutBase = baseUrl
 	? currentPath.replace(new RegExp(`^${baseUrl}`), "")
