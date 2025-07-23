@@ -28,14 +28,14 @@ const t = useTranslations(lang);
 		<div
 			dir="ltr"
 			class="tick w-full"
-			data-value="000000"
+			data-value="000"
 			data-did-init="startNumericCountdown"
 			data-credits="false"
 		>
 			<div
 				data-repeat="true"
 				data-layout="horizontal fit"
-				data-transform="round -> pad(000000) -> split -> delay(random, 100, 150)"
+				data-transform="round -> pad(000) -> split -> delay(random, 100, 150)"
 			>
 				<span
 					data-view="flip"
@@ -46,13 +46,20 @@ const t = useTranslations(lang);
 </div>
 
 <script is:inline>
-	let count = 123456;
-	function startNumericCountdown(tick) {
+	let count = 0;
+	async function startNumericCountdown(tick) {
+		count = await getCount();
 		tick.value = count;
-		setInterval(() => {
-			count += Math.round(Math.random() * 10);
+		setInterval(async () => {
+			count = await getCount();
 			tick.value = count;
-		}, 2000);
+		}, 3000);
+	}
+
+	async function getCount() {
+		let response = await fetch("https://ln.tejory.io/api/por/counter");
+		let counterObj = await response.json();
+		return counterObj.counter;
 	}
 </script>
 <script is:inline src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
