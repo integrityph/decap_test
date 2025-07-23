@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: twistedhardware/decap_test
+  repo: integrityph/decap_test
   branch: main
   base_url: https://oauth-crm.ngrok.io/
   auth_endpoint: /auth

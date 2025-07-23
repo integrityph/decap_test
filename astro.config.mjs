@@ -10,7 +10,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte(), icon()],
-  base: '/decap_test',
+  base: '',
 
   i18n: {
       routing: {

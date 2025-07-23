@@ -2,7 +2,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@font-face { font-family: ArabicUIDisplayBold; src: url('/decap_test/static/fonts/ArabicUIDisplayBold.otf'); }
+@font-face { font-family: ArabicUIDisplayBold; src: url('/static/fonts/ArabicUIDisplayBold.otf'); }
 
 @theme {
 	--color-discord: #5865F2;
