@@ -14,6 +14,17 @@ export async function getStaticPaths() {
 			props: { entry },
 		}));
 
+	// add custom path for apps page because it's hardcoded in the card
+	// as `tejory.io/apps.html`
+	pageEntries.filter((entry) => entry.slug == "en/apps").map((entry => {
+		finalList.push(
+			{
+				params: { slug: "apps.html" },
+				props: { entry },
+			}
+		);
+	}));
+
 	return finalList;
 }
 
