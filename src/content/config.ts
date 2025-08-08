@@ -27,6 +27,7 @@ const pagesCollection = defineCollection({
 		order: z.number().nullable().optional(),
 		top_components: z.array(z.string()).optional(),
 		bottom_components: z.array(z.string()).optional(),
+		features: z.array(z.string()).optional(),
   }).passthrough(),
 });
 

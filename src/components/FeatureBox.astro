@@ -2,11 +2,25 @@
 import { Icon } from "astro-icon/components";
 
 const { feature } = Astro.props;
+const iconList = feature.icon.split(",");
 ---
 
 <div class="flex-1 basis-80 max-w-sm bg-zinc-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
 	<div class="text-amber-400 mb-4">
-		<Icon name={`fa6-solid:${feature.icon}`} class="w-12 h-12" />
+		{
+			(feature.icon.indexOf(",")==-1) ? 
+			<Icon name={`fa6-solid:${feature.icon}`} class="w-13 h-13" />
+			:
+			<span class="inline-flex relative w-12 h-12 items-center justify-center">
+				<Icon name=`fa6-solid:${iconList[0]}` class="w-11 h-11 absolute" />
+				<Icon name=`fa6-solid:${iconList[1]}` class="w-13 h-13 absolute" />
+			</span>
+		}
+		<!-- <Icon name={`fa6-solid:${feature.icon}`} class="w-12 h-12" /> -->
+		<!-- <span class="inline-flex relative w-12 h-12 items-center justify-center">
+			<Icon name="fa6-solid:dollar-sign" class="w-12 h-12 absolute text-gray-600 dark:text-gray-400" />
+			<Icon name="fa6-solid:ban" class="w-12 h-12 absolute text-red-500" />
+		</span> -->
 	</div>
 	<h3 class="text-2xl font-semibold mb-3">{feature!.name}</h3>
 	<feature.Content />

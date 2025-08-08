@@ -1,7 +1,8 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Components from "@/components/Components.astro";
+import FeatureBox from "@/components/FeatureBox.astro";
 
 // This function tells Astro to build a page for every entry in your content collection
 export async function getStaticPaths() {
@@ -34,11 +35,36 @@ const { entry } = Astro.props;
 // Get the rendered HTML content from the markdown
 const { Content } = await entry.render();
 const lang = Astro.currentLocale;
+const featureList = (
+	await Promise.all(
+		entry.data.features?.map(async (featureSlug) => {
+			const fullSlug = `${lang}/${featureSlug}`;
+
+			const featureEntry = await getEntry("features", fullSlug);
+			if (!featureEntry) {
+				return;
+			}
+			const { Content } = await featureEntry.render();
+			return {
+				name: featureEntry.data.name,
+				Content: Content,
+				icon: featureEntry.data.custom_icon || featureEntry.data.icon,
+			};
+		}) ?? [],
+	)
+).filter((entry) => entry != null && entry != undefined);
 ---
 
 <Layout title={entry.data.name} lang={lang} slug={entry.slug}>
 	<Components components={entry.data.top_components} />
 	<main class="px-8 mt-8 max-w-7xl mx-auto">
+		<div class="flex flex-wrap justify-center gap-8">
+				{
+					featureList?.map((feature) => (
+						<FeatureBox feature={feature} />
+					))
+				}
+			</div>
 		<article>
 			<Content />
 		</article>

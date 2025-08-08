@@ -34,6 +34,8 @@ bottom_components:
 
 </div>
 
+![Tejory card on a black rock](/static/images/uploads/tejory-rock.jpeg)
+
 # Our Uncompromising Approach to Security
 
 At Tejory, security isn't a feature; it's the bedrock of our foundation. The heart of every Tejory Core wallet is a state-of-the-art EAL6+ certified Secure Element. This is not merely bank-grade security; it's the same class of tamper-resistant hardware trusted to protect critical data in national security and intelligence applications. This chip acts as an impenetrable vault for your private keys, providing physical and cryptographic protection against a sophisticated range of threats, from side-channel attacks to direct physical manipulation. Your digital assets are isolated within this fortified environment, ensuring they remain under your exclusive control, no matter the external risks.
