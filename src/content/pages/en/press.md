@@ -15,17 +15,7 @@ media@tejory.io
 
 ## Press Kit
 
-Download the press kit for our products. This kit includes:
-
-- Executive summary of KH Trading Group Inc
-- Product features and details
-- High resolution images of the product
-
-## Press Kits:
-
-- [Tejory Core](#)
-- [Tejory Business](#)
-- [Tejory Terminal](#)
-- [Tejory Edge](#)
+- <a href="/static/pdf/presskit-tejory-core.pdf" target="_blank">Tejory Core Factsheet (PDF, 1.3 MB)</a>
+- <a href="/static/zip/tejory-core.zip" target="_blank">Tejory Core Images (ZIP, 5.8 MB)</a>
 
 ## We Have Been Features on:
