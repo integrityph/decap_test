@@ -1,6 +1,6 @@
 ---
 title: Lightning Network
-name: Lowest Fees of Lightning
+name: Lowest Fees for Lightning
 icon: bolt-lightning
 custom_icon: ''
 ---

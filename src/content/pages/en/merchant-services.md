@@ -11,6 +11,7 @@ features:
   - instant-payments
 top_components:
   - hero
+  - merchant-fees
 bottom_components: []
 ---
 # Merchant Services
