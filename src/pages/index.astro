@@ -12,9 +12,7 @@ const featureList = ["lightning-network", "slim-discreet-design", "swaps"];
 
 const features = await getCollection("features");
 const articles = await getCollection("home_page_articles");
-// features.map((entry) => {
-// 	console.log(`entry.slug: ${entry.slug}`)
-// });
+
 const displayFeatures = await Promise.all(
   features
     .filter((entry) => featureList.includes(entry.slug.split("/")[1]) && entry.slug.split("/").includes(lang))
