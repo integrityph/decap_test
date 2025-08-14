@@ -14,7 +14,7 @@ bottom_components:
 
 <div class="feature-box">
 <div class="text-amber-400 mb-4"> <svg width="0.88em" height="1em" class="w-12 h-12" data-icon="fa6-solid:lock">   <symbol id="ai:fa6-solid:lock" viewBox="0 0 448 512"><path fill="currentColor" d="M144 144v48h160v-48c0-44.2-35.8-80-80-80s-80 35.8-80 80m-64 48v-48C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64v192c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64z"></path></symbol><use href="#ai:fa6-solid:lock"></use>  </svg> </div>
-<h3>مطابق لمعايير EAL6+</h3><p>في قلب كل محفظة تجوري شريحة آمنة (Secure Element) معتمد لمعايير EAL6+</p>
+<h3>مطابقة لمعايير EAL6+</h3><p>في قلب كل محفظة تجوري شريحة آمنة (Secure Element) معتمدة لمعايير EAL6+</p>
 </div>
 
 <div class="feature-box">
