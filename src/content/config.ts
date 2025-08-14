@@ -101,6 +101,7 @@ const homePagArticlesCollection = defineCollection({
     name: z.string(),
 		link: z.string(),
 		image: z.string(),
+		order: z.number(),
   }),
 });
 

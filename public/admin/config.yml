@@ -229,4 +229,5 @@ collections:
       - {name: "name", label: "Name", widget: "string", i18n: true}
       - {name: "image", label: "Image", widget: "image", i18n: duplicate}
       - {name: "link", label: "Link", widget: "string", i18n: duplicate}
+      - {name: "order", label: "order", widget: "number", i18n: duplicate}
       - {name: 'body', label: 'Main Content', widget: 'markdown', i18n: true}
