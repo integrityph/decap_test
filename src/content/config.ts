@@ -95,6 +95,15 @@ const supportCategoriesCollection = defineCollection({
   }),
 });
 
+const homePagArticlesCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    name: z.string(),
+		link: z.string(),
+		image: z.string(),
+  }),
+});
+
 // Export a `collections` object to register your new 'blog' collection
 export const collections = {
   blog: blogCollection,
@@ -104,4 +113,5 @@ export const collections = {
 	features: featuresCollection,
 	support_articles: supportArticlesCollection,
 	support_categories: supportCategoriesCollection,
+	home_page_articles: homePagArticlesCollection,
 };

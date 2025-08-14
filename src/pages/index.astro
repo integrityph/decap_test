@@ -4,12 +4,14 @@ import Hero from '@/components/Hero.astro';
 import { useTranslations } from '@/i18n/utils';
 import { getCollection } from 'astro:content';
 import FeatureBox from '@/components/FeatureBox.astro';
+import HomePageCard from '@/components/HomePageCard.astro';
 const { lang="en" } = Astro.props;
 const t = useTranslations(lang);
 
 const featureList = ["lightning-network", "slim-discreet-design", "swaps"];
 
 const features = await getCollection("features");
+const articles = await getCollection("home_page_articles");
 // features.map((entry) => {
 // 	console.log(`entry.slug: ${entry.slug}`)
 // });
@@ -26,9 +28,19 @@ const displayFeatures = await Promise.all(
     })
 );
 
-// displayFeatures.map((entry) => {
-// 	console.log(`displayFeatures entry.name: ${entry.name}`)
-// });
+const displayArticles = await Promise.all(
+  articles
+    .filter((entry) => entry.slug.split("/").includes(lang))
+    .map(async (entry) => {
+      const { Content } = await entry.render();
+      return {
+        name: entry.data.name,
+        image: entry.data.image,
+				link: entry.data.link,
+        Content: Content,
+      };
+    })
+);
 ---
 <Layout lang={lang} >
 	<Hero />
@@ -41,67 +53,11 @@ const displayFeatures = await Promise.all(
 		}
 		</div>
 		<div class="mt-8 space-y-8">
-
-			<div class="flex flex-col items-center bg-white border border-zinc-200 rounded-lg shadow-sm md:flex-row hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700">
-				<!-- <div class="w-full h-96 md:h-72 md:w-1/2 overflow-hidden md:rounded-none md:rounded-s-lg">
-        	<img class="object-cover w-full h-full" src="/static/images/uploads/image-removebg-preview.png" alt="Tejory core card">
-    		</div> -->
-				<div class="w-full h-96  md:w-2/5 md:flex-shrink-0 overflow-hidden md:rounded-none md:rounded-s-lg">
-        	<img class="object-cover w-full h-full" src="/static/images/uploads/image-removebg-preview.png" alt="A crypto payment terminal">
-    		</div>
-
-				<!-- <div class="flex flex-col justify-between p-4 leading-normal">
-					<h2 class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">Tejory Core</h2>
-					<p class="mb-3 font-normal text-zinc-700 dark:text-zinc-400">You assets deserve better! Lock your crypto in a cold storage that secures your them and gives you long term peace of mind.</p>
-					<a href="/products/en/tejory-core" class="mt-8 w-fit text-amber-100 bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Learn More</a>
-				</div> -->
-				<div class="flex flex-col justify-between p-4 leading-normal">
-					<h2 class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">Tejory Core</h2>
-					<p class="mb-3 font-normal text-zinc-700 dark:text-zinc-400">You assets deserve better! Lock your crypto in a cold storage that secures your them and gives you long term peace of mind.</p>
-					<a href=`/products/${lang}/tejory-core` class="mt-8 w-fit text-amber-100 bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Learn More</a>
-    		</div>
-			</div>
-
-			<div class="flex flex-col items-center bg-white border border-zinc-200 rounded-lg shadow-sm md:flex-row hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700">
-				<!-- <div class="w-full h-96 md:h-72 md:w-1/2 overflow-hidden md:rounded-none md:rounded-s-lg">
-        	<img class="object-cover w-full h-full" src="/static/images/uploads/image-removebg-preview.png" alt="A crypto payment terminal">
-    		</div> -->
-				<div class="w-full h-96  md:w-2/5 md:flex-shrink-0 overflow-hidden md:rounded-none md:rounded-s-lg">
-        	<img class="object-cover w-full h-full" src="/static/images/uploads/tejory-terminal.png" alt="A crypto payment terminal">
-    		</div>
-
-				<!-- <div class="flex flex-col justify-between p-4 leading-normal">
-					<h2 class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">Merchant Terminal</h2>
-					<p class="mb-3 font-normal text-zinc-700 dark:text-zinc-400">Accept crypto payments now. No setup, you can start now!. Accept crypto payments now. No setup, you can start now!, Accept crypto payments now. No setup, you can start now!</p>
-					<a href="/products/en/tejory-core" class="mt-8 w-fit text-amber-100 bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Learn More</a>
-				</div> -->
-				<div class="flex flex-col justify-between p-4 leading-normal">
-					<h2 class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">Merchant Services</h2>
-					<p class="mb-3 font-normal text-zinc-700 dark:text-zinc-400">Accept crypto payments now. No setup, you can start now!</p>
-					<a href=`/products/${lang}/merchant-services` class="mt-8 w-fit text-amber-100 bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Learn More</a>
-    		</div>
-			</div>
-
-			<div class="flex flex-col items-center bg-white border border-zinc-200 rounded-lg shadow-sm md:flex-row hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700">
-				<!-- <div class="w-full h-96 md:h-72 md:w-1/2 overflow-hidden md:rounded-none md:rounded-s-lg">
-        	<img class="object-cover w-full h-full" src="/static/images/uploads/tejory-rock.jpeg" alt="A card on a black rock">
-    		</div> -->
-				<div class="w-full h-96 md:w-2/5 md:flex-shrink-0 overflow-hidden md:rounded-none md:rounded-s-lg">
-        	<img class="object-cover w-full h-full" src="/static/images/uploads/tejory-rock.jpeg" alt="A crypto payment terminal">
-    		</div>
-
-				<!-- <div class="flex flex-col justify-between p-4 leading-normal">
-					<h2 class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">Rock Solid Security</h2>
-					<p class="mb-3 font-normal text-zinc-700 dark:text-zinc-400">EAL6+ certifies secure element, post-quantum cryptography, open source and 3rd-part audited.</p>
-					<a href="/products/en/tejory-core" class="mt-8 w-fit text-amber-100 bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Learn More</a>
-				</div> -->
-				<div class="flex flex-col justify-between p-4 leading-normal">
-					<h2 class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">Rock Solid Security</h2>
-					<p class="mb-3 font-normal text-zinc-700 dark:text-zinc-400">EAL6+ certifies secure element, post-quantum cryptography, open source and 3rd-part audited.</p>
-					<a href=`/{lang}/security` class="mt-8 w-fit text-amber-100 bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Learn More</a>
-    		</div>
-			</div>
-			
+			{
+				displayArticles.map(article => (
+					<HomePageCard article={article} />
+				))
+			}
 		</div>
 	</main>
 </Layout>

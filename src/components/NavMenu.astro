@@ -87,8 +87,8 @@ const currentPage = Astro.url.pathname;
 			>
 				{
 					menuPages.map((page) => {
-						const linkPath = `${BASE_URL}/${page.slug}/`;
-						const isActive = linkPath === currentPage;
+						const linkPath = `${BASE_URL}/${page.slug}`;
+						const isActive = currentPage.startsWith(linkPath);
 						return (
 							isActive ?
 							<li order-by={page.order} class="md:border-b-2 md:pb-1 md:border-zinc-300">
