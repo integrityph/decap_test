@@ -1,33 +1,38 @@
 ---
+import { defaultLang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const lang = Astro.currentLocale || defaultLang;
+const t = useTranslations(lang);
 ---
 <div class="px-8 max-w-7xl mx-auto">
-	<div class="mx-auto bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
-			<div id="fullWidthTabContent" class="border-t border-zinc-200 dark:border-zinc-600 rounded-lg">
+	<div class="mx-auto bg-white rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
+			<div id="fullWidthTabContent" class="dark:border-zinc-600 rounded-lg">
 					<div class="p-4 bg-white rounded-lg md:p-8 dark:bg-zinc-800" id="stats" role="tabpanel" aria-labelledby="stats-tab">
 							<dl class="grid max-w-screen-xl grid-cols-2 gap-x-0 gap-y-4 p-2 mx-auto text-zinc-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-amber-400 sm:p-8">
 									<div class="flex flex-col items-center justify-center">
 											<dt class="mb-2 text-3xl font-extrabold">$0.00</dt>
-											<dd class="text-zinc-500 dark:text-zinc-400">Setup Fees</dd>
+											<dd class="text-zinc-500 dark:text-zinc-400">{t("setupFees")}</dd>
 									</div>
 									<div class="flex flex-col items-center justify-center">
 											<dt class="mb-2 text-3xl font-extrabold">$0.00</dt>
-											<dd class="text-zinc-500 dark:text-zinc-400">Monthly Fees</dd>
+											<dd class="text-zinc-500 dark:text-zinc-400">{t("monthlyFees")}</dd>
 									</div>
 									<div class="flex flex-col items-center justify-center">
-											<dt class="mb-2 text-3xl font-extrabold">Free</dt>
-											<dd class="text-zinc-500 dark:text-zinc-400">Terminal App</dd>
+											<dt class="mb-2 text-3xl font-extrabold">{t("free")}</dt>
+											<dd class="text-zinc-500 dark:text-zinc-400">{t("terminalApp")}</dd>
 									</div>
 									<div class="flex flex-col items-center justify-center">
-											<dt class="mb-2 text-3xl font-extrabold">Unlimited</dt>
-											<dd class="text-zinc-500 dark:text-zinc-400">Invoices</dd>
+											<dt class="mb-2 text-3xl font-extrabold">{t("unlimited")}</dt>
+											<dd class="text-zinc-500 dark:text-zinc-400">{t("invoices")}</dd>
 									</div>
 									<div class="flex flex-col items-center justify-center">
 											<dt class="mb-2 text-3xl font-extrabold">&lt; 60s</dt>
-											<dd class="text-zinc-500 dark:text-zinc-400">Settlement Time</dd>
+											<dd class="text-zinc-500 dark:text-zinc-400">{t("settlementTime")}</dd>
 									</div>
 									<div class="flex flex-col items-center justify-center">
 											<dt class="mb-2 text-xl font-extrabold">2.9% + 100 sats</dt>
-											<dd class="text-zinc-500 dark:text-zinc-400">Processing Fee</dd>
+											<dd class="text-zinc-500 dark:text-zinc-400">{t("processingFee")}</dd>
 									</div>
 							</dl>
 					</div>
