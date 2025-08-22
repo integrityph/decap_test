@@ -1,0 +1,45 @@
+---
+import { getT } from "@/i18n/t";
+import { defaultLang } from "@/i18n/ui";
+const lang = Astro.currentLocale || defaultLang;
+
+const t = getT(lang);
+---
+<div class="max-w-6xl mx-auto">
+	<div class="flex h-auto flex-col md:flex-row md:h-calc1 pt-16 gap-x-16">
+		<div class="w-full px-5 md:px-0 mb-8 md:mb-0 text-zinc-900 dark:text-white flex flex-col h-auto gap-1">
+			<div>
+				<h1 class="text-xl md:text-5xl font-bold">{t("feedbackAndSuggestions")}</h1>
+				<p class="pt-2 text-sm md:pt-4 md:text-lg text-justify">{t("weValueYourFeedbackAndAreContinuouslyWorkingToImproveTejoryYourInputIsCrucialInShapingTheFutureOfTejory")}</p>
+			</div>
+			<div class="flex flex-col justify-around pt-2 md:pt-5">
+				<p class="text-sm md:text-lg">{t("emailCallOrCompleteTheFormToLearnHowTejoryCanSolveYourProblem")}</p>
+				<p class="text-sm pt-2 md:text-lg md:pt-5">support@tejory.io</p>
+				<p class="text-sm pt-2 md:text-lg md:pt-5">+123 456 789</p>
+			</div>
+		</div>
+		<div class="w-full max-w-128 h-auto p-5 pt-0 md:h-full md:p-0 flex items-center">
+			<form class="w-full">
+				<div class="mb-5">
+					<label for="base-input" class="block mb-2 text-sm font-medium text-zinc-900 dark:text-white">{t("name")}</label>
+					<input type="text" id="base-input" class="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+				</div>
+				<div class="mb-5">
+					<label for="base-input" class="block mb-2 text-sm font-medium text-zinc-900 dark:text-white">{t("emailAddress")}</label>
+					<input type="text" id="base-input" class="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+				</div>
+				<div class="mb-5">
+					<label for="base-input" class="block mb-2 text-sm font-medium text-zinc-900 dark:text-white">{t("phone")}</label>
+					<input type="text" id="base-input" class="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+				</div>
+				<div class="mb-5">
+					<label for="message" class="block mb-2 text-sm font-medium text-zinc-900 dark:text-white">{t("yourMessage")}</label>
+					<textarea id="message" rows="4" class="h-auto block p-2.5 w-full text-sm text-zinc-900 bg-zinc-50 rounded-lg border border-zinc-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={t("leaveAComment")} maxlength="20"></textarea>
+				</div>
+				<button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">
+					{t("sendMessage")}
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
