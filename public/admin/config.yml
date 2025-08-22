@@ -231,3 +231,14 @@ collections:
       - {name: "link", label: "Link", widget: "string", i18n: duplicate}
       - {name: "order", label: "order", widget: "number", i18n: duplicate}
       - {name: 'body', label: 'Main Content', widget: 'markdown', i18n: true}
+  - name: "road_map"
+    label: "Road Map"
+    i18n: true
+    folder: "src/content/road_map"
+    create: true
+    fields:
+      - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+      - {name: "name", label: "Name", widget: "string", i18n: true}
+      - {name: "date", label: "Date", widget: "string", required: true, i18n: duplicate}
+      - {name: "done", label: "Done", widget: "boolean", required: true, i18n: duplicate}
+      - {name: 'body', label: 'Main Content', widget: 'markdown', i18n: true}

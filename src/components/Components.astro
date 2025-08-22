@@ -5,6 +5,7 @@ import BuyNow from "./BuyNow.astro";
 import LiveChat from "./LiveChat.astro";
 import GithubRepoCard from "./GithubRepoCard.astro";
 import MerchantFees from "./MerchantFees.astro";
+import RoadMap from "./RoadMap.astro";
 
 interface Props {
   components?: string[];
@@ -30,6 +31,8 @@ const { components } = Astro.props;
 			</div>
 		case "merchant-fees":
 			return <MerchantFees />
+		case "road-map":
+			return <RoadMap />
 		default:
 			throw new Error(`Unknown component ${component}`)
 		}
