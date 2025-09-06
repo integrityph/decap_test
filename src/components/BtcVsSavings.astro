@@ -1,0 +1,356 @@
+---
+// src/components/BtcVsSavings.astro
+
+// Price data remains the same in the component's frontmatter
+const btcPriceDataRaw = [
+	{"2015-09": 236.06},
+	{"2015-10": 314.17},
+	{"2015-11": 377.32},
+	{"2015-12": 430.57},
+	{"2016-01": 368.77},
+	{"2016-02": 437.70},
+	{"2016-03": 416.73},
+	{"2016-04": 448.32},
+	{"2016-05": 531.39},
+	{"2016-06": 673.34},
+	{"2016-07": 624.68},
+	{"2016-08": 575.47},
+	{"2016-09": 609.73},
+	{"2016-10": 700.97},
+	{"2016-11": 745.69},
+	{"2016-12": 963.74},
+	{"2017-01": 970.40},
+	{"2017-02": 1179.97},
+	{"2017-03": 1071.79},
+	{"2017-04": 1347.89},
+	{"2017-05": 2286.41},
+	{"2017-06": 2480.84},
+	{"2017-07": 2875.34},
+	{"2017-08": 4703.39},
+	{"2017-09": 4338.71},
+	{"2017-10": 6468.40},
+	{"2017-11": 10233.60},
+	{"2017-12": 14156.40},
+	{"2018-01": 10221.10},
+	{"2018-02": 10397.90},
+	{"2018-03": 6973.53},
+	{"2018-04": 9240.55},
+	{"2018-05": 7494.17},
+	{"2018-06": 6404.00},
+	{"2018-07": 7780.44},
+	{"2018-08": 7037.58},
+	{"2018-09": 6625.56},
+	{"2018-10": 6317.61},
+	{"2018-11": 4017.27},
+	{"2018-12": 3742.70},
+	{"2019-01": 3457.79},
+	{"2019-02": 3854.79},
+	{"2019-03": 4105.40},
+	{"2019-04": 5350.73},
+	{"2019-05": 8574.50},
+	{"2019-06": 10817.16},
+	{"2019-07": 10085.63},
+	{"2019-08": 9630.66},
+	{"2019-09": 8293.87},
+	{"2019-10": 9199.58},
+	{"2019-11": 7569.63},
+	{"2019-12": 7193.60},
+	{"2020-01": 9350.53},
+	{"2020-02": 8599.51},
+	{"2020-03": 6438.64},
+	{"2020-04": 8658.55},
+	{"2020-05": 9461.06},
+	{"2020-06": 9137.99},
+	{"2020-07": 11323.47},
+	{"2020-08": 11680.82},
+	{"2020-09": 10784.49},
+	{"2020-10": 13781.00},
+	{"2020-11": 19625.84},
+	{"2020-12": 29001.72},
+	{"2021-01": 33114.36},
+	{"2021-02": 45137.77},
+	{"2021-03": 58918.83},
+	{"2021-04": 57750.18},
+	{"2021-05": 37332.86},
+	{"2021-06": 35040.84},
+	{"2021-07": 41626.20},
+	{"2021-08": 47166.69},
+	{"2021-09": 43790.89},
+	{"2021-10": 61318.96},
+	{"2021-11": 57005.43},
+	{"2021-12": 46306.45},
+	{"2022-01": 38483.13},
+	{"2022-02": 43193.23},
+	{"2022-03": 45538.68},
+	{"2022-04": 37714.88},
+	{"2022-05": 31792.31},
+	{"2022-06": 19784.73},
+	{"2022-07": 23336.90},
+	{"2022-08": 20049.76},
+	{"2022-09": 19431.79},
+	{"2022-10": 20495.77},
+	{"2022-11": 17168.57},
+	{"2022-12": 16547.50},
+	{"2023-01": 23139.28},
+	{"2023-02": 23147.35},
+	{"2023-03": 28478.48},
+	{"2023-04": 29268.81},
+	{"2023-05": 27219.66},
+	{"2023-06": 30477.25},
+	{"2023-07": 29230.11},
+	{"2023-08": 25931.47},
+	{"2023-09": 26967.92},
+	{"2023-10": 34667.78},
+	{"2023-11": 37712.75},
+	{"2023-12": 42265.19},
+	{"2024-01": 42582.61},
+	{"2024-02": 61198.38},
+	{"2024-03": 71333.65},
+	{"2024-04": 60636.86},
+	{"2024-05": 67491.41},
+	{"2024-06": 62678.29},
+	{"2024-07": 64619.25},
+	{"2024-08": 58969.90},
+	{"2024-09": 63329.50},
+	{"2024-10": 70215.19},
+	{"2024-11": 96449.05},
+	{"2024-12": 93429.20},
+	{"2025-01": 102405.02},
+	{"2025-02": 84373.01},
+	{"2025-03": 82548.91},
+	{"2025-04": 94207.31},
+	{"2025-05": 104638.09},
+	{"2025-06": 107135.34},
+	{"2025-07": 115758.20},
+	{"2025-08": 108236.71},
+	{"2025-09": 110723.60}
+];
+
+const formattedBtcData = btcPriceDataRaw.map(entry => {
+    const [date, price] = Object.entries(entry)[0];
+    return { date, price };
+});
+---
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="btc-vs-savings-container">
+  <h1>Bitcoin vs. Savings Account</h1>
+  <p>
+    Compare the growth of a fixed monthly saving amount invested in Bitcoin versus
+    a traditional savings account with a 4% annual interest rate.
+  </p>
+
+  <div class="interactive-section">
+    <div class="controls">
+      <div class="control-group">
+        <label for="monthly-saving">Monthly Saving ($)</label>
+        <input id="monthly-saving" type="number" value="1000" min="10" />
+      </div>
+      <div class="control-group">
+        <label>Saving Period</label>
+        <div class="button-group" id="period-buttons">
+          <button data-years="1">1 Year</button>
+          <button data-years="2">2 Years</button>
+          <button data-years="5">5 Years</button>
+					<button data-years="10" class="active">10 Years</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="totals">
+      <div class="total-card savings">
+        <p>Savings Account Final Value</p>
+        <span id="final-savings">$0.00</span>
+      </div>
+      <div class="total-card btc">
+        <p>Bitcoin Final Value</p>
+        <span id="final-btc">$0.00</span>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="savingsChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ btcPriceData: formattedBtcData }}>
+  // Get all the DOM elements we need to interact with
+  const monthlySavingInput = document.getElementById('monthly-saving');
+  const periodButtonsContainer = document.getElementById('period-buttons');
+  const finalSavingsEl = document.getElementById('final-savings');
+  const finalBtcEl = document.getElementById('final-btc');
+  const chartCanvas = document.getElementById('savingsChart').getContext('2d');
+  
+  let chartInstance = null; // A variable to hold our chart so we can update it
+  let currentPeriodInYears = 10; // Default period
+
+  // This is our main function to calculate data and update the UI
+  function updateChartAndTotals() {
+    const monthlySavings = Number(monthlySavingInput.value);
+    
+    // --- Calculation Logic (moved from Preact) ---
+    const totalMonths = currentPeriodInYears * 12;
+    const monthlyInterestRate = 0.04 / 12;
+    const historicalData = btcPriceData.slice(-totalMonths);
+    
+    let savingsTotal = 0;
+    let btcAmount = 0;
+    const labels = [];
+    const savingsDataPoints = [];
+    const btcDataPoints = [];
+
+    for (const record of historicalData) {
+      savingsTotal += monthlySavings;
+      savingsTotal *= (1 + monthlyInterestRate);
+      
+      const btcPrice = record.price;
+      const btcBought = monthlySavings / btcPrice;
+      btcAmount += btcBought;
+
+      labels.push(record.date);
+      savingsDataPoints.push(savingsTotal.toFixed(2));
+      btcDataPoints.push((btcAmount * btcPrice).toFixed(2));
+    }
+    
+    const finalSavings = savingsTotal;
+    const finalBtc = btcAmount * (historicalData[historicalData.length - 1]?.price || 0);
+
+    // --- Update the UI ---
+    finalSavingsEl.innerText = `$${finalSavings.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    finalBtcEl.innerText = `$${finalBtc.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+    // --- Update the Chart ---
+    // If a chart already exists, destroy it before creating a new one
+    if (chartInstance) {
+      chartInstance.destroy();
+    }
+    
+    chartInstance = new Chart(chartCanvas, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Bitcoin (BTC)',
+          data: btcDataPoints,
+          borderColor: 'rgb(249, 148, 28)',
+          backgroundColor: 'rgba(249, 148, 28, 0.5)',
+          tension: 0.1,
+        }, {
+          label: 'Savings Account (4% APY)',
+          data: savingsDataPoints,
+          borderColor: 'rgb(34, 197, 94)',
+          backgroundColor: 'rgba(34, 197, 94, 0.5)',
+          tension: 0.1,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Investment Growth Over Time' },
+        },
+        scales: {
+          y: { ticks: { callback: value => `$${value}` } }
+        }
+      }
+    });
+  }
+
+  // --- Event Listeners ---
+  monthlySavingInput.addEventListener('input', updateChartAndTotals);
+  
+  periodButtonsContainer.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
+      // Remove 'active' class from all buttons
+      periodButtonsContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+      // Add 'active' class to the clicked button
+      e.target.classList.add('active');
+      
+      currentPeriodInYears = Number(e.target.dataset.years);
+      updateChartAndTotals();
+    }
+  });
+
+  // Initial call to draw the chart when the page loads
+  document.addEventListener('DOMContentLoaded', updateChartAndTotals);
+</script>
+
+<style>
+  /* --- Main Container --- */
+  .btc-vs-savings-container { 
+    font-family: system-ui, sans-serif; 
+    background: oklch(27.4% 0.006 286.033); /* zinc-600 */
+    color: #ffffff; /* Default text color */
+    padding: 2rem; 
+    border-radius: 12px; 
+    max-width: 800px; 
+    margin: 2rem auto; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+  }
+
+  /* --- Typography --- */
+  h1 { 
+    color: #f59e0b; /* amber-400 */
+    margin-top: 0; 
+  }
+  p { 
+    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for body text */
+    line-height: 1.6; 
+  }
+
+  /* --- Controls --- */
+  .interactive-section { margin-top: 2rem; }
+  .controls { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .control-group { display: flex; flex-direction: column; }
+  .control-group label { 
+    margin-bottom: 0.5rem; 
+    font-size: 0.9rem; 
+    font-weight: 500; 
+    color: #d4d4d8; /* zinc-300 for labels */
+  }
+  .control-group input { 
+    padding: 0.5rem 0.75rem; 
+    border: 1px solid #71717a; /* zinc-500 */
+    background: oklch(21% 0.006 285.885); /* zinc-700 */
+    color: #ffffff;
+    border-radius: 6px; 
+    font-size: 1rem; 
+    width: 150px; 
+  }
+  .button-group { display: flex; }
+  .button-group button { 
+    padding: 0.5rem 1rem; 
+    border: 1px solid #71717a; /* zinc-500 */
+    background: oklch(21% 0.006 285.885); /* zinc-700 */
+    color: #e4e4e7; /* zinc-200 */
+    cursor: pointer; 
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s; 
+  }
+  .button-group button:first-child { border-radius: 6px 0 0 6px; }
+  .button-group button:last-child { border-radius: 0 6px 6px 0; }
+  
+  /* --- Active Button State --- */
+  .button-group button.active { 
+    background-color: #f59e0b; /* amber-400 */
+    color: oklch(21% 0.006 285.885); /* zinc-800 for high contrast */
+    border-color: #f59e0b; /* amber-400 */
+    font-weight: 600;
+  }
+
+  /* --- Totals Cards (Gradients unchanged, they look great on dark backgrounds) --- */
+  .totals { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .total-card { padding: 1.5rem; border-radius: 8px; color: white; }
+  .total-card.savings { background: linear-gradient(to right, #22c55e, #16a34a); }
+  .total-card.btc { background: linear-gradient(to right, #f97316, #ea580c); }
+  .total-card p { margin: 0 0 0.5rem 0; font-size: 1rem; opacity: 0.9; }
+  .total-card span { font-size: 2rem; font-weight: 700; }
+
+  /* --- Chart Container --- */
+  .chart-container { 
+    background: oklch(21% 0.006 285.885); /* zinc-800 */
+    padding: 1rem; 
+    border-radius: 8px; 
+  }
+</style>
