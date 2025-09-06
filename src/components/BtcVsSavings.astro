@@ -134,42 +134,51 @@ const formattedBtcData = btcPriceDataRaw.map(entry => {
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div class="btc-vs-savings-container">
-  <h1>Bitcoin vs. Savings Account</h1>
-  <p>
+<!-- Assumes Tailwind CSS is available in your project -->
+<div class="bg-zinc-800 font-sans text-white p-8 rounded-xl max-w-4xl my-8 mx-auto shadow-lg">
+  <h1 class="text-amber-400 text-3xl font-bold">Bitcoin vs. Savings Account</h1>
+  <p class="mt-2 text-zinc-200 leading-relaxed">
     Compare the growth of a fixed monthly saving amount invested in Bitcoin versus
     a traditional savings account with a 4% annual interest rate.
   </p>
 
-  <div class="interactive-section">
-    <div class="controls">
-      <div class="control-group">
-        <label for="monthly-saving">Monthly Saving ($)</label>
-        <input id="monthly-saving" type="number" value="1000" min="10" />
+  <div class="mt-8">
+    <!-- Controls -->
+    <div class="flex flex-wrap gap-8 mb-8">
+      <!-- Monthly Saving Input -->
+      <div class="flex flex-col">
+        <label for="monthly-saving" class="mb-2 text-sm font-medium text-zinc-300">Monthly Saving ($)</label>
+        <input id="monthly-saving" type="number" value="1000" min="10" class="p-2 w-40 bg-zinc-900 border border-zinc-500 rounded-md text-white placeholder-zinc-400 focus:ring-amber-400 focus:border-amber-400" />
       </div>
-      <div class="control-group">
-        <label>Saving Period</label>
-        <div class="button-group" id="period-buttons">
-          <button data-years="1">1 Year</button>
-          <button data-years="2">2 Years</button>
-          <button data-years="5">5 Years</button>
-					<button data-years="10" class="active">10 Years</button>
+      <!-- Period Buttons -->
+      <div class="flex flex-col">
+        <label class="mb-2 text-sm font-medium text-zinc-300">Saving Period</label>
+        <div id="period-buttons" class="flex">
+          <button data-years="1" class="py-2 px-4 border border-zinc-500 bg-zinc-900 text-zinc-200 hover:bg-zinc-600 transition-colors first:rounded-l-md">1 Year</button>
+          <button data-years="2" class="py-2 px-4 border-y border-r border-zinc-500 bg-zinc-900 text-zinc-200 hover:bg-zinc-600 transition-colors">2 Years</button>
+          <button data-years="5" class="py-2 px-4 border-y border-r border-zinc-500 bg-zinc-900 text-zinc-200 hover:bg-zinc-600 transition-colors">5 Years</button>
+          <!-- Note: The active button starts with the active classes -->
+          <button data-years="10" class="py-2 px-4 border border-amber-400 bg-amber-400 text-zinc-900 font-semibold transition-colors last:rounded-r-md">10 Years</button>
         </div>
       </div>
     </div>
 
-    <div class="totals">
-      <div class="total-card savings">
-        <p>Savings Account Final Value</p>
-        <span id="final-savings">$0.00</span>
+    <!-- Totals -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <!-- Savings Card -->
+      <div class="p-6 rounded-lg bg-gradient-to-r from-green-500 to-green-600">
+        <p class="opacity-90 mb-2">Savings Account Final Value</p>
+        <span id="final-savings" class="text-3xl font-bold">$0.00</span>
       </div>
-      <div class="total-card btc">
-        <p>Bitcoin Final Value</p>
-        <span id="final-btc">$0.00</span>
+      <!-- BTC Card -->
+      <div class="p-6 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600">
+        <p class="opacity-90 mb-2">Bitcoin Final Value</p>
+        <span id="final-btc" class="text-3xl font-bold">$0.00</span>
       </div>
     </div>
 
-    <div class="chart-container">
+    <!-- Chart -->
+    <div class="bg-zinc-900 p-4 h-96 rounded-lg">
       <canvas id="savingsChart"></canvas>
     </div>
   </div>
@@ -234,21 +243,30 @@ const formattedBtcData = btcPriceDataRaw.map(entry => {
         datasets: [{
           label: 'Bitcoin (BTC)',
           data: btcDataPoints,
+					pointRadius: 0,
+					pointHoverRadius: 5,
           borderColor: 'rgb(249, 148, 28)',
           backgroundColor: 'rgba(249, 148, 28, 0.5)',
           tension: 0.1,
         }, {
           label: 'Savings Account (4% APY)',
           data: savingsDataPoints,
+					pointRadius: 0,
+					pointHoverRadius: 5,
           borderColor: 'rgb(34, 197, 94)',
           backgroundColor: 'rgba(34, 197, 94, 0.5)',
           tension: 0.1,
         }]
       },
       options: {
+				maintainAspectRatio: false,
         responsive: true,
+				interaction: {
+					mode: 'index', // <-- Tells the tooltip to find all items at the same x-axis point
+					intersect: false, // <-- Makes the tooltip appear even if you aren't directly over the line
+				},
         plugins: {
-          legend: { position: 'top' },
+          legend: { position: 'bottom' },
           title: { display: true, text: 'Investment Growth Over Time' },
         },
         scales: {
@@ -276,81 +294,3 @@ const formattedBtcData = btcPriceDataRaw.map(entry => {
   // Initial call to draw the chart when the page loads
   document.addEventListener('DOMContentLoaded', updateChartAndTotals);
 </script>
-
-<style>
-  /* --- Main Container --- */
-  .btc-vs-savings-container { 
-    font-family: system-ui, sans-serif; 
-    background: oklch(27.4% 0.006 286.033); /* zinc-600 */
-    color: #ffffff; /* Default text color */
-    padding: 2rem; 
-    border-radius: 12px; 
-    max-width: 800px; 
-    margin: 2rem auto; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
-  }
-
-  /* --- Typography --- */
-  h1 { 
-    color: #f59e0b; /* amber-400 */
-    margin-top: 0; 
-  }
-  p { 
-    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for body text */
-    line-height: 1.6; 
-  }
-
-  /* --- Controls --- */
-  .interactive-section { margin-top: 2rem; }
-  .controls { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
-  .control-group { display: flex; flex-direction: column; }
-  .control-group label { 
-    margin-bottom: 0.5rem; 
-    font-size: 0.9rem; 
-    font-weight: 500; 
-    color: #d4d4d8; /* zinc-300 for labels */
-  }
-  .control-group input { 
-    padding: 0.5rem 0.75rem; 
-    border: 1px solid #71717a; /* zinc-500 */
-    background: oklch(21% 0.006 285.885); /* zinc-700 */
-    color: #ffffff;
-    border-radius: 6px; 
-    font-size: 1rem; 
-    width: 150px; 
-  }
-  .button-group { display: flex; }
-  .button-group button { 
-    padding: 0.5rem 1rem; 
-    border: 1px solid #71717a; /* zinc-500 */
-    background: oklch(21% 0.006 285.885); /* zinc-700 */
-    color: #e4e4e7; /* zinc-200 */
-    cursor: pointer; 
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s; 
-  }
-  .button-group button:first-child { border-radius: 6px 0 0 6px; }
-  .button-group button:last-child { border-radius: 0 6px 6px 0; }
-  
-  /* --- Active Button State --- */
-  .button-group button.active { 
-    background-color: #f59e0b; /* amber-400 */
-    color: oklch(21% 0.006 285.885); /* zinc-800 for high contrast */
-    border-color: #f59e0b; /* amber-400 */
-    font-weight: 600;
-  }
-
-  /* --- Totals Cards (Gradients unchanged, they look great on dark backgrounds) --- */
-  .totals { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
-  .total-card { padding: 1.5rem; border-radius: 8px; color: white; }
-  .total-card.savings { background: linear-gradient(to right, #22c55e, #16a34a); }
-  .total-card.btc { background: linear-gradient(to right, #f97316, #ea580c); }
-  .total-card p { margin: 0 0 0.5rem 0; font-size: 1rem; opacity: 0.9; }
-  .total-card span { font-size: 2rem; font-weight: 700; }
-
-  /* --- Chart Container --- */
-  .chart-container { 
-    background: oklch(21% 0.006 285.885); /* zinc-800 */
-    padding: 1rem; 
-    border-radius: 8px; 
-  }
-</style>
