@@ -60,3 +60,7 @@ article ul {
 article p {
 	@apply py-8 text-justify
 }
+
+.faq ul {
+	@apply list-disc list-outside ps-5 space-y-4
+}
