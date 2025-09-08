@@ -2,15 +2,69 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@font-face { font-family: ArabicUIDisplayBold; src: url('/static/fonts/ArabicUIDisplayBold.otf'); }
+@font-face {
+  font-family: 'Arabic UIDisplay';
+  src: url('/static/fonts/ArabicUIDisplayUltraLight.otf');
+  font-weight: 200;
+  font-display: swap;
+}
+
+/* Regular (Weight 400) */
+@font-face {
+  font-family: 'Arabic UIDisplay';
+  src: url('/static/fonts/ArabicUIDisplay.otf');
+  font-weight: 400; /* 'normal' */
+  font-display: swap;
+}
+
+/* Medium (Weight 500) */
+@font-face {
+  font-family: 'Arabic UIDisplay';
+  src: url('/static/fonts/ArabicUIDisplayMedium.otf');
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* SemiBold (Weight 600) */
+@font-face {
+  font-family: 'Arabic UIDisplay';
+  src: url('/static/fonts/ArabicUIDisplaySemiBold.otf');
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* Bold (Weight 700) */
+@font-face {
+  font-family: 'Arabic UIDisplay';
+  src: url('/static/fonts/ArabicUIDisplayBold.otf');
+  font-weight: 700; /* 'bold' */
+  font-display: swap;
+}
+
+/* Heavy (Weight 800) */
+@font-face {
+  font-family: 'Arabic UIDisplay';
+  src: url('/static/fonts/ArabicUIDisplayHeavy.otf');
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* Black (Weight 900) */
+@font-face {
+  font-family: 'Arabic UIDisplay';
+  src: url('/static/fonts/ArabicUIDisplayBlack.otf');
+  font-weight: 900;
+  font-display: swap;
+}
 
 @theme {
 	--color-discord: #5865F2;
 }
 
 html[lang="ar"] {
-  font-family: 'ArabicUIDisplayBold', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  font-family: 'Arabic UIDisplay', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
+
 
 body {
 	@apply bg-black text-white
@@ -63,4 +117,8 @@ article p {
 
 .faq ul {
 	@apply list-disc list-outside ps-5 space-y-4
+}
+
+.faq strong {
+	@apply text-amber-400
 }
