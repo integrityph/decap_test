@@ -154,9 +154,9 @@ const formattedBtcData = btcPriceDataRaw.map(entry => {
       <div class="flex flex-col">
         <label class="mb-2 text-sm font-medium text-zinc-300">Saving Period</label>
         <div id="period-buttons" class="flex">
-          <button data-years="1" class="py-2 px-4 border border-zinc-500 bg-zinc-900 text-zinc-200 transition-colors cursor-pointer first:rounded-l-md">1 Year</button>
-          <button data-years="2" class="py-2 px-4 border-y border-r border-zinc-500 bg-zinc-900 text-zinc-200 cursor-pointer transition-colors">2 Years</button>
-          <button data-years="5" class="py-2 px-4 border-y border-r border-zinc-500 bg-zinc-900 text-zinc-200 cursor-pointer transition-colors">5 Years</button>
+          <button data-years="1" class="py-2 px-4 border border-zinc-500 bg-zinc-900 hover:bg-zinc-600 text-zinc-200 transition-colors cursor-pointer first:rounded-l-md">1 Year</button>
+          <button data-years="2" class="py-2 px-4 border-y border-r border-zinc-500 bg-zinc-900 hover:bg-zinc-600 text-zinc-200 cursor-pointer transition-colors">2 Years</button>
+          <button data-years="5" class="py-2 px-4 border-y border-r border-zinc-500 bg-zinc-900 hover:bg-zinc-600 text-zinc-200 cursor-pointer transition-colors">5 Years</button>
           <button data-years="10" class="py-2 px-4 border border-amber-400 bg-amber-400 text-zinc-900 font-semibold transition-colors cursor-pointer last:rounded-r-md">10 Years</button>
         </div>
       </div>
@@ -278,7 +278,7 @@ const formattedBtcData = btcPriceDataRaw.map(entry => {
   monthlySavingInput.addEventListener('input', updateChartAndTotals);
   
   const activeClasses = ['bg-amber-400', 'text-zinc-900', 'border-amber-400', 'font-semibold'];
-  const inactiveClasses = ['bg-zinc-900', 'text-zinc-200', 'border-zinc-500'];
+  const inactiveClasses = ['bg-zinc-900', 'text-zinc-200', 'border-zinc-500', 'hover:bg-zinc-600'];
 
   periodButtonsContainer.addEventListener('click', (e) => {
     // Make sure we actually clicked a button
