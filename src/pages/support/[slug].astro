@@ -7,6 +7,7 @@ import { useTranslations } from "@/i18n/utils";
 import SupportArticleCard from "@/components/SupportArticleCard.astro";
 import SupportCategoryCard from "@/components/SupportCategoryCard.astro";
 import LiveChat from "@/components/LiveChat.astro";
+import FAQ from "@/components/FAQ.astro";
 
 const lang = Astro.currentLocale || defaultLang;
 const t = useTranslations(lang);
@@ -149,6 +150,7 @@ const articleCategories = (await getCollection("support_categories")).filter((ca
 					))
 				}
 			</div>
+			<FAQ />
 		</div>
 	</main>
 	<LiveChat />

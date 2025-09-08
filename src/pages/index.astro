@@ -5,6 +5,7 @@ import { useTranslations } from '@/i18n/utils';
 import { getCollection } from 'astro:content';
 import FeatureBox from '@/components/FeatureBox.astro';
 import HomePageCard from '@/components/HomePageCard.astro';
+import FAQ from '@/components/FAQ.astro';
 const { lang="en" } = Astro.props;
 const t = useTranslations(lang);
 
@@ -57,6 +58,9 @@ const displayArticles = await Promise.all(
 					<HomePageCard article={article} />
 				))
 			}
+		</div>
+		<div class="mt-8">
+			<FAQ />
 		</div>
 	</main>
 </Layout>

@@ -114,6 +114,14 @@ const roadMapCollection = defineCollection({
   }),
 });
 
+const faqCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    question: z.string(),
+		order: z.number(),
+  }),
+});
+
 // Export a `collections` object to register your new 'blog' collection
 export const collections = {
   blog: blogCollection,
@@ -125,4 +133,5 @@ export const collections = {
 	support_categories: supportCategoriesCollection,
 	home_page_articles: homePagArticlesCollection,
 	road_map: roadMapCollection,
+	faq: faqCollection,
 };

@@ -8,6 +8,7 @@ import MerchantFees from "./MerchantFees.astro";
 import RoadMap from "./RoadMap.astro";
 import ContactUs from "./ContactUs.astro";
 import BtcVsSavings from './BtcVsSavings.astro';
+import FAQ from './FAQ.astro';
 
 interface Props {
   components?: string[];
@@ -39,6 +40,8 @@ const { components } = Astro.props;
 			return <ContactUs />
 		case "btc-saving":
 			return <BtcVsSavings />
+		case "faq":
+			return <FAQ />
 		default:
 			throw new Error(`Unknown component ${component}`)
 		}
