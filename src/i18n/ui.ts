@@ -58,7 +58,8 @@ export const ui = {
 		'yourMessage':'Your message',
 		'sendMessage':'Send Message',
 		'leaveAComment':'Leave a comment...',
-		'faq':"FAQ",
+		'faq':'FAQ',
+		'tejoryPOS':'Tejory POS',
   },
   ar: {
     'keyFeaturesOf': 'المميزات الرئيسية ل',
@@ -112,6 +113,7 @@ export const ui = {
 		'yourMessage':'الرسالة',
 		'sendMessage':'أرسل',
 		'leaveAComment':'إكتب رسالتك...',
-		'faq':"الأسئلة الشائعة",
+		'faq':'الأسئلة الشائعة',
+		'tejoryPOS':'تحوري نقاط البيع',
 	}
 } as const;

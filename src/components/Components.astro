@@ -30,7 +30,7 @@ const { components } = Astro.props;
 			return <LiveChat />
 		case "repo-app":
 			return <div class="flex gap-x-2 justify-center">
-				<GithubRepoCard repo="integrityph/tejory-app" />
+				<GithubRepoCard repoList={["integrityph/tejory-app","integrityph/boringssl_ffi"]} />
 			</div>
 		case "merchant-fees":
 			return <MerchantFees />

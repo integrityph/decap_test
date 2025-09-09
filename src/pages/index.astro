@@ -9,7 +9,7 @@ import FAQ from '@/components/FAQ.astro';
 const { lang="en" } = Astro.props;
 const t = useTranslations(lang);
 
-const featureList = ["lightning-network", "slim-discreet-design", "swaps"];
+const featureList = ["lightning-network", "your-identity-remains-private", "swaps"];
 
 const features = await getCollection("features");
 const articles = await getCollection("home_page_articles");

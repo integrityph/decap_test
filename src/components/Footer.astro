@@ -1,11 +1,10 @@
 ---
-import { getT } from '@/i18n/t'
+import { getT } from "@/i18n/t";
 const lang = Astro.currentLocale;
 const t = getT(lang);
 
-
 const year = new Date().getFullYear();
-const BASE_URL = '';
+const BASE_URL = "";
 ---
 
 <footer class="bg-zinc-900 mt-16">
@@ -22,17 +21,19 @@ const BASE_URL = '';
 			</div>
 			<div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
 				<div>
-					<h5
-						class="pb-4 text-sm font-semibold text-gray-200 uppercase"
-					>
+					<h5 class="pb-4 text-sm font-semibold text-gray-200 uppercase">
 						{t("resources")}
 					</h5>
 					<ul class="text-gray-500 font-medium">
 						<li class="mb-4">
-							<a href=`${BASE_URL}/${lang}/apps` class="hover:underline">{t("apps")}</a>
+							<a href=`${BASE_URL}/${lang}/apps` class="hover:underline"
+								>{t("apps")}</a
+							>
 						</li>
 						<li class="mb-4">
-							<a href=`${BASE_URL}/${lang}/road-map` class="hover:underline">{t("roadMap")}</a>
+							<a href=`${BASE_URL}/${lang}/road-map` class="hover:underline"
+								>{t("roadMap")}</a
+							>
 						</li>
 						<li>
 							<a href=`${BASE_URL}/${lang}/contact-us` class="hover:underline"
@@ -42,9 +43,7 @@ const BASE_URL = '';
 					</ul>
 				</div>
 				<div>
-					<h5
-						class="pb-4 text-sm font-semibold text-gray-200 uppercase"
-					>
+					<h5 class="pb-4 text-sm font-semibold text-gray-200 uppercase">
 						{t("forBusiness")}
 					</h5>
 					<ul class="text-gray-500 font-medium">
@@ -54,28 +53,41 @@ const BASE_URL = '';
 								class="hover:underline">{t("merchantServices")}</a
 							>
 						</li>
-						<li>
+						<li class="mb-4">
 							<a href=`${BASE_URL}/${lang}/co-branding` class="hover:underline"
 								>{t("coBranding")}</a
+							>
+						</li>
+						<li>
+							<a
+								href="https://integrityph.github.io/tejory-merchant/"
+								target="_blank"
+								class="hover:underline">{t("tejoryPOS")}</a
 							>
 						</li>
 					</ul>
 				</div>
 				<div>
-					<h5
-						class="pb-4 text-sm font-semibold text-gray-200 uppercase"
-					>
+					<h5 class="pb-4 text-sm font-semibold text-gray-200 uppercase">
 						{t("legal")}
 					</h5>
 					<ul class="text-gray-500 font-medium">
 						<li class="mb-4">
-							<a href=`${BASE_URL}/${lang}/privacy-policy` class="hover:underline">{t("privacyPolicy")}</a>
+							<a
+								href=`${BASE_URL}/${lang}/privacy-policy`
+								class="hover:underline">{t("privacyPolicy")}</a
+							>
 						</li>
 						<li class="mb-4">
-							<a href=`${BASE_URL}/${lang}/terms-of-service` class="hover:underline">{t("termsOfService")}</a>
+							<a
+								href=`${BASE_URL}/${lang}/terms-of-service`
+								class="hover:underline">{t("termsOfService")}</a
+							>
 						</li>
 						<li>
-							<a href=`${BASE_URL}/${lang}/disclaimer` class="hover:underline">{t("disclaimer")}</a>
+							<a href=`${BASE_URL}/${lang}/disclaimer` class="hover:underline"
+								>{t("disclaimer")}</a
+							>
 						</li>
 					</ul>
 				</div>
@@ -86,7 +98,8 @@ const BASE_URL = '';
 				>© {year}
 				<a href="https://khgroupinc.net/" class="text-white hover:underline"
 					>KH Trading Group Inc</a
-				> {t("allRightsReserved")}
+				>
+				{t("allRightsReserved")}
 			</span>
 			<div class="flex mt-4 sm:justify-center sm:mt-0">
 				<a

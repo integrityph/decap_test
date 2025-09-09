@@ -1,10 +1,15 @@
 ---
-const { repo } = Astro.props;
+interface Props {
+  repoList: string[];
+}
+
+const { repoList }:Props = Astro.props;
 ---
 
-<!-- head -->
 <script is:inline src="https://tarptaeya.github.io/repo-card/repo-card.js"></script>
+{
+	repoList.map(entry => (
+		<div class="repo-card" data-repo={entry} data-theme="dark-theme"></div>
+	))
+}
 
-
-<!-- inside body, where you want to create the card -->
-<div class="repo-card" data-repo={repo} data-theme="dark-theme"></div>
