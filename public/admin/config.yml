@@ -7,7 +7,7 @@ backend:
   structure: multiple_folders
   i18n: true
 i18n:
-  locales: [en, ar]
+  locales: [en, ar, es]
   default_locale: en
   structure: multiple_folders
   # omit_default_locale_from_filename: true

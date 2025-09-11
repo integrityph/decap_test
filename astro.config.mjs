@@ -20,7 +20,7 @@ export default defineConfig({
           redirectToDefaultLocale: true,
           fallbackType: "redirect",
       },
-      locales: ["en", "ar"],
+      locales: ["en", "es", "ar"],
       defaultLocale: "en",
     },
 

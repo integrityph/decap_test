@@ -1,0 +1,208 @@
+---
+title: Características
+name: Características
+subtitle: Características de la Billetera Física Tejory
+main_menu: false
+last_updated: 2025-07-09T20:19:00
+order: 0
+---
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
+- Billetera Física con Certificación EAL6+
+- Bitcoin, Ethereum, USDT, BTC en la red Lightning, Shiba Inu
+- Intercambios (Swaps)
+- Autocustodia
