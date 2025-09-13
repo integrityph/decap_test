@@ -1,0 +1,161 @@
+---
+import { getT } from "@/i18n/t";
+import { defaultLang } from "@/i18n/ui";
+
+const lang = Astro.currentLocale || defaultLang;
+const t = getT(lang);
+
+// This component doesn't need props, as it reads its state from localStorage.
+---
+<div id="basket-view" class="w-full max-w-4xl mx-auto bg-zinc-800/50 p-6 sm:p-8 rounded-lg border border-zinc-700">
+    <h1 class="text-3xl font-bold text-zinc-100 border-b border-zinc-700 pb-4 mb-6">{t("Your Basket")}</h1>
+
+    <!-- This container will be populated by the client-side script -->
+    <div id="basket-items-container">
+        <!-- JS will render items here -->
+    </div>
+
+    <!-- This template is used by the script to create new item rows -->
+    <template id="basket-item-template">
+        <div class="basket-item flex items-center py-4 border-b border-zinc-700 gap-4">
+            <img class="item-image w-20 h-20 object-cover rounded-md" src="" alt="">
+            <div class="flex-grow">
+                <p class="item-name text-lg font-semibold text-zinc-100"></p>
+                <p class="item-price text-zinc-400"></p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="quantity-change-btn decrease p-1 rounded-md hover:bg-zinc-700 transition" data-change="-1">-</button>
+                <span class="item-quantity w-8 text-center font-medium"></span>
+                <button class="quantity-change-btn increase p-1 rounded-md hover:bg-zinc-700 transition" data-change="1">+</button>
+            </div>
+            <p class="item-total-price font-semibold w-24 text-right"></p>
+            <button class="remove-item-btn p-1 rounded-md hover:bg-zinc-700 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </template>
+    
+    <!-- This is shown when the basket is empty -->
+    <div id="basket-empty-message" class="hidden text-center py-16">
+        <p class="text-zinc-400 mb-4">{t("Your basket is currently empty.")}</p>
+        <a href={`/products/${lang}`} class="inline-block px-6 py-2 text-sm font-medium text-zinc-900 bg-amber-500 rounded-md hover:bg-amber-600 transition">
+            {t("Continue Shopping")}
+        </a>
+    </div>
+
+    <!-- Basket Summary -->
+    <div id="basket-summary" class="mt-8 flex justify-end">
+        <div class="w-full max-w-sm space-y-4">
+            <div class="flex justify-between text-zinc-300">
+                <span>{t("Subtotal")}</span>
+                <span id="basket-subtotal">$0.00</span>
+            </div>
+            <div class="flex justify-between text-zinc-300">
+                <span>{t("Shipping")}</span>
+                <span>{t("Calculated at checkout")}</span>
+            </div>
+            <div class="flex justify-between text-xl font-bold text-white pt-4 border-t border-zinc-700">
+                <span>{t("Total")}</span>
+                <span id="basket-total">$0.00</span>
+            </div>
+            <a href={`/checkout/${lang}`} id="checkout-button" class="block w-full text-center mt-4 px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-zinc-900 bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-amber-500 transition">
+                {t("Proceed to Checkout")}
+            </a>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+    const itemsContainer = document.getElementById('basket-items-container');
+    const itemTemplate = document.getElementById('basket-item-template');
+    const emptyMessage = document.getElementById('basket-empty-message');
+    const summaryContainer = document.getElementById('basket-summary');
+    const subtotalEl = document.getElementById('basket-subtotal');
+    const totalEl = document.getElementById('basket-total');
+    const checkoutButton = document.getElementById('checkout-button');
+    const lang = document.documentElement.lang || 'en';
+
+    function formatCurrency(amount) {
+        // A simple formatter, can be improved for different currencies.
+        return `$${amount.toFixed(2)}`;
+    }
+
+    function renderCart() {
+        const cart = JSON.parse(localStorage.getItem('cart') || '{}');
+        const items = Object.values(cart);
+
+        // Clear previous items
+        itemsContainer.innerHTML = '';
+
+        if (items.length === 0) {
+            emptyMessage.classList.remove('hidden');
+            summaryContainer.classList.add('hidden');
+            return;
+        }
+
+        emptyMessage.classList.add('hidden');
+        summaryContainer.classList.remove('hidden');
+
+        let subtotal = 0;
+
+        items.forEach(item => {
+            const itemNode = itemTemplate.content.cloneNode(true);
+            const itemTotalPrice = item.price * item.quantity;
+            subtotal += itemTotalPrice;
+
+            itemNode.querySelector('.basket-item').dataset.id = item.id;
+            itemNode.querySelector('.item-image').src = item.imageSrc;
+            itemNode.querySelector('.item-image').alt = item.name;
+            itemNode.querySelector('.item-name').textContent = item.name;
+            itemNode.querySelector('.item-price').textContent = formatCurrency(item.price);
+            itemNode.querySelector('.item-quantity').textContent = item.quantity;
+            itemNode.querySelector('.item-total-price').textContent = formatCurrency(itemTotalPrice);
+
+            itemsContainer.appendChild(itemNode);
+        });
+
+        subtotalEl.textContent = formatCurrency(subtotal);
+        totalEl.textContent = formatCurrency(subtotal);
+    }
+
+    function updateCart(itemId, change) {
+        let cart = JSON.parse(localStorage.getItem('cart') || '{}');
+        
+        if (!cart[itemId]) return;
+
+        if (change === 'remove') {
+            delete cart[itemId];
+        } else {
+            const newQuantity = cart[itemId].quantity + change;
+            if (newQuantity > 0) {
+                cart[itemId].quantity = newQuantity;
+            } else {
+                delete cart[itemId];
+            }
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        window.dispatchEvent(new CustomEvent('cart-updated'));
+        renderCart();
+    }
+    
+    // Event delegation for item buttons
+    itemsContainer.addEventListener('click', (event) => {
+        const target = event.target.closest('button');
+        if (!target) return;
+
+        const itemElement = target.closest('.basket-item');
+        const itemId = itemElement.dataset.id;
+
+        if (target.classList.contains('quantity-change-btn')) {
+            updateCart(itemId, parseInt(target.dataset.change, 10));
+        }
+
+        if (target.classList.contains('remove-item-btn')) {
+            updateCart(itemId, 'remove');
+        }
+    });
+
+    // Initial render on page load
+    document.addEventListener('DOMContentLoaded', renderCart);
+</script>

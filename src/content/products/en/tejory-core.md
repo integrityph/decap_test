@@ -3,7 +3,7 @@ title: tejory-core
 name: Tejory Core
 slogan: The World's Easiest Hardware Wallet
 price: 49.95
-discounted_price: 29.95
+discounted_price: 19.95
 rating: 4.7
 number_of_ratings: 23
 available: true

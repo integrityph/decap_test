@@ -31,7 +31,6 @@ const pagesCollection = defineCollection({
   }).passthrough(),
 });
 
-// The new collection for your unique website pages
 const productsCollection = defineCollection({
   schema: z.object({
     name: z.string(),

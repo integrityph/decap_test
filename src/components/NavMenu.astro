@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import { getT } from '@/i18n/t'
 import LanguageSelector from "./LanguageSelector.astro";
+import BasketIcon from "@/checkout/BasketIcon.astro"
 const lang = Astro.currentLocale;
 const t = getT(lang);
 
@@ -51,6 +52,9 @@ const currentPage = Astro.url.pathname;
 		</a>
 		<div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 			<LanguageSelector lang={lang} />
+		</div>
+		<div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+			<BasketIcon lang={lang} />
 		</div>
 		<div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 			<button

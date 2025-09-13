@@ -1,0 +1,76 @@
+---
+import { getT } from "@/i18n/t";
+import { defaultLang, languages } from '@/i18n/ui';
+import Layout from '@/layouts/Layout.astro';
+
+// This function tells Astro to build a page for every entry in your content collection
+export async function getStaticPaths() {
+	
+	
+	const finalList = Object.entries(languages).map(([code, name]) => {
+		console.log(`${code}`);
+		const entry = {
+			params: { slug: `${code}` },
+			props: { },
+		}
+		return entry;
+	});
+
+	return finalList;
+}
+
+const lang = Astro.currentLocale || defaultLang;
+const t = getT(lang);
+---
+<Layout lang={lang}>
+<div class="w-full max-w-2xl mx-auto text-center py-16 px-4">
+    <!-- Success Icon -->
+    <div class="flex justify-center items-center mx-auto bg-green-500 rounded-full w-20 h-20 mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+            <path d="M20 6 9 17l-5-5"></path>
+        </svg>
+    </div>
+
+    <!-- Main Message -->
+    <h1 class="text-4xl font-bold text-zinc-100">{t("Thank you for your order!")}</h1>
+    <p class="text-lg text-zinc-400 mt-4">{t("Your payment has been confirmed and a receipt has been sent to your email address.")}</p>
+    
+    <!-- Transaction Details -->
+    <div class="text-left bg-zinc-800/50 rounded-lg p-4 mt-8 space-y-2 text-sm border border-zinc-700">
+        <p class="text-zinc-400">{t("Your transaction ID is:")}</p>
+        <p id="transaction-id" class="font-mono text-zinc-300 break-all text-xs" title={t("Loading...")}>{t("Loading...")}</p>
+    </div>
+
+    <!-- Call to Action -->
+    <a href={`/products/${lang}`} class="inline-block mt-8 px-8 py-3 text-base font-medium text-zinc-900 bg-amber-500 rounded-md hover:bg-amber-600 transition">
+        {t("Continue Shopping")}
+    </a>
+</div>
+
+<script is:inline>
+    function handleConfirmation() {
+        // 1. Get the transaction ID from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const txid = urlParams.get('txid');
+        
+        const txIdElement = document.getElementById('transaction-id');
+        if (txid && txIdElement) {
+            txIdElement.textContent = txid;
+            txIdElement.title = txid; // for hover tooltip
+        } else if (txIdElement) {
+            txIdElement.textContent = 'Not available';
+        }
+
+        // 2. CRITICAL: Clear the cart from localStorage
+        localStorage.removeItem('cart');
+
+        // 3. Announce that the cart has been updated so the header icon resets
+        window.dispatchEvent(new CustomEvent('cart-updated'));
+
+        console.log('Order confirmed and cart cleared.');
+    }
+
+    // Run the confirmation logic as soon as the page is ready
+    document.addEventListener('DOMContentLoaded', handleConfirmation);
+</script>
+</Layout>

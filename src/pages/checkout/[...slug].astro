@@ -1,0 +1,29 @@
+---
+import CheckoutForm from '@/checkout/CheckoutForm.astro';
+import { defaultLang, languages } from '@/i18n/ui';
+import Layout from '@/layouts/Layout.astro';
+
+// This function tells Astro to build a page for every entry in your content collection
+export async function getStaticPaths() {
+	
+	
+	const finalList = Object.entries(languages).map(([code, name]) => {
+		console.log(`${code}`);
+		const entry = {
+			params: { slug: `${code}` },
+			props: { },
+		}
+		return entry;
+	});
+
+	return finalList;
+}
+
+const lang = Astro.currentLocale || defaultLang;
+---
+<Layout lang={lang}>
+	<div class="mt-8 max-w-7xl mx-auto">
+		<CheckoutForm />
+	</div>
+	
+</Layout>

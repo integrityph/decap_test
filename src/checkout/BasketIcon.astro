@@ -1,0 +1,61 @@
+---
+import { getT } from "@/i18n/t";
+import { defaultLang } from "@/i18n/ui";
+
+const lang = Astro.currentLocale || defaultLang;
+const t = getT(lang);
+---
+<a href={`/cart/${lang}`} class="basket-icon-wrapper relative group p-2 transition-colors duration-200 rounded-md hover:bg-zinc-700">
+    <!-- Shopping Bag SVG Icon -->
+    <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        class="h-6 w-6 text-zinc-300 group-hover:text-amber-400 transition-colors" 
+        fill="none" 
+        viewBox="0 0 24 24" 
+        stroke="currentColor" 
+        stroke-width="2"
+        aria-hidden="true"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+    </svg>
+    
+    <!-- This badge displays the total number of items in the cart. -->
+    <span 
+        id="basket-item-count" 
+        class="absolute -top-1 -right-1 flex items-center justify-center h-5 w-5 bg-amber-500 text-zinc-900 text-xs font-bold rounded-full transform scale-0 transition-transform duration-200 ease-out"
+    >
+      0
+    </span>
+
+    <span class="sr-only">{t("View your basket")}</span>
+</a>
+
+<script is:inline>
+    // This is a plain vanilla JS script to manage the basket icon's state.
+    const countElement = document.getElementById('basket-item-count');
+
+    function updateCartCount() {
+        if (!countElement) return;
+
+        // 1. Read the cart directly from localStorage.
+        const cart = JSON.parse(localStorage.getItem('cart') || '{}');
+        
+        // 2. Calculate the total number of items by summing their quantities.
+        const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+
+        // 3. Update the display based on the total.
+        if (totalItems > 0) {
+            countElement.textContent = String(totalItems);
+            countElement.classList.remove('scale-0'); // Make the badge visible
+        } else {
+            countElement.classList.add('scale-0'); // Hide the badge if empty
+        }
+    }
+
+    // 4. Listen for the custom event dispatched by the AddToCart button.
+    window.addEventListener('cart-updated', updateCartCount);
+
+    // 5. Run once on initial page load to set the correct count from any existing cart data.
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+
