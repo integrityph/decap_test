@@ -92,6 +92,8 @@ export const ui = {
 		'Your payment has been confirmed and a receipt has been sent to your email address.':'Your payment has been confirmed and a receipt has been sent to your email address.',
 		'Your transaction ID is:':'Your transaction ID is:',
 		'Loading...':'Loading...',
+		'Enter address to calculate':'Enter address to calculate',
+		'Select a country...':'Select a country...',
   },
 	es: {
     'keyFeaturesOf': 'Características Clave de ',
@@ -178,6 +180,8 @@ export const ui = {
 		'Your payment has been confirmed and a receipt has been sent to your email address.':'Your payment has been confirmed and a receipt has been sent to your email address.',
 		'Your transaction ID is:':'Your transaction ID is:',
 		'Loading...':'Loading...',
+		'Enter address to calculate':'Enter address to calculate',
+		'Select a country...':'Select a country...',
   },
   ar: {
     'keyFeaturesOf': 'المميزات الرئيسية ل',
@@ -264,5 +268,7 @@ export const ui = {
 		'Your payment has been confirmed and a receipt has been sent to your email address.':'Your payment has been confirmed and a receipt has been sent to your email address.',
 		'Your transaction ID is:':'Your transaction ID is:',
 		'Loading...':'Loading...',
+		'Enter address to calculate':'Enter address to calculate',
+		'Select a country...':'Select a country...',
 	}
 } as const;

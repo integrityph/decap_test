@@ -10,9 +10,17 @@ export function useTranslations(lang: string | undefined) {
   // Determine which language to use, falling back to the default
   const langCode = lang && lang in ui ? lang as keyof typeof ui : defaultLang;
 
-  // The returned `t` function is now simpler and uses the safe langCode
   return function t(key: keyof typeof ui[typeof defaultLang]) {
-    // The fallback logic is no longer needed here
-    return ui[langCode][key];
+    // Attempt to get the translation from the selected language's dictionary
+    const translation = ui[langCode][key];
+
+    // Check if the translation exists for the current language
+    if (translation !== undefined) {
+      return translation;
+    }
+
+    // If the translation is missing, log a warning and return the key itself as a fallback.
+    console.warn(`Missing translation for key: "${key}" in language: "${langCode}"`);
+    return key;
   }
 }

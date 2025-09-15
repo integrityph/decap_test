@@ -252,3 +252,12 @@ collections:
       - {name: "question", label: "Question", widget: "string", i18n: true}
       - {name: "order", label: "order", widget: "number", required: true, i18n: duplicate}
       - {name: 'body', label: 'Main Content', widget: 'markdown', i18n: true}
+  - name: "countries"
+    label: "Country List"
+    i18n: true
+    folder: "src/content/countries"
+    create: true
+    fields:
+      - {name: "title", label: "Name", widget: "string", i18n: true}
+      - {name: "code", label: "Code", widget: "string", i18n: duplicate}
+      - {name: "order", label: "Order", widget: "number", default: 999, i18n: duplicate}

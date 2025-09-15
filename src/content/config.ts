@@ -121,6 +121,14 @@ const faqCollection = defineCollection({
   }),
 });
 
+const countryCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    code: z.string(),
+		order: z.number(),
+  }),
+});
+
 // Export a `collections` object to register your new 'blog' collection
 export const collections = {
   blog: blogCollection,
@@ -133,4 +141,5 @@ export const collections = {
 	home_page_articles: homePagArticlesCollection,
 	road_map: roadMapCollection,
 	faq: faqCollection,
+	countries: countryCollection,
 };
