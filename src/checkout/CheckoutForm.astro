@@ -333,10 +333,10 @@ const counties = countryList.filter(entry => entry.slug.split("/")[0]== lang).so
             country: formData.get('country'),
         };
         try {
-            const response = await fetch('/api/v1/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            const response = await fetch('https://ln.tejory.io/checkout/api/v1/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
             if (!response.ok) { const errorData = await response.text(); throw new Error(errorData || 'Failed to create checkout session.'); }
             const data = await response.json();
-            window.location.href = data.paymentPageUrl;
+            window.location.href = 'https://ln.tejory.io' + data.paymentPageUrl;
         } catch (error) {
             console.error("Checkout error:", error);
             errorMessageEl.textContent = error.message;
