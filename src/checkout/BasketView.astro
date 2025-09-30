@@ -50,6 +50,10 @@ const t = getT(lang);
                 <span>{t("Subtotal")}</span>
                 <span id="basket-subtotal">$0.00</span>
             </div>
+						<div id="basket-discount-row" class="hidden flex justify-between text-green-400">
+								<span>{t("Discount")}</span>
+								<span id="basket-discount">-$0.00</span>
+						</div>
             <div class="flex justify-between text-zinc-300">
                 <span>{t("Shipping")}</span>
                 <span>{t("Calculated at checkout")}</span>
@@ -84,6 +88,9 @@ const t = getT(lang);
         const cart = JSON.parse(localStorage.getItem('cart') || '{}');
         const items = Object.values(cart);
 
+				const discountRow = document.getElementById('basket-discount-row');
+    		const discountEl = document.getElementById('basket-discount');
+
         // Clear previous items
         itemsContainer.innerHTML = '';
 
@@ -97,6 +104,7 @@ const t = getT(lang);
         summaryContainer.classList.remove('hidden');
 
         let subtotal = 0;
+				let totalDiscount = 0;
 
         items.forEach(item => {
             const itemNode = itemTemplate.content.cloneNode(true);
@@ -107,9 +115,29 @@ const t = getT(lang);
             itemNode.querySelector('.item-image').src = item.imageSrc;
             itemNode.querySelector('.item-image').alt = item.name;
             itemNode.querySelector('.item-name').textContent = item.name;
-            itemNode.querySelector('.item-price').textContent = formatCurrency(item.price);
+            // itemNode.querySelector('.item-price').textContent = formatCurrency(item.price);
+						const itemPriceEl = itemNode.querySelector('.item-price');
+            if (item.originalPrice && item.originalPrice > item.price) {
+                // If there's a discount, show the original price slashed out.
+                itemPriceEl.innerHTML = `
+                    <del class="text-zinc-500">${formatCurrency(item.originalPrice)}</del>
+                    <span class="font-semibold text-zinc-300">${formatCurrency(item.price)}</span>
+                `;
+								totalDiscount += (item.originalPrice - item.price) * item.quantity;
+            } else {
+                // Otherwise, just show the regular price.
+                itemPriceEl.textContent = formatCurrency(item.price);
+            }
             itemNode.querySelector('.item-quantity').textContent = item.quantity;
             itemNode.querySelector('.item-total-price').textContent = formatCurrency(itemTotalPrice);
+
+						// Show or hide the discount row
+						if (totalDiscount > 0) {
+								discountEl.textContent = `-${formatCurrency(totalDiscount)}`;
+								discountRow.classList.remove('hidden');
+						} else {
+								discountRow.classList.add('hidden');
+						}
 
             itemsContainer.appendChild(itemNode);
         });

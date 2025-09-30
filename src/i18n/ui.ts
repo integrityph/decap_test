@@ -94,6 +94,7 @@ export const ui = {
 		'Loading...':'Loading...',
 		'Enter address to calculate':'Enter address to calculate',
 		'Select a country...':'Select a country...',
+		'Discount':'Discount',
   },
 	es: {
     'keyFeaturesOf': 'Características Clave de ',
@@ -182,6 +183,7 @@ export const ui = {
 		'Loading...':'Loading...',
 		'Enter address to calculate':'Enter address to calculate',
 		'Select a country...':'Select a country...',
+		'Discount':'Discount',
   },
   ar: {
     'keyFeaturesOf': 'المميزات الرئيسية ل',
@@ -270,5 +272,6 @@ export const ui = {
 		'Loading...':'Loading...',
 		'Enter address to calculate':'Enter address to calculate',
 		'Select a country...':'Select a country...',
+		'Discount':'Discount',
 	}
 } as const;

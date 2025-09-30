@@ -5,14 +5,14 @@ import { defaultLang } from "@/i18n/ui";
 const lang = Astro.currentLocale || defaultLang;
 const t = getT(lang);
 
-// The 'product' prop is still passed for the button's data attributes.
 const { product } = Astro.props;
 ---
 <button 
     class="add-to-cart-btn inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-zinc-900 bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-amber-500 transition-transform transform hover:scale-105"
     data-product-id={product.slug}
     data-product-name={product.data.name}
-    data-product-price={product.data.discounted_price || product.data.price}
+		data-product-price={product.data.discounted_price || product.data.price}
+    data-product-original-price={product.data.price}
     data-product-image={product.data.image1}
 >
     {t("Add to Cart")}
@@ -23,10 +23,15 @@ const { product } = Astro.props;
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             const btn = event.currentTarget;
+            const finalPrice = parseFloat(btn.dataset.productPrice);
+            const originalPrice = parseFloat(btn.dataset.productOriginalPrice);
+
             const item = {
                 id: btn.dataset.productId,
                 name: btn.dataset.productName,
-                price: parseFloat(btn.dataset.productPrice),
+                price: finalPrice,
+                // Only store originalPrice if it's different from the final price
+                originalPrice: (originalPrice !== finalPrice) ? originalPrice : null,
                 imageSrc: btn.dataset.productImage,
             };
 
