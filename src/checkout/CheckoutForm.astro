@@ -396,20 +396,6 @@ const counties = countryList
 		return `$${amount.toFixed(2)}`;
 	}
 
-	// function renderSummary() {
-	//     const cart = JSON.parse(localStorage.getItem('cart') || '{}');
-	//     const items = Object.values(cart);
-	//     summaryItemsContainer.innerHTML = '';
-	//     subtotal = 0;
-	//     if (items.length === 0) { window.location.href = `/${lang}/cart`; return; }
-	//     items.forEach(item => {
-	//         const itemTotalPrice = item.price * item.quantity;
-	//         subtotal += itemTotalPrice;
-	//         summaryItemsContainer.innerHTML += `<div class="flex items-center gap-4"><div class="relative"><img src="${item.imageSrc}" alt="${item.name}" class="w-16 h-16 rounded-md object-cover border border-zinc-700"><span class="absolute -top-2 -right-2 flex items-center justify-center h-5 w-5 bg-zinc-600 text-zinc-100 text-xs font-medium rounded-full">${item.quantity}</span></div><p class="flex-grow font-semibold text-zinc-200">${item.name}</p><p class="font-medium text-zinc-300">${formatCurrency(itemTotalPrice)}</p></div>`;
-	//     });
-	//     subtotalEl.textContent = formatCurrency(subtotal);
-	//     updateTotals();
-	// }
 	function renderSummary() {
 		const cart = JSON.parse(localStorage.getItem("cart") || "{}");
 		const items = Object.values(cart);
@@ -453,20 +439,8 @@ const counties = countryList
 
 		// Combine product and shipping discounts
 		
-    const totalDiscount = productDiscount + shippingDiscount;
+    const totalDiscount = productDiscount;
 		console.log(totalDiscount, productDiscount, shippingDiscount);
-
-		// Render the discount line if there are savings
-		if (totalDiscount > 0) {
-			discountDiv = document.createElement("div");
-			discountDiv.id = "summary-discount-row";
-			discountDiv.className = "flex justify-between text-green-400";
-			discountDiv.innerHTML = `<span>Discount</span><span>-${formatCurrency(totalDiscount)}</span>`;
-			// Insert it after the subtotal
-			document
-				.getElementById("summary-subtotal")
-				.parentElement.after(discountDiv);
-		}
 
 		subtotalEl.textContent = formatCurrency(subtotal);
 		updateTotals();
@@ -499,23 +473,33 @@ const counties = countryList
     renderSummary(); 
 	}
 	function renderShipping(options) {
-		shippingDiscount = 0;
-		if (!options || options.length === 0) { 
+		    shippingDiscount = 0; 
+    
+    // Find the main shipping container and remove any old shipping discount row
+    const shippingContainer = document.getElementById('shipping-container');
+    const oldDiscountRow = document.getElementById('shipping-discount-row');
+    if (oldDiscountRow) {
+        oldDiscountRow.remove();
+    }
+
+    if (!options || options.length === 0) { 
         shippingEl.innerHTML = `<span class="text-red-400">Cannot ship to this address</span>`; 
         shippingCost = 0; 
         return; 
     }
+    
     const option = options[0]; 
     let feeHTML = '';
+
     if (option.discounted_fee !== null && option.discounted_fee < option.fee) { 
         shippingCost = option.discounted_fee; 
-        shippingDiscount = option.fee - option.discounted_fee; // Calculate and store the discount
-				console.log("shippingDiscount", shippingDiscount);
+        shippingDiscount = option.fee - option.discounted_fee; 
         feeHTML = `<del class="text-zinc-500">${formatCurrency(option.fee)}</del> <strong class="text-green-400">${formatCurrency(option.discounted_fee)}</strong>`; 
     } else { 
         shippingCost = option.fee; 
         feeHTML = `<strong>${formatCurrency(option.fee)}</strong>`; 
     }
+    
     shippingEl.innerHTML = `<span>${option.name}</span>${feeHTML}`;
 	}
 	function renderTaxes(taxes) {
@@ -536,64 +520,7 @@ const counties = countryList
 		const grandTotal = subtotal + shippingCost + taxAmount;
 		totalEl.textContent = formatCurrency(grandTotal);
 	}
-	// async function handleFormSubmit(event) {
-	// 	event.preventDefault();
-	// 	payButton.disabled = true;
-	// 	const payButtonText = payButton.querySelector("span");
-	// 	payButtonText.textContent = "Processing...";
-	// 	errorMessageEl.classList.add("hidden");
-	// 	const formData = new FormData(form);
-	// 	const cart = JSON.parse(localStorage.getItem("cart") || "{}");
-	// 	const items = Object.values(cart);
-	// 	const orderDetails = items.map((item) => ({
-	// 		name: item.name,
-	// 		quantity: String(item.quantity),
-	// 		unit_price: String(item.price.toFixed(2)),
-	// 		total_price: String((item.price * item.quantity).toFixed(2)),
-	// 	}));
-
-	// 	const grandTotal = subtotal + shippingCost + taxAmount;
-
-	// 	const payload = {
-	// 		amount_fiat: String(grandTotal.toFixed(2)),
-	// 		currency: CURRENCY,
-	// 		order_details: orderDetails,
-	// 		pubkey: MERCHANT_PUBKEY,
-	// 		merchant_email: MERCHANT_EMAIL,
-	// 		return_url: `${window.location.origin}/${lang}/thank-you`,
-	// 		first_name: formData.get("first_name"),
-	// 		last_name: formData.get("last_name"),
-	// 		client_email: formData.get("client_email"),
-	// 		address1: formData.get("address1"),
-	// 		address2: formData.get("address2"),
-	// 		city: formData.get("city"),
-	// 		state: formData.get("state"),
-	// 		zipcode: formData.get("zipcode"),
-	// 		country: formData.get("country"),
-	// 	};
-	// 	try {
-	// 		const response = await fetch(
-	// 			"https://ln.tejory.io/checkout/api/v1/checkout",
-	// 			{
-	// 				method: "POST",
-	// 				headers: { "Content-Type": "application/json" },
-	// 				body: JSON.stringify(payload),
-	// 			},
-	// 		);
-	// 		if (!response.ok) {
-	// 			const errorData = await response.text();
-	// 			throw new Error(errorData || "Failed to create checkout session.");
-	// 		}
-	// 		const data = await response.json();
-	// 		window.location.href = "https://ln.tejory.io" + data.paymentPageUrl;
-	// 	} catch (error) {
-	// 		console.error("Checkout error:", error);
-	// 		errorMessageEl.textContent = error.message;
-	// 		errorMessageEl.classList.remove("hidden");
-	// 		payButton.disabled = false;
-	// 		payButtonText.textContent = "Pay with Lightning";
-	// 	}
-	// }
+	
 	async function handleFormSubmit(event) {
 		event.preventDefault();
 		payButton.disabled = true;
@@ -609,6 +536,7 @@ const counties = countryList
 
 		// 1. Calculate all monetary values from the cart and current state
 		let subtotalMinorUnits = 0;
+		let subtotalBeforeDiscountMinorUnits = 0;
 		let totalProductDiscountMinorUnits = 0;
 
 		const orderDetails = items.map((item) => {
@@ -622,12 +550,17 @@ const counties = countryList
 					(originalPriceMinorUnits - finalPriceMinorUnits) * item.quantity;
 			}
 
+    	const originalUnitPriceMinorUnits = Math.round((item.originalPrice || item.price) * 100);
+    	const totalOriginalPriceMinorUnits = originalUnitPriceMinorUnits * item.quantity;
+
+			subtotalBeforeDiscountMinorUnits += totalOriginalPriceMinorUnits;
+
 			return {
-				name: item.name,
-				quantity: item.quantity,
-				unit_price: finalPriceMinorUnits,
-				total_price: totalFinalPriceMinorUnits,
-			};
+        name: item.name,
+        quantity: item.quantity,
+        unit_price: originalUnitPriceMinorUnits,
+        total_price: totalOriginalPriceMinorUnits,
+    	};
 		});
 
 		const shippingMinorUnits = Math.round(shippingCost * 100);
@@ -638,7 +571,7 @@ const counties = countryList
 		if (totalProductDiscountMinorUnits > 0) {
 			discountLines.push({
 				description: "Product Discount",
-				amount_cents: totalProductDiscountMinorUnits,
+				amount_fiat: totalProductDiscountMinorUnits,
 			});
 		}
 
@@ -652,7 +585,7 @@ const counties = countryList
 				shippingOptions[0].fee - shippingOptions[0].discounted_fee;
 			discountLines.push({
 				description: "Shipping Promotion",
-				amount_cents: Math.round(shippingDiscountAmount * 100),
+				amount_fiat: Math.round(shippingDiscountAmount * 100),
 			});
 		}
 
@@ -660,10 +593,12 @@ const counties = countryList
 		const grandTotalMinorUnits =
 			subtotalMinorUnits + shippingMinorUnits + taxMinorUnits;
 
+		const shippingFeeInDollars = shippingOptions && shippingOptions[0] ? shippingOptions[0].fee : 0;
+
 		// 4. Build the final payload with correct field names and integer values
 		const payload = {
-			subtotal_fiat: subtotalMinorUnits,
-			shipping_amount_fiat: shippingMinorUnits,
+			subtotal_fiat: subtotalBeforeDiscountMinorUnits,
+			shipping_amount_fiat: Math.round(shippingFeeInDollars * 100),
 			total_tax_amount_fiat: taxMinorUnits,
 			amount_fiat: grandTotalMinorUnits,
 			discount_lines: discountLines,

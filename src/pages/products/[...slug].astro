@@ -5,7 +5,7 @@ import Layout from "@/layouts/Layout.astro";
 import { useTranslations } from "@/i18n/utils";
 import { Icon } from "astro-icon/components";
 import { getCollection, getEntry } from "astro:content";
-import BuyNow from "@/components/BuyNow.astro";
+import BuyBox from "@/components/BuyBox.astro";
 import FeatureBox from "@/components/FeatureBox.astro";
 
 // This function tells Astro to build a page for every entry in your content collection
@@ -54,9 +54,10 @@ const t = useTranslations(lang);
 ---
 
 <Layout title={entry.data.name} lang={lang} slug={entry.slug}>
-	<Hero />
+	<!-- <Hero /> -->
 	<main class="md:px-8 mt-8">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<BuyBox slug=`${entry.slug}` />
 			<h2 class="text-4xl font-extrabold text-center pb-12">
 				{t("keyFeaturesOf")}{entry.data.name}
 			</h2>
@@ -79,13 +80,13 @@ const t = useTranslations(lang);
 		<section class="mt-8 [&_h2]:text-center md:[&_h2]:text-left max-w-7xl mx-auto">
 			<Content />
 		</section>
-		{
+		<!-- {
 			(entry.data.status == "active") ?
 			<div class="flex justify-center mt-16">
 				<BuyNow slug=`${entry.slug}` />
 			</div>
 			: ""
-		}
+		} -->
 		
 	</main>
 	
