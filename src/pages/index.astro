@@ -1,63 +1,64 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Hero from '@/components/Hero.astro';
-import { useTranslations } from '@/i18n/utils';
-import { getCollection } from 'astro:content';
-import FeatureBox from '@/components/FeatureBox.astro';
-import HomePageCard from '@/components/HomePageCard.astro';
-import FAQ from '@/components/FAQ.astro';
-const { lang="en" } = Astro.props;
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/Hero.astro";
+import { useTranslations } from "@/i18n/utils";
+import { getCollection } from "astro:content";
+import FeatureBox from "@/components/FeatureBox.astro";
+import HomePageCard from "@/components/HomePageCard.astro";
+import FAQ from "@/components/FAQ.astro";
+const { lang = "en" } = Astro.props;
 const t = useTranslations(lang);
 
-const featureList = ["lightning-network", "your-identity-remains-private", "swaps"];
+const featureList = [
+	"lightning-network",
+	"your-identity-remains-private",
+	"swaps",
+];
 
 const features = await getCollection("features");
 const articles = await getCollection("home_page_articles");
 
 const displayFeatures = await Promise.all(
-  features
-    .filter((entry) => featureList.includes(entry.slug.split("/")[1]) && entry.slug.split("/").includes(lang))
-    .map(async (entry) => {
-      const { Content } = await entry.render();
-      return {
-        name: entry.data.name,
-        icon: entry.data.custom_icon || entry.data.icon,
-        Content: Content,
-      };
-    })
+	features
+		.filter(
+			(entry) =>
+				featureList.includes(entry.slug.split("/")[1]) &&
+				entry.slug.split("/").includes(lang),
+		)
+		.map(async (entry) => {
+			const { Content } = await entry.render();
+			return {
+				name: entry.data.name,
+				icon: entry.data.custom_icon || entry.data.icon,
+				Content: Content,
+			};
+		}),
 );
 
 const displayArticles = await Promise.all(
-  articles
-    .filter((entry) => entry.slug.split("/").includes(lang))
+	articles
+		.filter((entry) => entry.slug.split("/").includes(lang))
 		.sort((a, b) => a.data.order - b.data.order)
-    .map(async (entry) => {
-      const { Content } = await entry.render();
-      return {
-        name: entry.data.name,
-        image: entry.data.image,
+		.map(async (entry) => {
+			const { Content } = await entry.render();
+			return {
+				name: entry.data.name,
+				image: entry.data.image,
 				link: entry.data.link,
-        Content: Content,
-      };
-    })
+				Content: Content,
+			};
+		}),
 );
 ---
-<Layout lang={lang} >
+
+<Layout lang={lang}>
 	<Hero />
 	<main class="px-8 mt-8 max-w-7xl mx-auto">
 		<div class="flex flex-wrap justify-center gap-8">
-		{
-			displayFeatures.map((feature) => (
-				<FeatureBox feature={feature} />
-			))
-		}
+			{displayFeatures.map((feature) => <FeatureBox feature={feature} />)}
 		</div>
 		<div class="mt-8 space-y-8">
-			{
-				displayArticles.map(article => (
-					<HomePageCard article={article} />
-				))
-			}
+			{displayArticles.map((article) => <HomePageCard article={article} />)}
 		</div>
 		<div class="mt-8">
 			<FAQ />
